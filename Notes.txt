@@ -1,0 +1,6 @@
+Use case Diagrams:
+First rental.
+Other rental.
+Changed idea.
+Credit card Denied.
+
