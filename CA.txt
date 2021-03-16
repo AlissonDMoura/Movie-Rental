@@ -14,3 +14,15 @@ OOC
 
 -Working software prototype
 -Git repositories
+
+----
+
+1 - Problem definition, list sys requeriments, sequence diagram(link1)
+2 - Use case diagrams(link1), activity diagrams, class diagrams. 
+3 - State diagram, user history(change it for OOC)
+link1 = dependent
+
+
+
+
+
