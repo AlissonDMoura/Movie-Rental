@@ -1,3 +1,7 @@
+Tabela de cartoes ( pesquisa automatica)
+
+http://support.worldpay.com/support/kb/bg/testandgolive/tgl5103.html
+-------------------------
 Use case Diagrams:
 First rental.
 Other rental.

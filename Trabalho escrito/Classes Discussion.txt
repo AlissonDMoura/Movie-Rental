@@ -1,10 +1,9 @@
-Customer.
+Customer. ( OR Credit Card Id.)
 
-add password   String
-add CCNumber:  String
-add CCExpDate: String
-add SecNumber: String
-add UserType: boolean
+add password   String (opt)
+add CCNumber:  int(16) (mandatory)
+add CCExpDate: int(4) or date (mandatory) - add date range(opt) 
+add SecNumber: int(3) (mandatory)
 
 methods already have a few of them.
 
@@ -24,7 +23,7 @@ Change: priceBuy type to float
 (Optional add): Launch: String(launch date)
 (Optional add): Director: String
 (Optional add): Duration: String
-(optional add): Synopsis ( string )
+(optional add): Synopsis (string)
 
 
 (( I dont see reason to create a superclass in this matter, but it can be done for basics as TITLE, Genre, ID, etc.))
@@ -34,6 +33,7 @@ This class Changeable parameters:
 delete Date: we're using this name for stg else.
 Status: "Rented", "sold" or "in strock" String
 rDate: Rented date (string or date) (*1)
+Customer 
 dDate: due Date (String or date) (*2)
 
 this class methods:
@@ -41,5 +41,8 @@ add/change/delete for parameters mentioned.
 
 
 *1: Default for when it's in stock should be empty /  Default for when it's sold should be 0
-
 *2: Default for when it's in stock should be empty /  Default for when it's sold should be 0
+
+
+-- Picture id/name link storage in device (23/03 1:33:00)
+-------------------------
