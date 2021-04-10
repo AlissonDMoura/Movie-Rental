@@ -5,6 +5,9 @@
  */
 package movierentallab;
 
+
+
+
 /**
  *
  * @author aliss
@@ -16,6 +19,7 @@ public class MovieRentalLab {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-    }
+        
+     }
     
 }
