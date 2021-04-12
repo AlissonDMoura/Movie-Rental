@@ -148,7 +148,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
-            <Property name="text" type="java.lang.String" value="As a guest you pay the full amount and you can be refounded at your DVD return"/>
+            <Property name="text" type="java.lang.String" value="As a guest you pay the full amount and you can be refunded at your DVD return"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">

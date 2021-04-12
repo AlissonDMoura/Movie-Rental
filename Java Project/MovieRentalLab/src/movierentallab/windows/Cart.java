@@ -60,7 +60,7 @@ public class Cart extends javax.swing.JFrame {
 
         jButton3.setText("REMOVE");
 
-        jLabel1.setText("As a guest you pay the full amount and you can be refounded at your DVD return");
+        jLabel1.setText("As a guest you pay the full amount and you can be refunded at your DVD return");
 
         jLabel2.setText("Code");
 
