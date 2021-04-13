@@ -34,11 +34,12 @@ public class Connection {
                     
                     java.sql.Connection conn = DriverManager.getConnection(URL, USER, PASS);
                     System.out.println("Retrieving data");
-                    return conn;
-                                                            
+                    return conn;                                                            
                     //catch error and report the connection wasn't stabilished.
                 } catch (SQLException ex) {throw new RuntimeException("Error Connecting", ex);}                
             }
+    
+    
     
     
 }

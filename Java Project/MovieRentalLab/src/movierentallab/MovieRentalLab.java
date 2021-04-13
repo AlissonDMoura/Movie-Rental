@@ -5,6 +5,10 @@
  */
 package movierentallab;
 
+import javax.swing.JFrame;
+import movierentallab.windows.Account;
+import movierentallab.windows.MainMenu;
+
 
 
 
@@ -12,14 +16,27 @@ package movierentallab;
  *
  * @author aliss
  */
-public class MovieRentalLab {
+public class MovieRentalLab extends JFrame {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+    
         
+        JFrame window = new JFrame();
+        window.setVisible(true);
+        
+        MainMenu menu = new MainMenu();
+        menu.setVisible(true);
+        
+        window.add(menu);
+        
+        
+        
+              
      }
+    
+    
     
 }
