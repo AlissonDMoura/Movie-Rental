@@ -24,13 +24,15 @@ public class MovieRentalLab extends JFrame {
     public static void main(String[] args) {
     
         
-        JFrame window = new JFrame();
-        window.setVisible(true);
-        
-        MainMenu menu = new MainMenu();
-        menu.setVisible(true);
-        
+        JFrame window = new JFrame("X-tra Vision");
+        window.setBounds(0, 0, 870, 551);
+               
+        MainMenu menu = new MainMenu(window);
         window.add(menu);
+        window.validate();
+        window.repaint();
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setVisible(true);
         
         
         

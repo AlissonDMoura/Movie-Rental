@@ -5,16 +5,20 @@
  */
 package movierentallab.windows;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author aliss
  */
 public class MainMenu extends javax.swing.JPanel {
 
+    private JFrame window;
     /**
      * Creates new form MainMenu
      */
-    public MainMenu() {
+    public MainMenu(JFrame window) {
+        this.window = window;
         initComponents();
       
     }
@@ -76,7 +80,7 @@ public class MainMenu extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(50, 50, 50)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -92,7 +96,7 @@ public class MainMenu extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -106,12 +110,22 @@ public class MainMenu extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-        SelectMovie.getWindows();        
+        SelectMovie sMovie = new SelectMovie(window);
+        window.dispose();
+        sMovie.setVisible(true);
+        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //Dispose the actual window and open a new JFRAME for SelectMovies, Set the defoult close operation.
+        
+        
+        
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        
+        
+        
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

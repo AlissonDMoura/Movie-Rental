@@ -5,17 +5,24 @@
  */
 package movierentallab.windows;
 
+import javax.swing.JFrame;
+import movierentallab.MovieRentalLab;
+
+
 /**
  *
  * @author mvini
  */
 public class SelectMovie extends javax.swing.JFrame {
+    private JFrame window;
 
     /**
      * Creates new form SelectMovie
      */
-    public SelectMovie() {
-        initComponents();
+    public SelectMovie(JFrame window) {
+        this.window = window;
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                initComponents();
     }
 
     /**
@@ -121,8 +128,21 @@ public class SelectMovie extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         
-        MainMenu menu = new MainMenu();
+        //BACK BUTTON//
         
+        this.dispose();
+        //disposes the actual window
+        
+        JFrame window = new JFrame("Xtra-Vision");
+        window.setBounds(0, 0, 870, 551);
+        //Create a new frame
+        MainMenu menu = new MainMenu(window);
+        window.add(menu);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setVisible(true);
+        //Alocate the panel menu into this new frame.        
+        
+        //BACK BUTTON//
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
