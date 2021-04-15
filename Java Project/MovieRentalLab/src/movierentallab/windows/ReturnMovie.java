@@ -5,16 +5,25 @@
  */
 package movierentallab.windows;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author mvini
  */
 public class ReturnMovie extends javax.swing.JFrame {
+    private JFrame window;
 
     /**
      * Creates new form ReturnMovie
      */
-    public ReturnMovie() {
+    public ReturnMovie(JFrame window) {
+        
+        this.window = window;
+        this.setBounds(200, 200, 860, 550);
+        this.setTitle("Return your hired Items");
+        
+        
         initComponents();
     }
 
@@ -27,21 +36,100 @@ public class ReturnMovie extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BacktoMmenu = new javax.swing.JButton();
+        nextRmovie = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        creditCardField = new javax.swing.JTextField();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBounds(new java.awt.Rectangle(200, 200, 860, 550));
+        setPreferredSize(new java.awt.Dimension(860, 550));
+        setResizable(false);
+
+        BacktoMmenu.setText("Back to Menu");
+        BacktoMmenu.setToolTipText("Go back to Main Menu");
+        BacktoMmenu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BacktoMmenuActionPerformed(evt);
+            }
+        });
+
+        nextRmovie.setText("Next");
+        nextRmovie.setToolTipText("Fetch my Order!");
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(102, 102, 102));
+        jLabel1.setText("Inform you credit card number and click Next");
+
+        creditCardField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        creditCardField.setText("xxxx-xxxx-xxxx-xxxx");
+        creditCardField.setToolTipText("Enter you Credit card number to access your rented movies");
+        creditCardField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        creditCardField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                creditCardFieldActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(BacktoMmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(nextRmovie, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(212, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 470, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(190, 190, 190))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(creditCardField, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(250, 250, 250))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(77, 77, 77)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(creditCardField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 228, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BacktoMmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nextRmovie, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void creditCardFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditCardFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_creditCardFieldActionPerformed
+
+    private void BacktoMmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BacktoMmenuActionPerformed
+        
+//BACK BUTTON//
+        
+        this.dispose();
+        //disposes the actual window
+        
+        JFrame window = new JFrame("Xtra-Vision");
+        window.setBounds(200, 200, 860, 550);
+                //Create a new frame
+        MainMenu menu = new MainMenu(window);
+        window.add(menu);
+        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        window.setVisible(true);
+        //Alocate the panel menu into this new frame.        
+        
+        //BACK BUTTON//
+    }//GEN-LAST:event_BacktoMmenuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,11 +161,15 @@ public class ReturnMovie extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ReturnMovie().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BacktoMmenu;
+    private javax.swing.JTextField creditCardField;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton nextRmovie;
     // End of variables declaration//GEN-END:variables
 }

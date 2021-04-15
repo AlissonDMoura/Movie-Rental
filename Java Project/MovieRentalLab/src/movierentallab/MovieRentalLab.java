@@ -5,8 +5,9 @@
  */
 package movierentallab;
 
+
 import javax.swing.JFrame;
-import movierentallab.windows.Account;
+import movierentallab.classes.Connection;
 import movierentallab.windows.MainMenu;
 
 
@@ -23,10 +24,14 @@ public class MovieRentalLab extends JFrame {
      */
     public static void main(String[] args) {
     
+        Connection conn = new Connection();
+        System.out.println(conn.equals(conn));
+        //Connection Checker
+        
         
         JFrame window = new JFrame("X-tra Vision");
-        window.setBounds(0, 0, 870, 551);
-               
+        window.setBounds(200, 200, 860, 550);
+
         MainMenu menu = new MainMenu(window);
         window.add(menu);
         window.validate();
