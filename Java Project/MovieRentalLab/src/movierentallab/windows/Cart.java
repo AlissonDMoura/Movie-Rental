@@ -5,16 +5,23 @@
  */
 package movierentallab.windows;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author mvini
  */
 public class Cart extends javax.swing.JFrame {
+    private JFrame window;
 
     /**
      * Creates new form Cart
      */
-    public Cart() {
+    public Cart(JFrame window) {
+        this.window = window;
+        this.setTitle("Xtra-Vision Cart");
+        this.setLocationRelativeTo(null);   
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
     }
 
@@ -180,7 +187,7 @@ public class Cart extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cart().setVisible(true);
+
             }
         });
     }

@@ -5,17 +5,27 @@
  */
 package movierentallab.windows;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mvini
  */
-public class Customer extends javax.swing.JFrame {
+public class Customer extends javax.swing.JFrame implements ActionListener {
+    private JFrame window;
 
     /**
      * Creates new form Customer
      */
-    public Customer() {
-        initComponents();
+    public Customer(JFrame window) {
+    this.window = window;
+    this.setTitle("Customer Account");
+    this.setLocationRelativeTo(null);   
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    initComponents();
     }
 
     /**
@@ -48,6 +58,11 @@ public class Customer extends javax.swing.JFrame {
         jPasswordField1.setToolTipText("");
 
         jButton1.setText("Sign in and Pay");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("BACK");
 
@@ -107,6 +122,22 @@ public class Customer extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+
+int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued.", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+     
+if(input == JOptionPane.OK_OPTION)
+{
+    System.out.println("oi");
+
+        
+       
+}      
+            
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -137,7 +168,7 @@ public class Customer extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Customer().setVisible(true);
+//                new Customer().setVisible(true);
             }
         });
     }
@@ -151,4 +182,11 @@ public class Customer extends javax.swing.JFrame {
     private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+
+        
+    }
 }

@@ -30,7 +30,8 @@ public class MovieRentalLab extends JFrame {
         
         
         JFrame window = new JFrame("X-tra Vision");
-        window.setBounds(200, 200, 860, 550);
+        window.setBounds(0, 0, 860, 550);
+        window.setLocationRelativeTo(null);
 
         MainMenu menu = new MainMenu(window);
         window.add(menu);

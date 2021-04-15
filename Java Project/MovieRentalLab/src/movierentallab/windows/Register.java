@@ -5,16 +5,27 @@
  */
 package movierentallab.windows;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author mvini
  */
-public class Register extends javax.swing.JFrame {
+public class Register extends javax.swing.JFrame implements ActionListener {
+    private JFrame window;
 
     /**
      * Creates new form Register
      */
-    public Register() {
+    public Register(JFrame window) {
+        this.window = window;
+        this.setTitle("Register Account");
+        this.setLocationRelativeTo(null);   
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
         initComponents();
     }
 
@@ -80,6 +91,11 @@ public class Register extends javax.swing.JFrame {
         jButton1.setText("BACK");
 
         jButton2.setText("Register and Pay");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -160,6 +176,20 @@ public class Register extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField5ActionPerformed
 
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+                                
+int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued.", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+     
+if(input == JOptionPane.OK_OPTION)
+{
+    System.out.println("oi");
+
+        
+       
+}                             
+
+    }//GEN-LAST:event_jButton2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -190,7 +220,7 @@ public class Register extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Register().setVisible(true);
+
             }
         });
     }
@@ -208,4 +238,9 @@ public class Register extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

@@ -17,9 +17,13 @@ public class MainMenu extends javax.swing.JPanel {
     /**
      * Creates new form MainMenu
      */
+    
+    
     public MainMenu(JFrame window) {
         this.window = window;
         initComponents();
+        
+        
       
     }
 
@@ -114,15 +118,19 @@ public class MainMenu extends javax.swing.JPanel {
         
         
         //SELECT MOVIE BUTTON
-        SelectMovie sMovie = new SelectMovie(window);
-        window.dispose();
-        sMovie.setVisible(true);
-        sMovie.setBounds(200, 200, 860, 550);
-        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        SelectMovie sMovie = new SelectMovie(window);
+//        window.dispose();
+//        sMovie.setVisible(true);
+//        sMovie.setBounds(200, 200, 860, 550);
+//        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Dispose the actual window and open a new JFRAME for SelectMovies, Set the defoult close operation.
         
         //SELECT MOVIE BUTTON
-        
+        Guest sMovie = new Guest(window);
+        window.dispose();
+        sMovie.setVisible(true);
+        sMovie.setLocationRelativeTo(null);
+        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
     }//GEN-LAST:event_rentMbuttonActionPerformed

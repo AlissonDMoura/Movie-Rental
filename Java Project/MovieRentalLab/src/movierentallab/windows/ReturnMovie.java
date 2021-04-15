@@ -18,12 +18,10 @@ public class ReturnMovie extends javax.swing.JFrame {
      * Creates new form ReturnMovie
      */
     public ReturnMovie(JFrame window) {
-        
         this.window = window;
-        this.setBounds(200, 200, 860, 550);
-        this.setTitle("Return your hired Items");
-        
-        
+        this.setLocationRelativeTo(null);   
+        this.setTitle("Return a Movie");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
     }
 

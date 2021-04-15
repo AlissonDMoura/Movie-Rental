@@ -5,16 +5,22 @@
  */
 package movierentallab.windows;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author mvini
  */
 public class Account extends javax.swing.JFrame {
-
+private JFrame window;
     /**
      * Creates new form Account
      */
-    public Account() {
+    public Account(JFrame window) {
+    this.window = window;
+    this.setTitle("Account");
+    this.setLocationRelativeTo(null);   
+    this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
     }
 
@@ -125,7 +131,7 @@ public class Account extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Account().setVisible(true);
+             
             }
         });
     }

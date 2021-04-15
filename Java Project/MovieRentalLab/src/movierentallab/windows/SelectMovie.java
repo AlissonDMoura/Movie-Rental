@@ -21,10 +21,10 @@ public class SelectMovie extends javax.swing.JFrame {
      */
     public SelectMovie(JFrame window) {
         this.window = window;
+        this.setLocationRelativeTo(null);   
         this.setTitle("Select your Movie");
-       
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                initComponents();
+        initComponents();
     }
 
     /**
