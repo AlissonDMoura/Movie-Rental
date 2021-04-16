@@ -39,12 +39,18 @@ public class SelectMovie extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         searchBox = new javax.swing.JTextField();
         goButton = new javax.swing.JButton();
-        moviePanel = new javax.swing.JScrollPane();
         backToMmenu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        moviePanel = new javax.swing.JPanel();
+        matrixButton = new javax.swing.JButton();
+        shrekButton = new javax.swing.JButton();
+        titanicbutton = new javax.swing.JButton();
+        avengersButton = new javax.swing.JButton();
+        tLionKingButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(860, 550));
         setResizable(false);
         setSize(new java.awt.Dimension(0, 0));
 
@@ -64,9 +70,6 @@ public class SelectMovie extends javax.swing.JFrame {
 
         goButton.setText("GO");
 
-        moviePanel.setBackground(new java.awt.Color(255, 51, 204));
-        moviePanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-
         backToMmenu.setText("Back To Main Menu");
         backToMmenu.setToolTipText("Back to Main Menu");
         backToMmenu.addActionListener(new java.awt.event.ActionListener() {
@@ -78,6 +81,63 @@ public class SelectMovie extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jLabel1.setText("Search a Movie");
 
+        jLabel2.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
+        jLabel2.setText("Top Choices!");
+
+        moviePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        matrixButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/movierentallab/Pics/The Matrix.png"))); // NOI18N
+
+        shrekButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/movierentallab/Pics/Shrek.png"))); // NOI18N
+
+        titanicbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/movierentallab/Pics/Titanic.png"))); // NOI18N
+        titanicbutton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                titanicbuttonActionPerformed(evt);
+            }
+        });
+
+        avengersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/movierentallab/Pics/Avengers.png"))); // NOI18N
+
+        tLionKingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/movierentallab/Pics/The Lion King.png"))); // NOI18N
+        tLionKingButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tLionKingButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout moviePanelLayout = new javax.swing.GroupLayout(moviePanel);
+        moviePanel.setLayout(moviePanelLayout);
+        moviePanelLayout.setHorizontalGroup(
+            moviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(moviePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(titanicbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(matrixButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(shrekButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(avengersButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tLionKingButton, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        moviePanelLayout.setVerticalGroup(
+            moviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, moviePanelLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(moviePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(titanicbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(matrixButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(shrekButton, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(avengersButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addComponent(tLionKingButton, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
+        );
+
+        jScrollPane1.setViewportView(moviePanel);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -85,19 +145,22 @@ public class SelectMovie extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(140, 140, 140)
-                        .addComponent(moviePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(208, 208, 208)
                         .addComponent(backToMmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 419, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(156, 156, 156)
-                        .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27)
-                        .addComponent(goButton))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(347, 347, 347)
-                        .addComponent(jLabel1)))
+                        .addComponent(jLabel1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(341, 341, 341)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(156, 156, 156)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27)
+                                .addComponent(goButton)))))
                 .addContainerGap(138, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -109,9 +172,11 @@ public class SelectMovie extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(goButton))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
-                .addComponent(moviePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 288, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(backToMmenu)
                 .addGap(55, 55, 55))
         );
@@ -148,6 +213,7 @@ public class SelectMovie extends javax.swing.JFrame {
                 //Create a new frame
         MainMenu menu = new MainMenu(window);
         window.add(menu);
+        window.setLocationRelativeTo(null);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         //Alocate the panel menu into this new frame.        
@@ -155,6 +221,14 @@ public class SelectMovie extends javax.swing.JFrame {
         //BACK BUTTON//
         
     }//GEN-LAST:event_backToMmenuActionPerformed
+
+    private void tLionKingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tLionKingButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tLionKingButtonActionPerformed
+
+    private void titanicbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titanicbuttonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_titanicbuttonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,11 +266,18 @@ public class SelectMovie extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton avengersButton;
     private javax.swing.JButton backToMmenu;
     private javax.swing.JButton goButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane moviePanel;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton matrixButton;
+    private javax.swing.JPanel moviePanel;
     private javax.swing.JTextField searchBox;
+    private javax.swing.JButton shrekButton;
+    private javax.swing.JButton tLionKingButton;
+    private javax.swing.JButton titanicbutton;
     // End of variables declaration//GEN-END:variables
 }

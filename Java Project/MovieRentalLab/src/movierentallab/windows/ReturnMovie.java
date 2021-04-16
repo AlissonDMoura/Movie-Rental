@@ -122,6 +122,7 @@ public class ReturnMovie extends javax.swing.JFrame {
                 //Create a new frame
         MainMenu menu = new MainMenu(window);
         window.add(menu);
+        window.setLocationRelativeTo(null);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         //Alocate the panel menu into this new frame.        
