@@ -56,6 +56,11 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
 
         jPasswordField1.setText("jPasswordField1");
         jPasswordField1.setToolTipText("");
+        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                jPasswordField1MousePressed(evt);
+            }
+        });
 
         jButton1.setText("Sign in and Pay");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -137,6 +142,11 @@ if(input == JOptionPane.OK_OPTION)
             
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jPasswordField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MousePressed
+        // TODO add your handling code here:
+        jPasswordField1.setText("");
+    }//GEN-LAST:event_jPasswordField1MousePressed
 
     /**
      * @param args the command line arguments

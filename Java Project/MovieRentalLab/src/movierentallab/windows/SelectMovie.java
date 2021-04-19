@@ -62,11 +62,6 @@ public class SelectMovie extends javax.swing.JFrame {
 
         searchBox.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         searchBox.setToolTipText("Search a Movie");
-        searchBox.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                searchBoxActionPerformed(evt);
-            }
-        });
 
         goButton.setText("GO");
 
@@ -196,10 +191,6 @@ public class SelectMovie extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void searchBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_searchBoxActionPerformed
 
     private void backToMmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backToMmenuActionPerformed
         

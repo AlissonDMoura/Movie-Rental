@@ -63,6 +63,11 @@ public class ReturnMovie extends javax.swing.JFrame {
         creditCardField.setText("xxxx-xxxx-xxxx-xxxx");
         creditCardField.setToolTipText("Enter you Credit card number to access your rented movies");
         creditCardField.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        creditCardField.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                creditCardFieldMousePressed(evt);
+            }
+        });
         creditCardField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 creditCardFieldActionPerformed(evt);
@@ -129,6 +134,10 @@ public class ReturnMovie extends javax.swing.JFrame {
         
         //BACK BUTTON//
     }//GEN-LAST:event_BacktoMmenuActionPerformed
+
+    private void creditCardFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditCardFieldMousePressed
+creditCardField.setText("");        // TODO add your handling code here:
+    }//GEN-LAST:event_creditCardFieldMousePressed
 
     /**
      * @param args the command line arguments
