@@ -6,8 +6,10 @@
 package movierentallab;
 
 
+import java.sql.SQLException;
 import javax.swing.JFrame;
-import movierentallab.classes.Connection;
+//import movierentallab.classes.Connection;
+import movierentallab.classes.Connector;
 import movierentallab.windows.MainMenu;
 
 
@@ -22,11 +24,16 @@ public class MovieRentalLab extends JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
     
-        Connection conn = new Connection();
+        Connector conn = new Connector();
         System.out.println(conn.equals(conn));
-        //Connection Checker
+        
+        
+        
+        System.out.println(conn.getMovieStock("Shrek"));
+        
+        
         
         
         JFrame window = new JFrame("X-tra Vision");

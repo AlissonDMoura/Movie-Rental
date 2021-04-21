@@ -7,6 +7,7 @@ package movierentallab.windows;
 
 import javax.swing.JFrame;
 import movierentallab.MovieRentalLab;
+import movierentallab.classes.Movie;
 
 
 /**
@@ -15,7 +16,11 @@ import movierentallab.MovieRentalLab;
  */
 public class SelectMovie extends javax.swing.JFrame {
     private JFrame window;
-
+    
+    private Movie movie = new Movie();
+    
+    
+        
     /**
      * Creates new form SelectMovie
      */
@@ -25,6 +30,8 @@ public class SelectMovie extends javax.swing.JFrame {
         this.setTitle("Select your Movie");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
+        
+        
     }
 
     /**
@@ -82,8 +89,18 @@ public class SelectMovie extends javax.swing.JFrame {
         moviePanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         matrixButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/movierentallab/Pics/The Matrix.png"))); // NOI18N
+        matrixButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                matrixButtonActionPerformed(evt);
+            }
+        });
 
         shrekButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/movierentallab/Pics/Shrek.png"))); // NOI18N
+        shrekButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                shrekButtonActionPerformed(evt);
+            }
+        });
 
         titanicbutton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/movierentallab/Pics/Titanic.png"))); // NOI18N
         titanicbutton.addActionListener(new java.awt.event.ActionListener() {
@@ -93,6 +110,11 @@ public class SelectMovie extends javax.swing.JFrame {
         });
 
         avengersButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/movierentallab/Pics/Avengers.png"))); // NOI18N
+        avengersButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                avengersButtonActionPerformed(evt);
+            }
+        });
 
         tLionKingButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/movierentallab/Pics/The Lion King.png"))); // NOI18N
         tLionKingButton.addActionListener(new java.awt.event.ActionListener() {
@@ -151,7 +173,7 @@ public class SelectMovie extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(156, 156, 156)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 488, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(searchBox, javax.swing.GroupLayout.PREFERRED_SIZE, 472, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(27, 27, 27)
@@ -169,9 +191,9 @@ public class SelectMovie extends javax.swing.JFrame {
                     .addComponent(goButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(backToMmenu)
                 .addGap(55, 55, 55))
         );
@@ -209,17 +231,50 @@ public class SelectMovie extends javax.swing.JFrame {
         window.setVisible(true);
         //Alocate the panel menu into this new frame.        
         
-        //BACK BUTTON//
+        
         
     }//GEN-LAST:event_backToMmenuActionPerformed
 
     private void tLionKingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tLionKingButtonActionPerformed
-        // TODO add your handling code here:
+        movie.setName("The Lion King (1994)");
+        
+             
     }//GEN-LAST:event_tLionKingButtonActionPerformed
 
     private void titanicbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titanicbuttonActionPerformed
-        // TODO add your handling code here:
+        movie.setName("Titanic (1997)");
+           
     }//GEN-LAST:event_titanicbuttonActionPerformed
+
+    private void matrixButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matrixButtonActionPerformed
+         movie.setName("The Matrix (1999)");
+         movie.setmImage("/movierentallab/Pics/The Matrix.png");
+                
+        MovieInfo mInfo = new MovieInfo(window, movie);
+        window.dispose();
+        mInfo.setVisible(true);
+        mInfo.setBounds(0, 0, 860, 550);
+        mInfo.setLocationRelativeTo(null);
+        mInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+    }//GEN-LAST:event_matrixButtonActionPerformed
+
+    private void shrekButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_shrekButtonActionPerformed
+        movie.setName("Shrek");
+        movie.setmImage("/movierentallab/Pics/Shrek.png");
+                
+        MovieInfo mInfo = new MovieInfo(window, movie);
+        window.dispose();
+        mInfo.setVisible(true);
+        mInfo.setBounds(0, 0, 860, 550);
+        mInfo.setLocationRelativeTo(null);
+        mInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_shrekButtonActionPerformed
+
+    private void avengersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avengersButtonActionPerformed
+        movie.setName("Avengers Assemble");
+        
+    }//GEN-LAST:event_avengersButtonActionPerformed
 
     /**
      * @param args the command line arguments

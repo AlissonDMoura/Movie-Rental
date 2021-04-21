@@ -118,21 +118,21 @@ public class MainMenu extends javax.swing.JPanel {
         
 //        
 //        //SELECT MOVIE BUTTON
-//        SelectMovie sMovie = new SelectMovie(window);
-//        window.dispose();
-//        sMovie.setVisible(true);
-//        sMovie.setBounds(0, 0, 860, 550);
-//        sMovie.setLocationRelativeTo(null);
-//        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        //Dispose the actual window and open a new JFRAME for SelectMovies, Set the defoult close operation.
+        SelectMovie sMovie = new SelectMovie(window);
+        window.dispose();
+        sMovie.setVisible(true);
+        sMovie.setBounds(0, 0, 860, 550);
+        sMovie.setLocationRelativeTo(null);
+        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //Dispose the actual window and open a new JFRAME for SelectMovies, Set the defoult close operation.
         
         //SELECT MOVIE BUTTON
         
-        Customer sMovie = new Customer(window);
-        window.dispose();
-        sMovie.setVisible(true);
-        sMovie.setLocationRelativeTo(null);
-        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+//        Customer sMovie = new Customer(window);
+//        window.dispose();
+//        sMovie.setVisible(true);
+//        sMovie.setLocationRelativeTo(null);
+//        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
     }//GEN-LAST:event_rentMbuttonActionPerformed
