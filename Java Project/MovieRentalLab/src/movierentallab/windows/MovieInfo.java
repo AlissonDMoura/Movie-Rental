@@ -48,7 +48,6 @@ public class MovieInfo extends javax.swing.JFrame {
         mImage = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(860, 550));
 
         mInfoPanel.setBackground(new java.awt.Color(204, 204, 204));
         mInfoPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
@@ -80,6 +79,11 @@ public class MovieInfo extends javax.swing.JFrame {
         jLabel1.setText("jLabel1");
 
         mImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(movieImage)));
+        mImage.setBorderPainted(false);
+        mImage.setContentAreaFilled(false);
+        mImage.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        mImage.setDebugGraphicsOptions(javax.swing.DebugGraphics.NONE_OPTION);
+        mImage.setDefaultCapable(false);
         mImage.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mImageActionPerformed(evt);

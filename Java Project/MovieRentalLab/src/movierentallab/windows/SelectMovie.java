@@ -237,13 +237,27 @@ public class SelectMovie extends javax.swing.JFrame {
 
     private void tLionKingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tLionKingButtonActionPerformed
         movie.setName("The Lion King (1994)");
-        
+        movie.setmImage("/movierentallab/Pics/The Lion King.png");
+                
+        MovieInfo mInfo = new MovieInfo(window, movie);
+        window.dispose();
+        mInfo.setVisible(true);
+        mInfo.setBounds(0, 0, 860, 550);
+        mInfo.setLocationRelativeTo(null);
+        mInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
              
     }//GEN-LAST:event_tLionKingButtonActionPerformed
 
     private void titanicbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_titanicbuttonActionPerformed
         movie.setName("Titanic (1997)");
-           
+        movie.setmImage("/movierentallab/Pics/Titanic.png");
+                
+        MovieInfo mInfo = new MovieInfo(window, movie);
+        window.dispose();
+        mInfo.setVisible(true);
+        mInfo.setBounds(0, 0, 860, 550);
+        mInfo.setLocationRelativeTo(null);
+        mInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
     }//GEN-LAST:event_titanicbuttonActionPerformed
 
     private void matrixButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_matrixButtonActionPerformed
@@ -273,7 +287,14 @@ public class SelectMovie extends javax.swing.JFrame {
 
     private void avengersButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_avengersButtonActionPerformed
         movie.setName("Avengers Assemble");
-        
+        movie.setmImage("/movierentallab/Pics/Avengers.png");
+                
+        MovieInfo mInfo = new MovieInfo(window, movie);
+        window.dispose();
+        mInfo.setVisible(true);
+        mInfo.setBounds(0, 0, 860, 550);
+        mInfo.setLocationRelativeTo(null);
+        mInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_avengersButtonActionPerformed
 
     /**
