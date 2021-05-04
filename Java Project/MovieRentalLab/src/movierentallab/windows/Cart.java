@@ -206,7 +206,13 @@ public class Cart extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+       
+        this.dispose();
+        SelectMovie sMovie = new SelectMovie(window);
+      
+        sMovie.setVisible(true);
+        sMovie.setLocationRelativeTo(null);
+        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**

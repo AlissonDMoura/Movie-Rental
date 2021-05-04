@@ -170,7 +170,7 @@ public class CheckOut extends javax.swing.JFrame implements ActionListener{
     "Payment Confirmation",
     JOptionPane.INFORMATION_MESSAGE);   
     
-            window.dispose();
+        this.dispose();
         ReturnInvoice sMovie = new ReturnInvoice(window);
       
         sMovie.setVisible(true);
