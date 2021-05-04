@@ -79,7 +79,45 @@ public int getMovieStock(String movieName) throws SQLException{
                     System.out.println("Total in stock for " + movieName + " is " + movieStock);
                
                     return movieStock;  }    //Returns the number of movies with same title that holds status "in stock"
-            
+
+public int getMoviesRented(String mName) throws SQLException{
+    
+                    String query = "SELECT Count(*) from movie where title = ? and status ='Rented';";
+                    //Query protected by an `?` 
+                    PreparedStatement ps = getConnection().prepareStatement(query);
+                    ps.setString(1, mName);
+                    //set the "?" to the variable wanted.
+                    //Check a name and fetch the movie info.
+                    
+                    ResultSet rs;
+                    rs = ps.executeQuery();
+                    rs.next();
+                    
+                    int moviesRented =rs.getInt(1);
+                    
+                                             
+                    System.out.println("Total movies Rented for " + mName + " is " + moviesRented);
+                    return moviesRented;}// Returns the amount of movies rented
+
+public int getSoldMovies(String mName) throws SQLException{
+    
+                    String query = "SELECT Count(*) from movie where title = ? and status ='Sold';";
+                    //Query protected by an `?` 
+                    PreparedStatement ps = getConnection().prepareStatement(query);
+                    ps.setString(1, mName);
+                    //set the "?" to the variable wanted.
+                    //Check a name and fetch the movie info.
+                    
+                    ResultSet rs;
+                    rs = ps.executeQuery();
+                    rs.next();
+                    
+                    int soldMovies =rs.getInt(1);
+                    
+                                             
+                    System.out.println("Total Sold movies for " + mName + " is " + soldMovies);
+                    return soldMovies;}//Return the amount of sold movies for a certain title.
+
 public int getMovieId(String movieName) throws SQLException{
 
                     String query = "SELECT idMovie FROM movie where status = 'In stock' AND title = '" + movieName +"'";
@@ -126,5 +164,8 @@ public float getMovieBuyPrice(String mName) throws SQLException{
                     float mBuy = ePrice.getFloat(1);
                     System.out.println("movie "+ mName + " Costs "+ mBuy ); 
                     return mBuy; }// Return the total price of a movie
-      }
+     
+
+
+}
     
