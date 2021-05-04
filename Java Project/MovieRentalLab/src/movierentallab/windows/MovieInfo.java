@@ -5,7 +5,11 @@
  */
 package movierentallab.windows;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
+import movierentallab.classes.Connector;
 import movierentallab.classes.Movie;
 
 /**
@@ -15,17 +19,31 @@ import movierentallab.classes.Movie;
 public class MovieInfo extends javax.swing.JFrame {
     private JFrame window;
     private String movieImage;
+    private String mInfo;
+    private String mName;
     
+    Connector conn = new Connector();
 
     /**
      * Creates new form MovieInfo
      */
     public MovieInfo(JFrame window, Movie movie) {
+        mName = movie.getName();
         this.movieImage = movie.getmImage();
         this.window = window;
-        this.setTitle("Movie Information");
+        this.setTitle(movie.getName());
         this.setLocationRelativeTo(null);   
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+        
+        try {
+            movie.setmInfo(conn.getMovieInfo(movie.getmInfo()));
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieInfo.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+        // Retrieve movie info from DB and store in the object
+        
         initComponents();
     }
 
@@ -43,7 +61,7 @@ public class MovieInfo extends javax.swing.JFrame {
         rentButton = new javax.swing.JButton();
         goBackButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTextArea1 = new javax.swing.JTextArea(movie.getmInfo());
         jLabel1 = new javax.swing.JLabel();
         mImage = new javax.swing.JButton();
 
@@ -71,12 +89,10 @@ public class MovieInfo extends javax.swing.JFrame {
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("INFO DO FILME\n");
         jScrollPane1.setViewportView(jTextArea1);
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("jLabel1");
 
         mImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(movieImage)));
         mImage.setBorderPainted(false);
@@ -158,17 +174,7 @@ public class MovieInfo extends javax.swing.JFrame {
         
         this.dispose();
         //disposes the actual window
-        
-        JFrame window = new JFrame("Xtra-Vision");
-        window.setBounds(200, 200, 860, 550);
-                //Create a new frame
-        MainMenu menu = new MainMenu(window);
-        window.add(menu);
-        window.setLocationRelativeTo(null);
-        window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setVisible(true);
-        //Alocate the panel menu into this new frame.        
-        
+                
         //BACK BUTTON//
         
     }//GEN-LAST:event_goBackButtonActionPerformed

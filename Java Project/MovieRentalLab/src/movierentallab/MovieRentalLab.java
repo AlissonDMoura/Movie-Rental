@@ -8,7 +8,6 @@ package movierentallab;
 
 import java.sql.SQLException;
 import javax.swing.JFrame;
-//import movierentallab.classes.Connection;
 import movierentallab.classes.Connector;
 import movierentallab.windows.MainMenu;
 
