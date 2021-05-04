@@ -25,7 +25,7 @@ public class Connector {
             private static final String PASS = "2019146";
             
             
-             public Connection getConnection(){
+public Connection getConnection(){
                             
                 
                 try {                           
@@ -41,9 +41,9 @@ public class Connector {
                     throw new RuntimeException("Error Connecting", ex);
                 }
                 
-            }
+            }// Connects into the dataBase
             
-     public String getMovieInfo(String movieName) throws SQLException{
+public String getMovieInfo(String movieName) throws SQLException{
                                          
                     String movieInfo= "";
          
@@ -57,10 +57,9 @@ public class Connector {
                         movieInfo = eInfo.getString(1);                    }
                     System.out.println("Movie info Saved for " + movieName);
                
-                    return movieInfo;  } 
-     // Returns the movie info section from a movie.
+                    return movieInfo;  }   // Returns the movie info section from a movie.
      
-      public int getMovieStock(String movieName) throws SQLException{
+public int getMovieStock(String movieName) throws SQLException{
           
                     String query = "SELECT Count(*) from movie where title = ? and status ='In stock';";
                     //Query protected by an `?` 
@@ -80,8 +79,7 @@ public class Connector {
                     System.out.println("Total in stock for " + movieName + " is " + movieStock);
                
                     return movieStock;  }    //Returns the number of movies with same title that holds status "in stock"
-      
-      
+            
 public int getMovieId(String movieName) throws SQLException{
 
                     String query = "SELECT idMovie FROM movie where status = 'In stock' AND title = '" + movieName +"'";
@@ -92,7 +90,41 @@ public int getMovieId(String movieName) throws SQLException{
                     System.out.println("This is your ID for "+movieName+ " "+ movieId);
                     return movieId;
 } // Return the first movie iD with status in stock.
-          
-          
+                
+public String getMovieStatus(int movieId) throws SQLException{
+                    String query = "SELECT status FROM movie where idMovie = " + movieId +";";
+                    Statement selector = getConnection().createStatement();
+                    ResultSet eStatus = selector.executeQuery(query);
+                    
+                    String mStatus = eStatus.getString(1);
+                    System.out.println("movie iD "+movieId+ " Status is "+ mStatus);
+                    return mStatus;}// Return the Status of a Specific movie with a certain ID.
+
+public String getMovieTitle(int movieId) throws SQLException{
+                    String query = "SELECT title FROM movie where idMovie = " + movieId +";";
+                    Statement selector = getConnection().createStatement();
+                    ResultSet eTitle = selector.executeQuery(query);
+                    
+                    String mTitle = eTitle.getString(1);
+                    System.out.println("movie ID "+ movieId+ " is Registered as  "+ mTitle); 
+                    return mTitle;} //Return the title registerd under a certain ID.
+
+public float getMovieRentPrice(String mName) throws SQLException{
+                    String query = "SELECT priceRent FROM movie where title = '" + mName +"';";
+                    Statement selector = getConnection().createStatement();
+                    ResultSet ePrice = selector.executeQuery(query);
+                    
+                    float mRent = ePrice.getFloat(1);
+                    System.out.println("movie "+ mName + " Costs "+ mRent + " per day."); 
+                    return mRent; }// Return the daily price of a movie.
+
+public float getMovieBuyPrice(String mName) throws SQLException{
+                    String query = "SELECT priceBuy FROM movie where title = '" + mName +"';";
+                    Statement selector = getConnection().createStatement();
+                    ResultSet ePrice = selector.executeQuery(query);
+                    
+                    float mBuy = ePrice.getFloat(1);
+                    System.out.println("movie "+ mName + " Costs "+ mBuy ); 
+                    return mBuy; }// Return the total price of a movie
       }
     
