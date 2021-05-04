@@ -39,6 +39,7 @@ public class MovieRentalLab extends JFrame {
         window.setBounds(0, 0, 860, 550);
         window.setLocationRelativeTo(null);
 
+        
         MainMenu menu = new MainMenu(window);
         window.add(menu);
         window.validate();
