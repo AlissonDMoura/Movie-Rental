@@ -41,6 +41,7 @@ public class MainMenu extends javax.swing.JPanel {
         returnMbutton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        myCartButton = new javax.swing.JButton();
 
         jButton2.setText("jButton2");
 
@@ -79,18 +80,28 @@ public class MainMenu extends javax.swing.JPanel {
         jLabel2.setForeground(new java.awt.Color(51, 51, 51));
         jLabel2.setText("Please choose one option");
 
+        myCartButton.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        myCartButton.setText("My Cart");
+        myCartButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                myCartButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(50, 50, 50)
-                .addComponent(rentMbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
-                .addComponent(returnMbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(49, 49, 49))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(rentMbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(myCartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 222, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42)
+                .addComponent(returnMbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(248, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel1)
@@ -102,15 +113,16 @@ public class MainMenu extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(35, Short.MAX_VALUE)
+                .addContainerGap(106, Short.MAX_VALUE)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(72, 72, 72)
                 .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(rentMbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(returnMbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 238, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(51, 51, 51))
+                    .addComponent(returnMbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(myCartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rentMbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(45, 45, 45))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -118,22 +130,17 @@ public class MainMenu extends javax.swing.JPanel {
         
 ////        
 ////        //SELECT MOVIE BUTTON
-//        SelectMovie sMovie = new SelectMovie(window);
-//        window.dispose();
-//        sMovie.setVisible(true);
-//        sMovie.setBounds(0, 0, 860, 550);
-//        sMovie.setLocationRelativeTo(null);
-//        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-//        //Dispose the actual window and open a new JFRAME for SelectMovies, Set the defoult close operation.
+        SelectMovie sMovie = new SelectMovie(window);
+        window.dispose();
+        sMovie.setVisible(true);
+        sMovie.setBounds(0, 0, 860, 550);
+        sMovie.setLocationRelativeTo(null);
+        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //Dispose the actual window and open a new JFRAME for SelectMovies, Set the defoult close operation.
         
         //SELECT MOVIE BUTTON
         
-        CheckOut sMovie = new CheckOut(window);
-        window.dispose();
-        sMovie.setVisible(true);
-        sMovie.setLocationRelativeTo(null);
-        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
+                
         
     }//GEN-LAST:event_rentMbuttonActionPerformed
 
@@ -151,11 +158,25 @@ public class MainMenu extends javax.swing.JPanel {
         
     }//GEN-LAST:event_returnMbuttonActionPerformed
 
+    private void myCartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_myCartButtonActionPerformed
+                
+        Cart myCart = new Cart(window);
+        window.dispose();
+        myCart.setVisible(true);
+        myCart.setBounds(0, 0, 860, 550);
+        myCart.setLocationRelativeTo(null);
+        myCart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+        
+    }//GEN-LAST:event_myCartButtonActionPerformed
+//Close the actual window and open your cart
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton myCartButton;
     private javax.swing.JButton rentMbutton;
     private javax.swing.JButton returnMbutton;
     // End of variables declaration//GEN-END:variables

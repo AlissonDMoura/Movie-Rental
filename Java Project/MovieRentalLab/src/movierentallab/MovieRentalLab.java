@@ -25,16 +25,6 @@ public class MovieRentalLab extends JFrame {
      */
     public static void main(String[] args) throws SQLException {
     
-        Connector conn = new Connector();
-        System.out.println(conn.equals(conn));
-        
-        
-        
-        System.out.println(conn.getMovieStock("Shrek"));
-        
-        
-        
-        
         JFrame window = new JFrame("X-tra Vision");
         window.setBounds(0, 0, 860, 550);
         window.setLocationRelativeTo(null);

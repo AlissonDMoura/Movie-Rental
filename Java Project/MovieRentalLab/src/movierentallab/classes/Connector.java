@@ -166,6 +166,5 @@ public float getMovieBuyPrice(String mName) throws SQLException{
                     return mBuy; }// Return the total price of a movie
      
 
-
 }
     
