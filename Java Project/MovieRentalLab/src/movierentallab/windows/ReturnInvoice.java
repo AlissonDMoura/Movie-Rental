@@ -6,6 +6,7 @@
 package movierentallab.windows;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,10 +51,20 @@ public class ReturnInvoice extends javax.swing.JFrame {
         jLabel1.setText("Return Successful!");
 
         jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("OK");
 
         jButton3.setText("E-mail Invoice");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jLabel2.setText("Invoice:");
 
@@ -124,6 +135,27 @@ public class ReturnInvoice extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         this.dispose();
+        CheckOut sMovie = new CheckOut(window);
+      
+        sMovie.setVisible(true);
+        sMovie.setLocationRelativeTo(null);
+        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    JOptionPane.showMessageDialog(this,
+    "Incoice sent by E-mail!",
+    "Confirmation",
+    JOptionPane.INFORMATION_MESSAGE);   
+        
+        
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
