@@ -19,29 +19,30 @@ import movierentallab.classes.Movie;
 public class MovieInfo extends javax.swing.JFrame {
     private JFrame window;
     private String movieImage;
-    private String mInfo;
     private String mName;
+    private String mInfo;
     
-    Connector conn = new Connector();
+    
 
     /**
      * Creates new form MovieInfo
      */
     public MovieInfo(JFrame window, Movie movie) {
-        mName = movie.getName();
+        this.mName = movie.getName();
         this.movieImage = movie.getmImage();
         this.window = window;
-        this.setTitle(movie.getName());
+        this.setTitle(mName);
         this.setLocationRelativeTo(null);   
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
-        
+        Connector conn = new Connector();
         try {
-            movie.setmInfo(conn.getMovieInfo(movie.getmInfo()));
+            mInfo = conn.getMovieInfo(mName);
         } catch (SQLException ex) {
             Logger.getLogger(MovieInfo.class.getName()).log(Level.SEVERE, null, ex);
                     }
+                
         // Retrieve movie info from DB and store in the object
         
         initComponents();
@@ -61,7 +62,7 @@ public class MovieInfo extends javax.swing.JFrame {
         rentButton = new javax.swing.JButton();
         goBackButton = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea(movie.getmInfo());
+        jTextArea1 = new javax.swing.JTextArea(mInfo);
         jLabel1 = new javax.swing.JLabel();
         mImage = new javax.swing.JButton();
 
@@ -93,6 +94,7 @@ public class MovieInfo extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Times New Roman", 2, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText(mName);
 
         mImage.setIcon(new javax.swing.ImageIcon(getClass().getResource(movieImage)));
         mImage.setBorderPainted(false);
@@ -134,11 +136,15 @@ public class MovieInfo extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mInfoPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
                 .addGroup(mInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(mImage, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                    .addGroup(mInfoPanelLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addComponent(mImage, javax.swing.GroupLayout.PREFERRED_SIZE, 312, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mInfoPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
                 .addGroup(mInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rentButton)
