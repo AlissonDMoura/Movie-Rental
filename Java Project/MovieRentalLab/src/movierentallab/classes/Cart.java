@@ -9,6 +9,20 @@ package movierentallab.classes;
  *
  * @author aliss
  */
+
+
 public class Cart {
     
+        
+    private int receipt;
+    private int[] moviesInCart = {0,0,0,0};
+    private int clientId;
+    
+    
+    
+    
+    
+    
+    
 }
+
