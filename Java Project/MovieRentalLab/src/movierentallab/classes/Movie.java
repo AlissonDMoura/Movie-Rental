@@ -22,6 +22,9 @@ public class Movie {
     private float bPrice;
     
     private int ID;
+    
+    
+    Connector conn = new Connector();
 
     public String getName() {
         return name;
@@ -58,6 +61,7 @@ public class Movie {
     
     
     public void setName(String name) {
+        
         this.name = name;
     }
 

@@ -79,10 +79,20 @@ public class Connector {
                                              
                     System.out.println("Total in stock for " + movieName + " is " + movieStock);
                
-                    return movieStock;  } 
-      //Returns the number of movies with same title that holds status "in stock"
+                    return movieStock;  }    //Returns the number of movies with same title that holds status "in stock"
+      
+      
+public int getMovieId(String movieName) throws SQLException{
+
+                    String query = "SELECT idMovie FROM movie where status = 'In stock' AND title = '" + movieName +"'";
+                    Statement selector = getConnection().createStatement();
+                    ResultSet eId = selector.executeQuery(query);
+                    
+                    int movieId = eId.getInt(1);
+                    System.out.println("This is your ID for "+movieName+ " "+ movieId);
+                    return movieId;
+} // Return the first movie iD with status in stock.
           
           
       }
     
-
