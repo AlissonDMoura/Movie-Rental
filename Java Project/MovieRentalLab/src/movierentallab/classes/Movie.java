@@ -25,8 +25,8 @@ public class Movie {
     
     
     Connector conn = new Connector();
-
-    public String getName() {
+    
+        public String getName() {
         return name;
     }
 
@@ -56,8 +56,7 @@ public class Movie {
    
     
     
-    
-    
+        
     
     
     public void setName(String name) {
