@@ -17,12 +17,11 @@ import movierentallab.classes.Movie;
  * @author mvini
  */
 public class MovieInfo extends javax.swing.JFrame {
+
     private JFrame window;
     private String movieImage;
     private String mName;
     private String mInfo;
-    
-    
 
     /**
      * Creates new form MovieInfo
@@ -32,19 +31,17 @@ public class MovieInfo extends javax.swing.JFrame {
         this.movieImage = movie.getmImage();
         this.window = window;
         this.setTitle(mName);
-        this.setLocationRelativeTo(null);   
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        
+        this.setLocationRelativeTo(null);
+//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
         Connector conn = new Connector();
         try {
             mInfo = conn.getMovieInfo(mName);
         } catch (SQLException ex) {
             Logger.getLogger(MovieInfo.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                
+        }
+
         // Retrieve movie info from DB and store in the object
-        
         initComponents();
     }
 
@@ -66,13 +63,18 @@ public class MovieInfo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         mImage = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         mInfoPanel.setBackground(new java.awt.Color(204, 204, 204));
         mInfoPanel.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
         mInfoPanel.setPreferredSize(new java.awt.Dimension(860, 550));
 
         buyButton.setText("I WANT TO BUY IT");
+        buyButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buyButtonActionPerformed(evt);
+            }
+        });
 
         rentButton.setText("I WANT TO RENT IT");
         rentButton.addActionListener(new java.awt.event.ActionListener() {
@@ -133,7 +135,7 @@ public class MovieInfo extends javax.swing.JFrame {
                         .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(49, 49, 49)
                         .addComponent(rentButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                         .addComponent(goBackButton)))
                 .addGap(84, 84, 84))
         );
@@ -149,7 +151,7 @@ public class MovieInfo extends javax.swing.JFrame {
                     .addGroup(mInfoPanelLayout.createSequentialGroup()
                         .addGap(84, 84, 84)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
                 .addGroup(mInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rentButton)
@@ -161,38 +163,47 @@ public class MovieInfo extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(mInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 838, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addComponent(mInfoPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 847, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(mInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(mInfoPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void rentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentButtonActionPerformed
-        // TODO add your handling code here:
+        this.dispose();
+        Cart sMovie = new Cart(window);
+
+        sMovie.setVisible(true);
+        sMovie.setLocationRelativeTo(null);
+        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_rentButtonActionPerformed
 
     private void goBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackButtonActionPerformed
-        
+
         this.dispose();
         //disposes the actual window
-                
+
         //BACK BUTTON//
-        
+
     }//GEN-LAST:event_goBackButtonActionPerformed
 
     private void mImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mImageActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mImageActionPerformed
+
+    private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
+        this.dispose();
+        Cart sMovie = new Cart(window);
+
+        sMovie.setVisible(true);
+        sMovie.setLocationRelativeTo(null);
+        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    }//GEN-LAST:event_buyButtonActionPerformed
 
     /**
      * @param args the command line arguments

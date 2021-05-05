@@ -23,7 +23,7 @@ import javax.mail.internet.MimeMessage;
 public class JavaMail {
     public static void main(String[] args) {
     Properties props = new Properties();
-    /** Parâmetros de conexão com servidor Gmail */
+    // Connection parameter with the Gmail server
     props.put("mail.smtp.host", "smtp.gmail.com");
     props.put("mail.smtp.socketFactory.port", "465");
     props.put("mail.smtp.socketFactory.class",
@@ -35,30 +35,30 @@ public class JavaMail {
       new javax.mail.Authenticator() {
            protected PasswordAuthentication getPasswordAuthentication()
            {
-                 return new PasswordAuthentication("seuemail@gmail.com",
-                 "suasenha123");
+                 return new PasswordAuthentication("xtravisionrental@gmail.com",
+                 "xtravision123");
            }
       });
 
-    //** Ativa Debug para sessão */
+    //debug for this part
     session.setDebug(true);
 
     try {
 
       Message message = new MimeMessage(session);
-      message.setFrom(new InternetAddress("seuemail@gmail.com"));
-      //Remetente
+      message.setFrom(new InternetAddress("xtravisionrental@gmail.com"));
+      //Xtra-Vision email
 
-      Address[] toUser = InternetAddress //Destinatário(s)
-                 .parse("seuamigo@gmail.com, seucolega@hotmail.com,seuparente@yahoo.com.br");
+      Address[] toUser = InternetAddress //Recipient of the email
+                 .parse("mvinimariano@hotmail.com, Alissonmaster@hotmail.com");
 
       message.setRecipients(Message.RecipientType.TO, toUser);
-      message.setSubject("Enviando email com JavaMail");//Assunto
-      message.setText("Enviei este email utilizando JavaMail com minha conta GMail!");
-      //**Método para enviar a mensagem criada*/
+      message.setSubject("Your Xtra-Vision Receipt");//Subject
+      message.setText("This is your Xtra-Vision receipt as requested");
+      //Method to send the email
       Transport.send(message);
 
-      System.out.println("Feito!!!");
+      System.out.println("EMAIL SENT!");
 
      } catch (MessagingException e) {
         throw new RuntimeException(e);
@@ -66,3 +66,6 @@ public class JavaMail {
   }
     
 }
+
+
+//https://www.devmedia.com.br/enviando-email-com-javamail-utilizando-gmail/18034

@@ -91,6 +91,11 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
         });
 
         jButton1.setText("BACK");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Pay");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -196,6 +201,15 @@ if(input == JOptionPane.OK_OPTION)
         // TODO add your handling code here:
         jTextField4.setText("");
     }//GEN-LAST:event_jTextField4MousePressed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        this.dispose();
+        Account sMovie = new Account(window);
+      
+        sMovie.setVisible(true);
+        sMovie.setLocationRelativeTo(null);
+        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

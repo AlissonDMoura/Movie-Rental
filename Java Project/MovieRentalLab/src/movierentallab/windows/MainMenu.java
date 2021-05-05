@@ -116,7 +116,7 @@ public class MainMenu extends javax.swing.JPanel {
 
     private void rentMbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentMbuttonActionPerformed
         
-////        
+//        
 ////        //SELECT MOVIE BUTTON
         SelectMovie sMovie = new SelectMovie(window);
         window.dispose();
@@ -126,8 +126,7 @@ public class MainMenu extends javax.swing.JPanel {
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //Dispose the actual window and open a new JFRAME for SelectMovies, Set the defoult close operation.
         
-        //SELECT MOVIE BUTTON
-        
+
                 
         
     }//GEN-LAST:event_rentMbuttonActionPerformed

@@ -25,7 +25,7 @@ public class MovieRentalLab extends JFrame {
      */
     public static void main(String[] args) throws SQLException {
     
-        JFrame window = new JFrame("X-tra Vision");
+        JFrame window = new JFrame("Xtra-Vision");
         window.setBounds(0, 0, 860, 550);
         window.setLocationRelativeTo(null);
 
