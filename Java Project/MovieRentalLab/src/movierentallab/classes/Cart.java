@@ -23,6 +23,7 @@ public class Cart {
     private String Item2;
     private String Item3;
     private String Item4;
+    public String title;
     
     private String Type1;
     private String Type2;
@@ -266,9 +267,49 @@ public class Cart {
     CartOrganizer(MyCartNo());
     } // Remove the item displayed into One of the panels, and update the DB movie and cart tables. Then it organizes the cart.
     
+    public void PanelMovie1() throws SQLException{
+        int i = 1; // DEIXANDO ASSIM PRA GENTE LINKAR COM A VARIAVEL DEPOIS MAS TA FUNCIONANDO
+        int jojo=0;//
+        String item;
+        int j = 1;
+
+        
+        
+        if(i == 1){
+        item = "Item1";}
+        else if(i == 2){
+        item = "Item2";
+            System.out.println(item);}
+        else if(i == 3){
+        item = "Item3";}
+        else{       
+        item = "Item4"; }
+                                
+        
+                    String query = "Select " +item+ " FROM cart WHERE receipt ="+j+" ;";
+                    Statement selector = conn.getConnection().createStatement();
+                    ResultSet rs = selector.executeQuery(query);
+
+                    
+                   if(rs.next()){
+                     jojo = rs.getInt(1);
+ 
+                    } 
+                    Statement selector2 = conn.getConnection().createStatement();
+                    
+                     String query2 = "SELECT title FROM  Marcos_2019146.movie WHERE idMovie =" + jojo +";";
+                     ResultSet rs2 = selector2.executeQuery(query2);
+
+                     if(rs2.next()){
+                         title = rs2.getString(1);
+                         System.out.println(title);
+                         
+                     }
+    } //Get the movies from Cart adn check the movieID and change the ID for the title
+
+
     
-    
-    
+
     
     
     

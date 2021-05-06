@@ -8,6 +8,7 @@ package movierentallab;
 
 import java.sql.SQLException;
 import javax.swing.JFrame;
+import movierentallab.classes.Cart;
 import movierentallab.classes.Connector;
 import movierentallab.windows.MainMenu;
 
@@ -24,7 +25,7 @@ public class MovieRentalLab extends JFrame {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
-    
+            
         JFrame window = new JFrame("Xtra-Vision");
         window.setBounds(0, 0, 860, 550);
         window.setLocationRelativeTo(null);
@@ -36,6 +37,9 @@ public class MovieRentalLab extends JFrame {
         window.repaint();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
+        
+        Cart lala = new Cart ();
+        lala.PanelMovie1();
         
         
         

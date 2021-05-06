@@ -284,7 +284,7 @@ public class SelectMovie extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-        Cart sMovie = new Cart(window);
+        WCart sMovie = new WCart(window);
       
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);

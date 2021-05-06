@@ -32,7 +32,7 @@ public class MovieInfo extends javax.swing.JFrame {
         this.window = window;
         this.setTitle(mName);
         this.setLocationRelativeTo(null);
-//        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         Connector conn = new Connector();
         try {
@@ -175,7 +175,7 @@ public class MovieInfo extends javax.swing.JFrame {
 
     private void rentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentButtonActionPerformed
         this.dispose();
-        Cart sMovie = new Cart(window);
+        WCart sMovie = new WCart(window);
 
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
@@ -197,7 +197,7 @@ public class MovieInfo extends javax.swing.JFrame {
 
     private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
         this.dispose();
-        Cart sMovie = new Cart(window);
+        WCart sMovie = new WCart(window);
 
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);

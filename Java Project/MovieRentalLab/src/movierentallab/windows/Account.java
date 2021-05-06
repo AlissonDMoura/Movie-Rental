@@ -123,7 +123,7 @@ private JFrame window;
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         this.dispose();
-        Cart sMovie = new Cart(window);
+        WCart sMovie = new WCart(window);
       
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
