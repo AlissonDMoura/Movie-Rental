@@ -161,6 +161,7 @@ public class Cart {
                         
         Statement stmt = conn.getConnection().createStatement();
         stmt.execute("UPDATE cart SET 'Item1' = '" + this.Item1 + "', 'Item2' = '"+this.Item2+"' 'Item3' = '" + this.Item3 +"'Item4' = '" + this.Item4 +"' Where(receipt =" + receipt +";");}//Organize the cart items and change the database Row for a certain receipt number.
+    ////////////COLOCAR O TIPO TBM
         
     public int NewCart() throws SQLException{
             
@@ -229,7 +230,7 @@ public class Cart {
                     int movieId = MovieSelected(mName);
          
                     Statement stmt = conn.getConnection().createStatement();                   
-                    stmt.execute("UPDATE movie SET status = '" + state +"' WHERE (idMovie = "+movieId+");");
+                    stmt.execute("UPDATE movie SET status = '" + state +"' WHERE (idMovie = "+ movieId +");");
                     stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "' WHERE receipt ="+ MyCartNo()+";");} //Organize the cart, add a movie into it, change movie state to the chosen state "SOLD or RENTED".                    
                     
     public void RemoveFromCart(int ItemNumber) throws SQLException{
