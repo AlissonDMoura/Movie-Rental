@@ -29,6 +29,8 @@ public class Cart {
     private String Type2;
     private String Type3;
     private String Type4;
+    private String priceBuy = null;
+    private String priceRent = null;
            
     Connector conn = new Connector();
     
@@ -267,8 +269,8 @@ public class Cart {
     CartOrganizer(MyCartNo());
     } // Remove the item displayed into One of the panels, and update the DB movie and cart tables. Then it organizes the cart.
     
-    public void PanelMovie1() throws SQLException{
-        int i = 1; // DEIXANDO ASSIM PRA GENTE LINKAR COM A VARIAVEL DEPOIS MAS TA FUNCIONANDO
+    public void PanelMovie() throws SQLException{
+        int i = 2; // DEIXANDO ASSIM PRA GENTE LINKAR COM A VARIAVEL DEPOIS MAS TA FUNCIONANDO
         int jojo=0;//
         String item;
         int j = 1;
@@ -307,9 +309,104 @@ public class Cart {
                      }
     } //Get the movies from Cart adn check the movieID and change the ID for the title
 
+    public void PanelType() throws SQLException{
+        int i = 2; // DEIXANDO ASSIM PRA GENTE LINKAR COM A VARIAVEL DEPOIS MAS TA FUNCIONANDO
+        int jojo=0;//
+        String type;
+        String typeStatus;
+        int j = 1;
 
+        
+        
+        if(i == 1){
+        type = "Type1";}
+        else if(i == 2){
+        type = "Type2";
+            System.out.println(type);}
+        else if(i == 3){
+        type = "Type3";}
+        else{       
+        type = "Type4"; }
+                                
+        
+                    String query = "Select " +type+ " FROM cart WHERE receipt ="+j+" ;";
+                    Statement selector = conn.getConnection().createStatement();
+                    ResultSet rs = selector.executeQuery(query);
+
+                    
+                   if(rs.next()){
+                     typeStatus = rs.getString(1);
+                       System.out.println(typeStatus);
+ 
+                    } 
+
+    }
     
+    public void PanelPrice() throws SQLException{
+        int i = 1; // DEIXANDO ASSIM PRA GENTE LINKAR COM A VARIAVEL DEPOIS MAS TA FUNCIONANDO
+        int jojo=0;//
+        String item;
+        String type;
+        int j = 1;
+        String typeStatus = null;
 
+        
+        
+        if(i == 1){
+        item = "Item1";
+        type = "Type1";}
+        else if(i == 2){
+        item = "Item2";
+        type = "Type2";}
+        else if(i == 3){
+        item = "Item3";
+        type = "Type3";}
+        else{       
+        item = "Item4";
+        type = "Type4";}
+                                
+        
+                    String query = "Select " +item+ " FROM cart WHERE receipt ="+j+" ;";
+                    Statement selector = conn.getConnection().createStatement();
+                    ResultSet rs = selector.executeQuery(query);
+
+                    
+                   if(rs.next()){
+                     jojo = rs.getInt(1);
+ 
+                    } 
+                   
+                 
+                    Statement selector2 = conn.getConnection().createStatement();
+                    
+                     String query2 = "SELECT priceBuy, priceRent FROM  Marcos_2019146.movie WHERE idMovie =" + jojo +";";
+                     ResultSet rs2 = selector2.executeQuery(query2);
+
+                     if(rs2.next()){
+                         priceBuy = rs2.getString(1);
+                         priceRent = rs2.getString(2);
+                         System.out.println(priceBuy);
+                         System.out.println(priceRent);
+                         
+                     }
+                     
+                    String query3 = "Select " +type+ " FROM cart WHERE receipt ="+j+" ;";
+                    Statement selector3 = conn.getConnection().createStatement();
+                    ResultSet rs3 = selector.executeQuery(query3);
+                    System.out.println(type);
+
+                    
+                   if(rs3.next()){
+                     typeStatus = rs3.getString(1);
+                       System.out.println(typeStatus);
+                     } 
+                     
+                     if(typeStatus.endsWith("Rent")){
+                         System.out.println(priceRent);  
+                         }else{
+                         System.out.println(priceBuy);
+                     }
+    }
     
     
     

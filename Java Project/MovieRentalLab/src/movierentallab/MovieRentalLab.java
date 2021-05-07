@@ -39,7 +39,9 @@ public class MovieRentalLab extends JFrame {
         window.setVisible(true);
         
         Cart lala = new Cart ();
-        lala.PanelMovie1();
+        lala.PanelMovie();
+        lala.PanelType();
+        lala.PanelPrice();
         
         
         
