@@ -269,7 +269,7 @@ public class Cart {
     CartOrganizer(MyCartNo());
     } // Remove the item displayed into One of the panels, and update the DB movie and cart tables. Then it organizes the cart.
     
-    public void PanelMovie() throws SQLException{
+    public String PanelMovie() throws SQLException{
         int i = 2; // DEIXANDO ASSIM PRA GENTE LINKAR COM A VARIAVEL DEPOIS MAS TA FUNCIONANDO
         int jojo=0;//
         String item;
@@ -307,6 +307,7 @@ public class Cart {
                          System.out.println(title);
                          
                      }
+                     return title;
     } //Get the movies from Cart adn check the movieID and change the ID for the title
 
     public void PanelType() throws SQLException{
@@ -340,7 +341,7 @@ public class Cart {
  
                     } 
 
-    }
+    }// Get the information if the user will rent or buy the movie.
     
     public void PanelPrice() throws SQLException{
         int i = 1; // DEIXANDO ASSIM PRA GENTE LINKAR COM A VARIAVEL DEPOIS MAS TA FUNCIONANDO
@@ -406,9 +407,38 @@ public class Cart {
                          }else{
                          System.out.println(priceBuy);
                      }
+    }// Get the price if is full price or rent price
+    
+    public void CheckID() throws SQLException{
+        String cCard;
+        String[] cartao = new String[12];
+        int j = 1;
+        String input = "1234123412341234";
+        
+        
+                    String query = "Select creditcard FROM cart WHERE receipt ="+j+" ;";
+                    Statement selector = conn.getConnection().createStatement();
+                    ResultSet rs = selector.executeQuery(query);
+
+                    
+                    if(rs.next()){
+                       cCard = rs.getString(1);
+                        System.out.println(cCard);
+                       if(cCard.equals(input)){
+                           System.out.println("opa");
+                           
+                           
+                       }
+                        
+                        
+                    }
+                    
+
+                   
+        
+        
+        
     }
-    
-    
     
     
     

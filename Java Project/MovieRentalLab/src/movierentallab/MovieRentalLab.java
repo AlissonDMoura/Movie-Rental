@@ -42,7 +42,7 @@ public class MovieRentalLab extends JFrame {
         lala.PanelMovie();
         lala.PanelType();
         lala.PanelPrice();
-        
+        lala.CheckID();
         
         
               
