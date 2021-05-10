@@ -18,6 +18,8 @@ import movierentallab.classes.Cart;
 public class WCart extends javax.swing.JFrame {
     private JFrame window;
 
+
+    
     
     
     
@@ -159,15 +161,15 @@ public class WCart extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(58, 58, 58)
+                .addGap(34, 34, 34)
                 .addComponent(jLabel8)
-                .addGap(61, 61, 61)
+                .addGap(85, 85, 85)
                 .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
                 .addComponent(jLabel10)
                 .addGap(46, 46, 46)
                 .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
                 .addComponent(jLabel12))
         );
         jPanel3Layout.setVerticalGroup(
