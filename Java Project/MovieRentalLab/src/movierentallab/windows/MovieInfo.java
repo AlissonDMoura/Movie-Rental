@@ -185,8 +185,11 @@ public class MovieInfo extends javax.swing.JFrame {
     private void goBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackButtonActionPerformed
 
         this.dispose();
-        //disposes the actual window
-
+        SelectMovie mList = new SelectMovie(window);
+        mList.setVisible(true);
+        mList.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mList.setLocationRelativeTo(null);
+        
         //BACK BUTTON//
 
     }//GEN-LAST:event_goBackButtonActionPerformed

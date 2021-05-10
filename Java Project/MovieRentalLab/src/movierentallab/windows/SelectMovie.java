@@ -223,9 +223,11 @@ public class SelectMovie extends javax.swing.JFrame {
     private void tLionKingButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tLionKingButtonActionPerformed
         movie.setName("The Lion King (1994)");
         movie.setmImage("/movierentallab/Pics/The Lion King.png");
-                
+        
+        this.dispose();
         MovieInfo mInfo = new MovieInfo(window, movie);
-        window.dispose();
+        
+        
         mInfo.setVisible(true);
         mInfo.setBounds(0, 0, 860, 550);
         mInfo.setLocationRelativeTo(null);
@@ -237,8 +239,8 @@ public class SelectMovie extends javax.swing.JFrame {
         movie.setName("Titanic (1997)");
         movie.setmImage("/movierentallab/Pics/Titanic.png");
                 
+        this.dispose();
         MovieInfo mInfo = new MovieInfo(window, movie);
-        window.dispose();
         mInfo.setVisible(true);
         mInfo.setBounds(0, 0, 860, 550);
         mInfo.setLocationRelativeTo(null);
@@ -249,8 +251,9 @@ public class SelectMovie extends javax.swing.JFrame {
          movie.setName("The Matrix (1999)");
          movie.setmImage("/movierentallab/Pics/The Matrix.png");
                 
+        this.dispose();
+         
         MovieInfo mInfo = new MovieInfo(window, movie);
-        window.dispose();
         mInfo.setVisible(true);
         mInfo.setBounds(0, 0, 860, 550);
         mInfo.setLocationRelativeTo(null);
@@ -263,7 +266,7 @@ public class SelectMovie extends javax.swing.JFrame {
         movie.setmImage("/movierentallab/Pics/Shrek.png");
                 
         MovieInfo mInfo = new MovieInfo(window, movie);
-        window.dispose();
+        this.dispose();
         mInfo.setVisible(true);
         mInfo.setBounds(0, 0, 860, 550);
         mInfo.setLocationRelativeTo(null);
@@ -275,7 +278,7 @@ public class SelectMovie extends javax.swing.JFrame {
         movie.setmImage("/movierentallab/Pics/Avengers.png");
                 
         MovieInfo mInfo = new MovieInfo(window, movie);
-        window.dispose();
+        this.dispose();
         mInfo.setVisible(true);
         mInfo.setBounds(0, 0, 860, 550);
         mInfo.setLocationRelativeTo(null);
