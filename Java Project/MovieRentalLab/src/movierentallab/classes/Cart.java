@@ -19,10 +19,10 @@ public class Cart {
     
     private int receipt;
     private int clientId;
-    private String Item1;
-    private String Item2;
-    private String Item3;
-    private String Item4;
+    private int Item1;
+    private int Item2;
+    private int Item3;
+    private int Item4;
     public String title;
     
     private String Type1;
@@ -49,145 +49,217 @@ public class Cart {
     public void CartOrganizer(int receipt) throws SQLException{
                     
                             
-                    String query = "SELECT Item1, Type1, Item2, Type2, Item3, Type3, Item4, Type4 FROM cart Where receipt = " + receipt + ";";
-                    Statement selector = conn.getConnection().createStatement();
-                    ResultSet rs = selector.executeQuery(query);
+                    String query = "SELECT Item1 FROM cart Where receipt = " + receipt + ";";
+                    String query2 = "SELECT Type1 FROM cart Where receipt = " + receipt + ";";
+                    String query3 = "SELECT Item2 FROM cart Where receipt = " + receipt + ";";
+                    String query4 = "SELECT Type2 FROM cart Where receipt = " + receipt + ";";
+                    String query5 = "SELECT Item3 FROM cart Where receipt = " + receipt + ";";
+                    String query6 = "SELECT Type3 FROM cart Where receipt = " + receipt + ";";
+                    String query7 = "SELECT Item4 FROM cart Where receipt = " + receipt + ";";
+                    String query8 = "SELECT Type4 FROM cart Where receipt = " + receipt + ";";
                     
-                        Item1 = rs.getString(1);
-                        Type1 = rs.getString(2);
-                        Item2 = rs.getString(3);
-                        Type2 = rs.getString(4);
-                        Item3 = rs.getString(5);
-                        Type3 = rs.getString(6);
-                        Item4 = rs.getString(7);
-                        Type4 = rs.getString(8);
+                    Statement selector = conn.getConnection().createStatement();
+                    
+                    
+                    
+                    Statement selector2 = conn.getConnection().createStatement();
+                    Statement selector3 = conn.getConnection().createStatement();
+                    Statement selector4 = conn.getConnection().createStatement();
+                    Statement selector5 = conn.getConnection().createStatement();
+                    Statement selector6 = conn.getConnection().createStatement();
+                    Statement selector7 = conn.getConnection().createStatement();
+                    Statement selector8 = conn.getConnection().createStatement();
+                    
+                    
+                    ResultSet rs = selector.executeQuery(query);
+                    ResultSet rs2 = selector2.executeQuery(query2);
+                    ResultSet rs3 = selector3.executeQuery(query3);
+                    ResultSet rs4 = selector4.executeQuery(query4);
+                    ResultSet rs5 = selector5.executeQuery(query5);
+                    ResultSet rs6 = selector6.executeQuery(query6);
+                    ResultSet rs7 = selector7.executeQuery(query7);
+                    ResultSet rs8 = selector8.executeQuery(query8);
+                    
+                    if(rs.next()){
                         
+                        this.Item1 = rs.getInt(1);
+                        System.out.println("Value in Item1 is " + Item1);}
+                    
+                    if(rs2.next()){
                         
+                        this.Type1 = rs2.getString(1);
+                        System.out.println("Value in Type1 is " + Type1);}
+                                                           
+                    if(rs3.next()){
                         
-                        if(Item1 == null && Item2 != null && Item3 != null && Item4 != null ){
+                        this.Item2 = rs3.getInt(1);
+                        System.out.println("Value in Item2 is " + Item2);}
+                    
+                    if(rs4.next()){
+                        
+                        this.Type2 = rs4.getString(1);
+                        System.out.println("Value in Type2 is " + Type2);}
+                    
+                    if(rs5.next()){
+                        
+                        this.Item3 = rs5.getInt(1);
+                        System.out.println("Value in Item3 is " + Item3);}
+                    
+                    if(rs6.next()){
+                        this.Type3 = rs6.getString(1);
+                        System.out.println("Value in Type3 is " + Type3);}
+                    
+                    if(rs7.next()){
+                        this.Item4 = rs7.getInt(1);
+                        System.out.println("Value in Item4 is " + Item4);}
+                    
+                    if(rs8.next()){
+                        this.Type4 = rs8.getString(1);
+                        System.out.println("Value in Type4 is " + Type4);}
+                        
+                        if(Item1 == 0 && Item2 != 0 && Item3 != 0 && Item4 != 0 ){
                             this.Item1 = this.Item2;
                             this.Type1 = this.Type2;
                             this.Item2 = this.Item3;
                             this.Type2 = this.Type3;
                             this.Item3 = this.Item4;
                             this.Type3 = this.Type4;
-                            this.Item4 = null;
-                            this.Type4 = null;} else{
+                            this.Item4 = 0;
+                            this.Type4 = null;
+                            System.out.println("First IF");}
+    
                             //  0   1   1   1
                             
-                        if(Item1 != null && Item2 == null && Item3 != null && Item4 != null ){
+                        else if(Item1 != 0 && Item2 == 0 && Item3 != 0 && Item4 != 0 ){
                             this.Item2 = this.Item3;
                             this.Type2 = this.Type3;
                             this.Item3 = this.Item4;
                             this.Type3 = this.Type4;
-                            this.Item4 = null;
-                            this.Type4 = null;} else{
+                            this.Item4 = 0;
+                            this.Type4 = null;
+                        System.out.println("Second IF");} 
                             // 1    0   1   1
                             
-                        if(Item1 != null && Item2 != null && Item3 == null && Item4 != null ){
+                        else if(Item1 != 0 && Item2 != 0 && Item3 == 0 && Item4 != 0 ){
                             this.Item3 = this.Item4;
                             this.Type3 = this.Type4;
-                            this.Item4 = null;
-                            this.Type4 = null;} else{
+                            this.Item4 = 0;
+                            this.Type4 = null;
+                        System.out.println("Third IF");}
                             //   1   1   0   1
                            //All combinations for one GAP
                             
-                        if(Item1 == null && Item2 == null && Item3 != null && Item4 != null ){
+                        else if(Item1 == 0 && Item2 == 0 && Item3 != 0 && Item4 != 0 ){
                             this.Item1 = this.Item3;
                             this.Type1 = this.Type3;
-                            this.Item3 = null;
+                            this.Item3 = 0;
                             this.Type3 = null;
                             this.Item2 = this.Item4;
                             this.Type2 = this.Type4;
-                            this.Item4 = null;
-                            this.Type4 = null;} else{
+                            this.Item4 = 0;
+                            this.Type4 = null;
+                        System.out.println("Fourth IF");} 
+                        
                             //  0   0   1   1
                             
-                        if(Item1 != null && Item2 == null && Item3 == null && Item4 != null ){
+                        else if(Item1 != 0 && Item2 == 0 && Item3 == 0 && Item4 != 0){
                             this.Item2 = this.Item4;
                             this.Type2 = this.Type4;
-                            this.Item4 = null;
-                            this.Type4 = null;} else{
+                            this.Item4 = 0;
+                            this.Type4 = null;
+                        System.out.println("Fifth IF");} 
                             //  1   0   0   1
                                                     
-                        if(Item1 == null && Item2 != null && Item3 == null && Item4 != null ){
+                        else if(Item1 == 0 && Item2 != 0 && Item3 == 0 && Item4 != 0){
                             this.Item1 = this.Item2;
                             this.Type1 = this.Type2;
                             this.Item2 = this.Item4;
                             this.Type2 = this.Type4;
-                            this.Item4 = null;
-                            this.Type4 = null;} else{
+                            this.Item4 = 0;
+                            this.Type4 = null;
+                        System.out.println("Sixth IF");}
                             //  0   1   0   1
                             
-                        if(Item1 == null && Item2 != null && Item3 == null && Item4 != null ){
+                        else if(Item1 == 0 && Item2 != 0 && Item3 == 0 && Item4 != 0){
                             this.Item1 = this.Item2;
                             this.Type1 = this.Type2;
                             this.Item2 = this.Item4;
                             this.Type2 = this.Type4;
-                            this.Item4 = null;
-                            this.Type4 = null;} else{
+                            this.Item4 = 0;
+                            this.Type4 = null;
+                        System.out.println("Seventh IF");} 
                             //  0   1   0   1   
                             
-                        if(Item1 == null && Item2 != null && Item3 != null && Item4 == null ){
+                        else if(Item1 == 0 && Item2 != 0 && Item3 != 0 && Item4 == 0){
                             this.Item1 = this.Item2;
                             this.Type1 = this.Type2;
                             this.Item2 = this.Item3;
                             this.Type2 = this.Type3;
-                            this.Item3 = null;
-                            this.Type3 = null;} else{
+                            this.Item3 = 0;
+                            this.Type3 = null;
+                        System.out.println("Eight IF");}
                             //  0   1   1   0
                             //All combinations for two GAPs
                         
-                        if(Item1 == null && Item2 == null && Item3 == null && Item4 != null ){
+                        else if(Item1 == 0 && Item2 == 0 && Item3 == 0 && Item4 != 0){
                             this.Item1 = this.Item4;
                             this.Type1 = this.Type4;
-                            this.Item4 = null;
-                            this.Type4 = null;} else{
+                            this.Item4 = 0;
+                            this.Type4 = null;
+                        System.out.println("Nineth IF");}
                             //  0    0   0   1
                         
-                        if(Item1 == null && Item2 == null && Item3 != null && Item4 == null ){
+                        else if(Item1 == 0 && Item2 == 0 && Item3 != 0 && Item4 == 0){
                             this.Item1 = this.Item3;
                             this.Type1 = this.Type3;
-                            this.Item3 = null;
-                            this.Type3 = null;} else{
+                            this.Item3 = 0;
+                            this.Type3 = null;
+                        System.out.println("Tenth IF");}
                             //  0   0   1   0
                             
-                        if(Item1 == null && Item2 != null && Item3 == null && Item4 == null ){
+                        else if(Item1 == 0 && Item2 != 0 && Item3 == 0 && Item4 == 0 ){
                             this.Item1 = this.Item2;
                             this.Type1 = this.Type2;
-                            this.Item2 = null;
-                            this.Type2 = null;}
+                            this.Item2 = 0;
+                            this.Type2 = null;
+                        System.out.println("Eleventh IF");}
                             //  0   1   0   0
-                           //All combinations for three GAPs                       
-                        }}}}}}}}}}
+                           //All combinations for three GAPs        
                         
+                        //                        
                         
         Statement stmt = conn.getConnection().createStatement();
-        stmt.execute("UPDATE cart SET 'Item1' = '" + this.Item1 + "', 'Item2' = '"+this.Item2+"' 'Item3' = '" + this.Item3 +"'Item4' = '" + this.Item4 +"' Where(receipt =" + receipt +";");}//Organize the cart items and change the database Row for a certain receipt number.
-    ////////////COLOCAR O TIPO TBM
+        stmt.execute("UPDATE cart SET Item1 = " + this.Item1 +", Type1 = '" + this.Type1 + "', Item2 = "+ this.Item2 + ", Type2 = '"+ this.Type2 +"', Item3 = " + this.Item3 +", Type3 ='" + this.Type3 +"', Item4 =" + this.Item4 +", Type4 ='"+ this.Type4 +"' Where receipt =" + receipt +";");
+    }//Organize the cart items and change the database Row for a certain receipt number.
+    
         
     public int NewCart() throws SQLException{
             
         int id = NextReceiptNumber();
         
          Statement stmt = conn.getConnection().createStatement();                   
-         stmt.execute("INSERT INTO 'cart' ('receipt', 'status') VALUES ('"+id+"', 'Open'");
+         stmt.execute("INSERT INTO cart (receipt, status) VALUES ("+id+",'Open');");
          System.out.println("New cart number "+id+" Opened");         
          return id;} //Create a new cart and define it's status as open, Return the Cart ID.
     
     public int MyCartNo() throws SQLException{
-        int cartNo;
+        int cartNo = 0;
         
                     
                     String query = "SELECT receipt FROM cart where status ='Open';";
                     Statement selector = conn.getConnection().createStatement();
                     ResultSet rs = selector.executeQuery(query);
         
-                    cartNo = rs.getInt(1);
-            if(cartNo == 0){
+                                                          
+                    if(rs.next()){
+                        System.out.println("this means I Have a Result");
+            
+                    cartNo = rs.getInt(1);} else {
             NewCart();
-            MyCartNo();} //if a cart wasn't initialized, make one and run this code again
-        
+            MyCartNo(); //if a cart wasn't initialized, make one and run this code again
+            System.out.println("I don't have a result, making a new cart and trying again.");}
+            
+                    System.out.println(cartNo +" is my cart returned");
         
         
         return cartNo;}//Selects The Cart Active in the database, if there's none, it runs the method to create one and run this code again, returns the cartId AKA receipt.
@@ -269,88 +341,73 @@ public class Cart {
     CartOrganizer(MyCartNo());
     } // Remove the item displayed into One of the panels, and update the DB movie and cart tables. Then it organizes the cart.
     
-    public String PanelMovie() throws SQLException{
-        int i = 2; // DEIXANDO ASSIM PRA GENTE LINKAR COM A VARIAVEL DEPOIS MAS TA FUNCIONANDO
-        int jojo=0;//
+    public String PanelMovieName(int PanelNumber) throws SQLException{
+        int i = PanelNumber; 
+        int movieId=0;//
         String item;
-        int j = 1;
+        String mName;
+        int j = MyCartNo();
 
         
         
         if(i == 1){
         item = "Item1";}
         else if(i == 2){
-        item = "Item2";
-            System.out.println(item);}
+        item = "Item2";}
         else if(i == 3){
         item = "Item3";}
         else{       
         item = "Item4"; }
                                 
         
-                    String query = "Select " +item+ " FROM cart WHERE receipt ="+j+" ;";
+                    String query = "Select " +item+ " FROM cart WHERE receipt =" + j + ";";
+                    String query2 = "SELECT title FROM  movie WHERE idMovie =" + movieId +";";
+                    
                     Statement selector = conn.getConnection().createStatement();
-                    ResultSet rs = selector.executeQuery(query);
-
+                    ResultSet rs = selector.executeQuery(query);//Get Movie ID
+                    ResultSet rs2 = selector.executeQuery(query2);// Gets Movie Title
                     
-                   if(rs.next()){
-                     jojo = rs.getInt(1);
- 
-                    } 
-                    Statement selector2 = conn.getConnection().createStatement();
-                    
-                     String query2 = "SELECT title FROM  Marcos_2019146.movie WHERE idMovie =" + jojo +";";
-                     ResultSet rs2 = selector2.executeQuery(query2);
-
-                     if(rs2.next()){
-                         title = rs2.getString(1);
-                         System.out.println(title);
+                    movieId = rs.getInt(1);
+                    mName = rs2.getString(1);
+                    System.out.println(mName);
                          
-                     }
-                     return title;
-    } //Get the movies from Cart adn check the movieID and change the ID for the title
+                     
+                     return mName;
+    } //Reads the movie ID from a certain position in the cart and returns the movie Title.
 
-    public void PanelType() throws SQLException{
-        int i = 2; // DEIXANDO ASSIM PRA GENTE LINKAR COM A VARIAVEL DEPOIS MAS TA FUNCIONANDO
-        int jojo=0;//
+    public String PanelType(int PanelNumber) throws SQLException{
+        int i = PanelNumber; 
         String type;
         String typeStatus;
-        int j = 1;
+        int j = MyCartNo();
 
-        
         
         if(i == 1){
         type = "Type1";}
         else if(i == 2){
-        type = "Type2";
-            System.out.println(type);}
+        type = "Type2";}
         else if(i == 3){
         type = "Type3";}
         else{       
-        type = "Type4"; }
+        type = "Type4";}
                                 
         
-                    String query = "Select " +type+ " FROM cart WHERE receipt ="+j+" ;";
+                    String query = "Select " +type+ " FROM cart WHERE receipt =" + j + ";";
                     Statement selector = conn.getConnection().createStatement();
                     ResultSet rs = selector.executeQuery(query);
-
-                    
-                   if(rs.next()){
-                     typeStatus = rs.getString(1);
-                       System.out.println(typeStatus);
- 
-                    } 
-
-    }// Get the information if the user will rent or buy the movie.
+                    typeStatus = rs.getString(1);
+                        
+                    return typeStatus; }//Reads the movie ID from a certain position in the cart and returns the type of purchase (RENT OR BUY)
     
-    public void PanelPrice() throws SQLException{
-        int i = 1; // DEIXANDO ASSIM PRA GENTE LINKAR COM A VARIAVEL DEPOIS MAS TA FUNCIONANDO
-        int jojo=0;//
+    public float PanelPrice(int PanelNumber) throws SQLException{
+        int i = PanelNumber;
+        int movieId=0;//
         String item;
         String type;
-        int j = 1;
-        String typeStatus = null;
-
+        int j = MyCartNo();
+        
+        float pBuy;
+        float pRent;
         
         
         if(i == 1){
@@ -365,80 +422,33 @@ public class Cart {
         else{       
         item = "Item4";
         type = "Type4";}
-                                
+                    
+                    Statement selector = conn.getConnection().createStatement();
         
                     String query = "Select " +item+ " FROM cart WHERE receipt ="+j+" ;";
-                    Statement selector = conn.getConnection().createStatement();
+                    String query2 = "Select " +type+ " FROM cart WHERE receipt ="+j+" ;";
+                    String query3 = "SELECT priceBuy FROM  movie WHERE idMovie =" + movieId +";";
+                    String query4 = "SELECT priceRent FROM  movie WHERE idMovie =" + movieId +";";
+                    
                     ResultSet rs = selector.executeQuery(query);
-
-                    
-                   if(rs.next()){
-                     jojo = rs.getInt(1);
- 
-                    } 
-                   
-                 
-                    Statement selector2 = conn.getConnection().createStatement();
-                    
-                     String query2 = "SELECT priceBuy, priceRent FROM  Marcos_2019146.movie WHERE idMovie =" + jojo +";";
-                     ResultSet rs2 = selector2.executeQuery(query2);
-
-                     if(rs2.next()){
-                         priceBuy = rs2.getString(1);
-                         priceRent = rs2.getString(2);
-                         System.out.println(priceBuy);
-                         System.out.println(priceRent);
-                         
-                     }
-                     
-                    String query3 = "Select " +type+ " FROM cart WHERE receipt ="+j+" ;";
-                    Statement selector3 = conn.getConnection().createStatement();
+                    ResultSet rs2 = selector.executeQuery(query2);
                     ResultSet rs3 = selector.executeQuery(query3);
-                    System.out.println(type);
+                    ResultSet rs4 = selector.executeQuery(query4);
 
+                    movieId = rs.getInt(1);
+                    type = rs2.getString(1);
+                    pBuy = rs3.getFloat(1);
+                    pRent = rs4.getFloat(1);
                     
-                   if(rs3.next()){
-                     typeStatus = rs3.getString(1);
-                       System.out.println(typeStatus);
-                     } 
-                     
-                     if(typeStatus.endsWith("Rent")){
-                         System.out.println(priceRent);  
-                         }else{
-                         System.out.println(priceBuy);
-                     }
-    }// Get the price if is full price or rent price
-    
-    public void CheckID() throws SQLException{
-        String cCard;
-        String[] cartao = new String[12];
-        int j = 1;
-        String input = "1234123412341234";
-        
-        
-                    String query = "Select creditcard FROM cart WHERE receipt ="+j+" ;";
-                    Statement selector = conn.getConnection().createStatement();
-                    ResultSet rs = selector.executeQuery(query);
-
-                    
-                    if(rs.next()){
-                       cCard = rs.getString(1);
-                        System.out.println(cCard);
-                       if(cCard.equals(input)){
-                           System.out.println("opa");
-                           
-                           
-                       }
-                        
-                        
+                    if(type =="Buy"){
+                        return pBuy;} else{
+                        return pRent;
                     }
-                    
-
-                   
-        
-        
-        
-    }
+                     
+                     
+    }//Reads the movie from a certain position in the cart, reads its pricing and returns the pricing for the type of purchase (Rent or Buy)
+    
+   
     
     
     
@@ -452,16 +462,7 @@ public class Cart {
     
     
     
-    
-//    String type;
-//    if(SaleType == true){
-//    type = "Buy"; }
-//    else {type = "Rent";}
-//    //defines the type of sale for a movie
-      
-        
-    
-        
+
         
         
     
