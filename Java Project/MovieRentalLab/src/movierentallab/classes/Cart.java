@@ -31,6 +31,8 @@ public class Cart {
     private String Type4;
     private String priceBuy = null;
     private String priceRent = null;
+    
+    private boolean cartFull;
            
     Connector conn = new Connector();
     
@@ -83,23 +85,19 @@ public class Cart {
                     if(rs.next()){
                         
                         this.Item1 = rs.getInt(1);
-                        System.out.println("Value in Item1 is " + Item1);}
-                    
+                        System.out.println("Value in Item1 is " + Item1);}                    
                     if(rs2.next()){
                         
                         this.Type1 = rs2.getString(1);
-                        System.out.println("Value in Type1 is " + Type1);}
-                                                           
+                        System.out.println("Value in Type1 is " + Type1);}                                                           
                     if(rs3.next()){
                         
                         this.Item2 = rs3.getInt(1);
-                        System.out.println("Value in Item2 is " + Item2);}
-                    
+                        System.out.println("Value in Item2 is " + Item2);}                    
                     if(rs4.next()){
                         
                         this.Type2 = rs4.getString(1);
-                        System.out.println("Value in Type2 is " + Type2);}
-                    
+                        System.out.println("Value in Type2 is " + Type2);}                    
                     if(rs5.next()){
                         
                         this.Item3 = rs5.getInt(1);
@@ -229,9 +227,8 @@ public class Cart {
                         //                        
                         
         Statement stmt = conn.getConnection().createStatement();
-        stmt.execute("UPDATE cart SET Item1 = " + this.Item1 +", Type1 = '" + this.Type1 + "', Item2 = "+ this.Item2 + ", Type2 = '"+ this.Type2 +"', Item3 = " + this.Item3 +", Type3 ='" + this.Type3 +"', Item4 =" + this.Item4 +", Type4 ='"+ this.Type4 +"' Where receipt =" + receipt +";");
-    }//Organize the cart items and change the database Row for a certain receipt number.
-    
+        stmt.execute("UPDATE cart SET Item1 = " + this.Item1 +", Type1 = " + this.Type1 + ", Item2 = "+ this.Item2 + ", Type2 = "+ this.Type2 +", Item3 = " + this.Item3 +", Type3 =" + this.Type3 +", Item4 =" + this.Item4 +", Type4 ="+ this.Type4 +" Where receipt =" + receipt +";");
+    }//Organize the cart items and change the database Row for a certain receipt number.    
         
     public int NewCart() throws SQLException{
             
@@ -278,16 +275,31 @@ public class Cart {
     public boolean CartFilledChecker() throws SQLException{
         
         int cart = MyCartNo();
-        CartOrganizer(cart);
-        boolean cartFull;
+        CartOrganizer(cart);        
         
-                    String query = "Select Item4 FROM cart WHERE receipt = "+cart+";";
+                    //String query = "Select Type4 FROM cart WHERE receipt = "+cart+";";
+                    String type;
+                    String query = "Select Type4 FROM cart WHERE receipt = " + cart + ";";
+                    
                     Statement selector = conn.getConnection().createStatement();
                     ResultSet rs = selector.executeQuery(query);
                     
-                    if( rs.getString(1) != null){
-                        cartFull = true;} else{
-                        cartFull = false;}
+                                        
+                    if(rs.next()){
+                    type = rs.getString(1);
+                        System.out.println("I have a next, and type is " +type);
+                    
+                        if(type == null || type.equals("null")){
+                            cartFull = false;
+                            System.out.println("Cartfull variable is  " +cartFull);
+                        } else {
+                            cartFull = true;
+                            System.out.println("Cart is Full boolean type = " +cartFull);
+                        }
+                    } else{
+                        System.out.println("it doest have a next, Error close to line 288, resultSet String: " +rs.getString(1));
+                    }
+                        
                     return cartFull;    } //Organizes the Cart, and check if there is any item on last space. returns true for cartFull if the cart is full, or false if it ain't
     
     public void MovieAddIntoCart(boolean type, String mName) throws SQLException{

@@ -39,7 +39,7 @@ public class MovieRentalLab extends JFrame {
         window.setVisible(true);
         
         Cart lala = new Cart ();
-        lala.CartOrganizer(1);
+        lala.CartFilledChecker();
         
         
         
