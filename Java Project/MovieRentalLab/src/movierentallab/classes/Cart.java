@@ -23,7 +23,6 @@ public class Cart {
     private int Item2;
     private int Item3;
     private int Item4;
-    public String title;
     
     private String Type1;
     private String Type2;
@@ -33,6 +32,12 @@ public class Cart {
     private String priceRent = null;
     
     private boolean cartFull;
+    
+    private String title;
+    
+    private int movieId;
+    
+    
            
     Connector conn = new Connector();
     
@@ -227,7 +232,7 @@ public class Cart {
                         //                        
                         
         Statement stmt = conn.getConnection().createStatement();
-        stmt.execute("UPDATE cart SET Item1 = " + this.Item1 +", Type1 = " + this.Type1 + ", Item2 = "+ this.Item2 + ", Type2 = "+ this.Type2 +", Item3 = " + this.Item3 +", Type3 =" + this.Type3 +", Item4 =" + this.Item4 +", Type4 ="+ this.Type4 +" Where receipt =" + receipt +";");
+        stmt.execute("UPDATE cart SET Item1 = " + this.Item1 +", Type1 = '" + this.Type1 + "', Item2 = "+ this.Item2 + ", Type2 = '"+ this.Type2 +"', Item3 = " + this.Item3 +", Type3 ='" + this.Type3 +"', Item4 =" + this.Item4 +", Type4 ='"+ this.Type4 +"' Where receipt =" + receipt +";");
     }//Organize the cart items and change the database Row for a certain receipt number.    
         
     public int NewCart() throws SQLException{
@@ -262,13 +267,15 @@ public class Cart {
         return cartNo;}//Selects The Cart Active in the database, if there's none, it runs the method to create one and run this code again, returns the cartId AKA receipt.
     
     public int MovieSelected(String mName) throws SQLException{
-                    int movieId;
-        
+                            
                     String query = "Select idMovie FROM movie WHERE title ='"+mName+"' AND status = 'In stock';";
                     Statement selector = conn.getConnection().createStatement();
                     ResultSet rs = selector.executeQuery(query);
                     
-                    movieId = rs.getInt(1);
+                    if(rs.next()){
+                    movieId = rs.getInt(1);    
+                    }
+                    
         return movieId;
     } // Selects a movie with status "In Stock" and returns it's ID. --- if Movie iD = 0 there's no movie with this title in stock.
     
@@ -324,32 +331,36 @@ public class Cart {
         
         int i = ItemNumber;
         
-        String item = null;
+        String item;
         int movieId;
         String type;
         
         
         if(i == 1){
         type = "Type1";
-        item = "Item1";}else{       
-        if(i == 2){
+        item = "Item1";
+            System.out.println("my Item is " +item);}
+        else if(i == 2){
         type = "Type2";
-        item = "Item2";}else    {
-        if(i == 3){
+        item = "Item2";}
+        else if(i == 3){
         type = "Type3";
-        item = "Item3";}else        {       
+        item = "Item3";}
+        else{       
         type = "Type4";
-        item = "Item4";             }
-                                }
-                            }       
+        item = "Item4";}
+                                
+                                
                      
         
                                 Statement stmt = conn.getConnection().createStatement();                   
-                                ResultSet rs = stmt.executeQuery("SELECT " + item + "from cart where receipt = " + MyCartNo() +";");
-                                movieId = rs.getInt(1);
+                                ResultSet rs = stmt.executeQuery("SELECT " + item + " from cart where receipt = " + MyCartNo() +";");
                                 
-                                stmt.execute("UPDATE cart SET "+ item + " = null, " + type +" = null WHERE receipt ="+ MyCartNo()+ ";");
-                                stmt.execute("UPDATE movie SET status = 'In Stock' WHERE idMovie = "+ movieId +";");
+                                if(rs.next()){
+                                this.movieId = rs.getInt(1);}
+                                
+                                stmt.execute("UPDATE cart SET "+ item + " = 0, " + type +" = null WHERE receipt ="+ MyCartNo()+ ";");
+                                stmt.execute("UPDATE movie SET status = 'In Stock' WHERE idMovie = "+ this.movieId +";");
     CartOrganizer(MyCartNo());
     } // Remove the item displayed into One of the panels, and update the DB movie and cart tables. Then it organizes the cart.
     
