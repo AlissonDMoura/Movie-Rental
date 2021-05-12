@@ -422,18 +422,23 @@ public class Cart {
     
     public String PanelMovieName(int PanelNumber) throws SQLException{
         int i = PanelNumber; 
+        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA HEREEEEEEEEEEEEEEEEEEEEEEEEEEE i = " + i);
         int movieId = 0;
         String item;
         int j = MyCartNo();
         
         if(i == 1){
-        item = "Item1";}
+        item = "Item1";
+            System.out.println("FIRST IF item= " +item);}
         else if(i == 2){
-        item = "Item2";}
+        item = "Item2";
+        System.out.println("SECOND IF - item= " +item);}
         else if(i == 3){
-        item = "Item3";}
+        item = "Item3";
+        System.out.println("THIRD IF item= " +item);}
         else{       
-        item = "Item4"; }
+        item = "Item4";
+        System.out.println("LAST IF item= " +item);}
         
                     String query = "Select " +item+ " FROM cart WHERE receipt =" + j + ";";
                     
@@ -443,16 +448,20 @@ public class Cart {
                     ResultSet rs = selector.executeQuery(query);//Get Movie ID
                     if(rs.next()){
                     movieId = rs.getInt(1);
-                    System.out.println("movieId is " + movieId);}                    
+                    System.out.println("movieId is " + movieId);}    
                     
-                    String query2 = "SELECT title FROM  movie WHERE idMovie =" + movieId +";";
+                    if(movieId != 0){
+                    String query2 = "SELECT title FROM movie WHERE idMovie =" + movieId +";";
                     
                     ResultSet rs2 = selector2.executeQuery(query2);// Gets Movie Title
                     if(rs2.next()){
                     title = rs2.getString(1);
                     System.out.println("movie Name is " + title);}                    
                      
-                     return title;
+                     return title;}
+                    else { 
+                        title = "empty";
+                        return title;}
     } //Reads the movie ID from a certain position in the cart and returns the movie Title. - TESTED
 
     public String PanelType(int PanelNumber) throws SQLException{
@@ -513,6 +522,8 @@ public class Cart {
                     String query3 = "SELECT priceBuy FROM  movie WHERE idMovie =" + movieId +";";
                     String query4 = "SELECT priceRent FROM  movie WHERE idMovie =" + movieId +";";
                     
+                    if(movieId != 0){
+                    
                     ResultSet rs2 = selector.executeQuery(query2);
                     if(rs2.next()){
                     type = rs2.getString(1);}
@@ -530,7 +541,9 @@ public class Cart {
                         return pBuy;} 
                     else{
                         System.out.println("Price for Rent: " + pRent);
-                        return pRent;}
+                        return pRent;}}
+                    
+                    else { return 0;}
     }//Reads the movie from a certain position in the cart, reads its pricing and returns the pricing for the type of purchase (Rent or Buy) - Modified
     
       public int PanelDays(int PanelNumber) throws SQLException{

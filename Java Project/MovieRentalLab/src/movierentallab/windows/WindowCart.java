@@ -31,10 +31,32 @@ public class WindowCart extends javax.swing.JFrame {
     private String mType3;
     private String mType4;
     
-    private float Price1;
-    private float Price2;
-    private float Price3;
-    private float Price4;
+    private float fPrice1;
+    private String Price1;
+    private float fPrice2;
+    private String Price2;
+    private float fPrice3;
+    private String Price3;
+    private float fPrice4;
+    private String Price4;
+    
+    private int idays1;
+    private String days1;
+    private int idays2;
+    private String days2;
+    private int idays3;
+    private String days3;
+    private int idays4;
+    private String days4;
+    
+    private float ftotal1;
+    private String total1;
+    private float ftotal2;
+    private String total2;
+    private float ftotal3;
+    private String total3;
+    private float ftotal4;
+    private String total4;
      
     public WindowCart(JFrame window) {
         
@@ -48,19 +70,43 @@ public class WindowCart extends javax.swing.JFrame {
            
         this.mPanel1 = cart.PanelMovieName(1);        
         this.mType1 = cart.PanelType(1);
-        this.Price1 = cart.PanelPrice(1);
+        this.fPrice1 = cart.PanelPrice(1);
+        this.Price1 = Float.toString(fPrice1);
+        this.idays1 = cart.PanelDays(1);
+        this.days1 = Integer.toString(idays1);
+        ftotal1 = this.idays1 * this.fPrice1;
+        total1 = Float.toString(ftotal1);
+        //All Labels for Panel 1
         
-        this.mPanel2 = cart.PanelMovieName(2);        
+        this.mPanel2 = cart.PanelMovieName(2); 
         this.mType2 = cart.PanelType(2);
-        this.Price2 = cart.PanelPrice(2);
+        this.fPrice2 = cart.PanelPrice(2);
+        this.Price2 = Float.toString(fPrice2);
+        this.idays2 = cart.PanelDays(2);
+        this.days2 = Integer.toString(idays2);
+        ftotal2 = this.idays2 * this.fPrice2;
+        total2 = Float.toString(ftotal2);
+        //All Labels for Panel 2
         
         this.mPanel3 = cart.PanelMovieName(3);        
         this.mType3 = cart.PanelType(3);
-        this.Price3 = cart.PanelPrice(3);
+        this.fPrice3 = cart.PanelPrice(3);
+        this.Price3 = Float.toString(fPrice3);
+        this.idays3 = cart.PanelDays(3);
+        this.days3 = Integer.toString(idays3);
+        ftotal3 = this.idays3 * this.fPrice3;
+        total3 = Float.toString(ftotal3);
+        //All Labels for Panel 3
         
         this.mPanel4 = cart.PanelMovieName(4);        
         this.mType4 = cart.PanelType(4);
-        this.Price4 = cart.PanelPrice(4);
+        this.fPrice4 = cart.PanelPrice(4);
+        this.Price4 = Float.toString(fPrice4);
+        this.idays4 = cart.PanelDays(4);
+        this.days4 = Integer.toString(idays4);
+        ftotal4 = this.idays4 * this.fPrice4;
+        total4 = Float.toString(ftotal4);
+        //All Labels for Panel 4
         
         } catch (SQLException ex) {
             Logger.getLogger(WindowCart.class.getName()).log(Level.SEVERE, null, ex);
@@ -141,15 +187,15 @@ public class WindowCart extends javax.swing.JFrame {
             }
         });
 
-        labelMovie1.setText("jLabel1");
+        labelMovie1.setText(mPanel1);
 
-        labelStatus1.setText("jLabel1");
+        labelStatus1.setText(mType1);
 
-        labelPrice1.setText("jLabel1");
+        labelPrice1.setText(Price1);
 
-        labelDays1.setText("jLabel1");
+        labelDays1.setText(days1);
 
-        labelTotal1.setText("jLabel1");
+        labelTotal1.setText(total1);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -158,29 +204,29 @@ public class WindowCart extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(deletePanel1)
-                .addGap(86, 86, 86)
+                .addGap(55, 55, 55)
                 .addComponent(labelMovie1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(86, 86, 86)
+                .addGap(79, 79, 79)
                 .addComponent(labelStatus1)
-                .addGap(112, 112, 112)
+                .addGap(107, 107, 107)
                 .addComponent(labelPrice1)
-                .addGap(74, 74, 74)
+                .addGap(84, 84, 84)
                 .addComponent(labelDays1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(labelTotal1)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(deletePanel1)
-                    .addComponent(labelMovie1)
                     .addComponent(labelStatus1)
                     .addComponent(labelPrice1)
                     .addComponent(labelDays1)
-                    .addComponent(labelTotal1))
+                    .addComponent(labelTotal1)
+                    .addComponent(labelMovie1))
                 .addGap(34, 34, 34))
         );
 
@@ -193,15 +239,15 @@ public class WindowCart extends javax.swing.JFrame {
             }
         });
 
-        labelMovie2.setText("jLabel1");
+        labelMovie2.setText(mPanel2);
 
-        labelStatus2.setText("jLabel1");
+        labelStatus2.setText(mType2);
 
-        labelPrice2.setText("jLabel1");
+        labelPrice2.setText(Price2);
 
-        labelDays2.setText("jLabel1");
+        labelDays2.setText(days2);
 
-        labelTotal2.setText("jLabel1");
+        labelTotal2.setText(total2);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -210,15 +256,15 @@ public class WindowCart extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(deletePanel2)
-                .addGap(79, 79, 79)
+                .addGap(57, 57, 57)
                 .addComponent(labelMovie2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94)
+                .addGap(74, 74, 74)
                 .addComponent(labelStatus2)
-                .addGap(108, 108, 108)
+                .addGap(112, 112, 112)
                 .addComponent(labelPrice2)
-                .addGap(77, 77, 77)
-                .addComponent(labelDays2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelDays2)
+                .addGap(75, 75, 75)
                 .addComponent(labelTotal2)
                 .addContainerGap())
         );
@@ -245,15 +291,15 @@ public class WindowCart extends javax.swing.JFrame {
             }
         });
 
-        labelMovie4.setText("jLabel1");
+        labelMovie4.setText(mPanel4);
 
-        labelStatus4.setText("jLabel1");
+        labelStatus4.setText(mType4);
 
-        labelPrice4.setText("jLabel1");
+        labelPrice4.setText(Price4);
 
-        labelDays4.setText("jLabel1");
+        labelDays4.setText(days4);
 
-        labelTotal4.setText("jLabel1");
+        labelTotal4.setText(total4);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -262,15 +308,15 @@ public class WindowCart extends javax.swing.JFrame {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(deletePanel4)
-                .addGap(74, 74, 74)
+                .addGap(51, 51, 51)
                 .addComponent(labelMovie4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(94, 94, 94)
+                .addGap(75, 75, 75)
                 .addComponent(labelStatus4)
-                .addGap(107, 107, 107)
+                .addGap(121, 121, 121)
                 .addComponent(labelPrice4)
-                .addGap(77, 77, 77)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addComponent(labelDays4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
+                .addGap(77, 77, 77)
                 .addComponent(labelTotal4)
                 .addContainerGap())
         );
@@ -297,15 +343,15 @@ public class WindowCart extends javax.swing.JFrame {
             }
         });
 
-        labelMovie3.setText("jLabel1");
+        labelMovie3.setText(mPanel3);
 
-        labelStatus3.setText("jLabel1");
+        labelStatus3.setText(mType3);
 
-        labelPrice3.setText("jLabel1");
+        labelPrice3.setText(Price3);
 
-        labelDays3.setText("jLabel1");
+        labelDays3.setText(days3);
 
-        labelTotal3.setText("jLabel1");
+        labelTotal3.setText(total3);
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -314,15 +360,15 @@ public class WindowCart extends javax.swing.JFrame {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addGap(34, 34, 34)
                 .addComponent(deletePanel3)
-                .addGap(77, 77, 77)
+                .addGap(55, 55, 55)
                 .addComponent(labelMovie3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(93, 93, 93)
-                .addComponent(labelStatus3)
-                .addGap(109, 109, 109)
-                .addComponent(labelPrice3)
                 .addGap(74, 74, 74)
-                .addComponent(labelDays3)
+                .addComponent(labelStatus3)
+                .addGap(116, 116, 116)
+                .addComponent(labelPrice3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelDays3)
+                .addGap(76, 76, 76)
                 .addComponent(labelTotal3)
                 .addContainerGap())
         );
@@ -359,39 +405,39 @@ public class WindowCart extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(70, 70, 70)
+                .addComponent(labelDelete)
+                .addGap(68, 68, 68)
+                .addComponent(labelTitlePanel)
+                .addGap(108, 108, 108)
+                .addComponent(labelTypePanel)
+                .addGap(109, 109, 109)
+                .addComponent(labelTitlePrice)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(labelTitleDays)
+                .addGap(101, 101, 101)
+                .addComponent(labelTitleTotal)
+                .addGap(90, 90, 90))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(backButton)
+                .addGap(701, 701, 701)
+                .addComponent(checkOutButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(messageLabel)
-                .addGap(202, 202, 202))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(52, 52, 52)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(labelDelete)
-                        .addGap(68, 68, 68)
-                        .addComponent(labelTitlePanel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelTypePanel)
-                        .addGap(89, 89, 89)
-                        .addComponent(labelTitlePrice)
-                        .addGap(93, 93, 93)
-                        .addComponent(labelTitleDays)
-                        .addGap(101, 101, 101)
-                        .addComponent(labelTitleTotal)
-                        .addGap(90, 90, 90))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(backButton)
-                                .addGap(701, 701, 701)
-                                .addComponent(checkOutButton))
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addContainerGap(63, Short.MAX_VALUE))))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(messageLabel)
+                        .addGap(202, 202, 202))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(55, 55, 55))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -403,10 +449,10 @@ public class WindowCart extends javax.swing.JFrame {
                     .addComponent(labelDelete)
                     .addComponent(labelTitlePanel)
                     .addComponent(labelTypePanel)
-                    .addComponent(labelTitlePrice)
                     .addComponent(labelTitleDays)
-                    .addComponent(labelTitleTotal))
-                .addGap(18, 18, 18)
+                    .addComponent(labelTitleTotal)
+                    .addComponent(labelTitlePrice))
+                .addGap(20, 20, 20)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -414,7 +460,7 @@ public class WindowCart extends javax.swing.JFrame {
                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(33, 33, 33)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backButton)
                     .addComponent(checkOutButton))
