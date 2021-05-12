@@ -23,9 +23,10 @@ public class MovieInfo extends javax.swing.JFrame {
     private String movieImage;
     private String mName;
     private String mInfo;
-    private int days;
+    private int days = 1;
     
     public Cart cart = new Cart();
+    
 
     /**
      * Creates new form MovieInfo
@@ -195,11 +196,11 @@ public class MovieInfo extends javax.swing.JFrame {
         } catch (SQLException ex) {
             Logger.getLogger(MovieInfo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+//        System.out.println("I would rent for " + days);  --- TESTING THE BUTTON
         
         this.dispose();
-        WCart sMovie = new WCart(window);
-
+        
+        WindowCart sMovie = new WindowCart(window);
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -229,7 +230,7 @@ public class MovieInfo extends javax.swing.JFrame {
             Logger.getLogger(MovieInfo.class.getName()).log(Level.SEVERE, null, ex);}
         
         this.dispose();
-        WCart sMovie = new WCart(window);
+        WindowCart sMovie = new WindowCart(window);
 
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
@@ -238,6 +239,7 @@ public class MovieInfo extends javax.swing.JFrame {
     }//GEN-LAST:event_buyButtonActionPerformed
 
     private void daySelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daySelectorActionPerformed
+        
         String day = daySelector.getSelectedItem().toString();
                 
         if(day.equals("1 day")){

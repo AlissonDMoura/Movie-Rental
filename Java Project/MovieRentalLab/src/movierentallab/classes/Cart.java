@@ -28,6 +28,8 @@ public class Cart {
     private int day2;
     private int day3;
     private int day4;
+    
+    private int day;
         
     private String Type1;
     private String Type2;
@@ -97,10 +99,10 @@ public class Cart {
                     ResultSet rs6 = selector6.executeQuery(query6);
                     ResultSet rs7 = selector7.executeQuery(query7);
                     ResultSet rs8 = selector8.executeQuery(query8);
-                    ResultSet rs9 = selector8.executeQuery(query8);
-                    ResultSet rs10 = selector8.executeQuery(query8);
-                    ResultSet rs11 = selector8.executeQuery(query8);
-                    ResultSet rs12 = selector8.executeQuery(query8);
+                    ResultSet rs9 = selector9.executeQuery(query9);
+                    ResultSet rs10 = selector10.executeQuery(query10);
+                    ResultSet rs11 = selector11.executeQuery(query11);
+                    ResultSet rs12 = selector12.executeQuery(query12);
                     
                     if(rs.next()){                        
                         this.Item1 = rs.getInt(1);}                    
@@ -277,8 +279,8 @@ public class Cart {
                         
         Statement stmt = conn.getConnection().createStatement();
         stmt.execute("UPDATE cart SET Item1 = " + this.Item1 +", Type1 = '" + this.Type1 + "', Days1 = "+ this.day1+", Item2 = "+ this.Item2 + ", Type2 = '"+ this.Type2 +"', Days2 = "+ this.day2+", Item3 = "
-                    + this.Item3 +", Type3 ='" + this.Type3 +"', Days3 = "+ this.day3+", Item4 =" + this.Item4 +", Type4 ='"+ this.Type4 +"', Days4 = "+ this.day4+", Where receipt =" + receipt +";");
-    }//Organize the cart items and change the database Row for a certain receipt number. - Modified
+                    + this.Item3 +", Type3 ='" + this.Type3 +"', Days3 = "+ this.day3+", Item4 =" + this.Item4 +", Type4 ='"+ this.Type4 +"', Days4 = "+ this.day4+" Where receipt =" + receipt +";");
+    }//Organize the cart items and change the database Row for a certain receipt number. - TESTED
         
     public int NewCart() throws SQLException{
             
@@ -362,7 +364,7 @@ public class Cart {
                     stmt.execute("UPDATE movie SET status = '" + state +"' WHERE (idMovie = "+ movieId +");");
                     stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "' WHERE receipt ="+ MyCartNo()+";");
                     
-    } //Organize the cart, add a movie into it, change movie state As Sold- Modified
+    } //Organize the cart, add a movie into it, change movie state As Sold- TESTED
     
     public void MovieAddIntoCart(String Rented, String mName, int Days) throws SQLException{
                             
@@ -375,46 +377,48 @@ public class Cart {
            
                     Statement stmt = conn.getConnection().createStatement();
                     stmt.execute("UPDATE movie SET status = '" + state +"' WHERE (idMovie = "+ movieId +");");
-                    stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "', Days4 = " + dayN + ", WHERE receipt ="+ MyCartNo()+";");
+                    stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "', Days4 = "+ dayN + " WHERE receipt = "+ MyCartNo()+";");
     
-    }//Organize the cart, add a movie into it, change movie state As rented and update days as well as other informations in cart and movie Tables-  Modified
+    }//Organize the cart, add a movie into it, change movie state As rented and update days as well as other informations in cart and movie Tables-  TESTED
                     
     public void RemoveFromCart(int ItemNumber) throws SQLException{
         
         int i = ItemNumber;
         
         String item;
-        int movieId;
         String type;
+        String day;
+        int movieId;
+        
         
         
         if(i == 1){
         type = "Type1";
         item = "Item1";
-            System.out.println("my Item is " +item);}
+        day = "Days1";}
         else if(i == 2){
         type = "Type2";
-        item = "Item2";}
+        item = "Item2";
+        day = "Days2";}
         else if(i == 3){
         type = "Type3";
-        item = "Item3";}
+        item = "Item3";
+        day = "Days3";}
         else{       
         type = "Type4";
-        item = "Item4";}
+        item = "Item4";
+        day = "Days4";}
                                 
-                                
-                     
-        
                                 Statement stmt = conn.getConnection().createStatement();                   
                                 ResultSet rs = stmt.executeQuery("SELECT " + item + " from cart where receipt = " + MyCartNo() +";");
                                 
                                 if(rs.next()){
                                 this.movieId = rs.getInt(1);}
                                 
-                                stmt.execute("UPDATE cart SET "+ item + " = 0, " + type +" = null WHERE receipt ="+ MyCartNo()+ ";");
-                                stmt.execute("UPDATE movie SET status = 'In Stock' WHERE idMovie = "+ this.movieId +";");
+                                stmt.execute("UPDATE cart SET "+ item + " = 0, " + type +" = null, "+ day +" = 0 WHERE receipt ="+ MyCartNo()+ ";");
+                                stmt.execute("UPDATE movie SET status = 'In stock' WHERE idMovie = "+ this.movieId +";");
     CartOrganizer(MyCartNo());
-    } // Remove the item displayed into One of the panels, and update the DB movie and cart tables. Then it organizes the cart. - TESTED
+    } // Remove the item displayed into One of the panels, and update the DB movie and cart tables. Then it organizes the cart. - Modified
     
     public String PanelMovieName(int PanelNumber) throws SQLException{
         int i = PanelNumber; 
@@ -521,12 +525,35 @@ public class Cart {
                     if(rs4.next()){
                     pRent = rs4.getFloat(1);}
                     
-                    if(type.equals("Buy")){
+                    if(type.equals("SOLD")){
                         System.out.println("Price for purchase: " +pBuy);
                         return pBuy;} 
                     else{
                         System.out.println("Price for Rent: " + pRent);
                         return pRent;}
-    }//Reads the movie from a certain position in the cart, reads its pricing and returns the pricing for the type of purchase (Rent or Buy) - TESTED
+    }//Reads the movie from a certain position in the cart, reads its pricing and returns the pricing for the type of purchase (Rent or Buy) - Modified
     
+      public int PanelDays(int PanelNumber) throws SQLException{
+        int i = PanelNumber; 
+        String days;
+        int j = MyCartNo();
+        
+        if(i == 1){
+        days = "Days1";}
+        else if(i == 2){
+        days = "Days2";}
+        else if(i == 3){
+        days = "Days3";}
+        else{       
+        days = "Days4";}
+        
+                    String query = "SELECT " + days + " FROM cart WHERE receipt =" + j +";";
+                    Statement selector = conn.getConnection().createStatement();
+                    
+                    ResultSet rs = selector.executeQuery(query);//Get days amount
+                    if(rs.next()){
+                    day = rs.getInt(1);
+                    System.out.println("movie has " + day + " Days ");}                    
+                    
+                    return day;}
 }

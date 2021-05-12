@@ -149,7 +149,7 @@ public class ReturnInvoice extends javax.swing.JFrame {
     JOptionPane.INFORMATION_MESSAGE);   
     
         window.dispose();
-        WCart sMovie = new WCart(window);
+        WindowCart sMovie = new WindowCart(window);
       
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);

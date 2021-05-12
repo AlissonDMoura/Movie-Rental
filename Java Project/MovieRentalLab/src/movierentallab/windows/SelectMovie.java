@@ -53,7 +53,7 @@ public class SelectMovie extends javax.swing.JFrame {
         titanicbutton = new javax.swing.JButton();
         avengersButton = new javax.swing.JButton();
         tLionKingButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        goToCartButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -145,10 +145,10 @@ public class SelectMovie extends javax.swing.JFrame {
 
         jScrollPane1.setViewportView(moviePanel);
 
-        jButton1.setText("Go to Cart");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        goToCartButton.setText("Go to Cart");
+        goToCartButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                goToCartButtonActionPerformed(evt);
             }
         });
 
@@ -167,7 +167,7 @@ public class SelectMovie extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(backToMmenu, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(goToCartButton, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 493, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(181, Short.MAX_VALUE))
         );
@@ -181,7 +181,7 @@ public class SelectMovie extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(backToMmenu)
-                    .addComponent(jButton1))
+                    .addComponent(goToCartButton))
                 .addGap(55, 55, 55))
         );
 
@@ -285,16 +285,17 @@ public class SelectMovie extends javax.swing.JFrame {
         mInfo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_avengersButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void goToCartButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goToCartButtonActionPerformed
         this.dispose();
-        WCart sMovie = new WCart(window);
+        //WCart sMovie = new WCart(window);
       
+        WindowCart sMovie = new WindowCart(window);
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_goToCartButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -334,7 +335,7 @@ public class SelectMovie extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton avengersButton;
     private javax.swing.JButton backToMmenu;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton goToCartButton;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
