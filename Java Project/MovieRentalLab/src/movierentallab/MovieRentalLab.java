@@ -25,6 +25,8 @@ public class MovieRentalLab extends JFrame {
      * @param args the command line arguments
      */
     public static void main(String[] args) throws SQLException {
+        
+        System.out.println("Message");
             
         JFrame window = new JFrame("Xtra-Vision");
         window.setBounds(0, 0, 860, 550);

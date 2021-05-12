@@ -18,6 +18,20 @@ public class Movie {
 
     private String status;
     
+    private int days;
+
+    public void setbPrice(float bPrice) {
+        this.bPrice = bPrice;
+    }
+
+    public int getDays() {
+        return days;
+    }
+
+    public void setDays(int days) {
+        this.days = days;
+    }
+    
     private float rPrice;
     private float bPrice;
     
@@ -76,9 +90,10 @@ public class Movie {
         this.status = status;
     }
 
-    public void setrPrice(float rPrice) {
+    public void setRprice(float rPrice) {
         this.rPrice = rPrice;
     }
+    
     
         
 }

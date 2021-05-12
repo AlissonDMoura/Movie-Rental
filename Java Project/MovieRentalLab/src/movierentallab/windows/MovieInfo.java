@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import movierentallab.classes.Cart;
 import movierentallab.classes.Connector;
 import movierentallab.classes.Movie;
 
@@ -23,6 +24,8 @@ public class MovieInfo extends javax.swing.JFrame {
     private String mName;
     private String mInfo;
     private int days;
+    
+    public Cart cart = new Cart();
 
     /**
      * Creates new form MovieInfo
@@ -186,6 +189,14 @@ public class MovieInfo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void rentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentButtonActionPerformed
+
+        try {
+            cart.MovieAddIntoCart("RENTED", mName, days);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieInfo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
         this.dispose();
         WCart sMovie = new WCart(window);
 
@@ -211,6 +222,12 @@ public class MovieInfo extends javax.swing.JFrame {
     }//GEN-LAST:event_mImageActionPerformed
 
     private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
+        
+        try {
+            cart.MovieAddIntoCart("SOLD", mName);
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieInfo.class.getName()).log(Level.SEVERE, null, ex);}
+        
         this.dispose();
         WCart sMovie = new WCart(window);
 
@@ -232,7 +249,7 @@ public class MovieInfo extends javax.swing.JFrame {
         else if (day.equals("4 days - members")){
             this.days = 4;}
         
-        
+        System.out.println("Vaiable days is " + days);
     }//GEN-LAST:event_daySelectorActionPerformed
 
     /**

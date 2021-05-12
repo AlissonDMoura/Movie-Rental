@@ -24,6 +24,11 @@ public class Cart {
     private int Item3;
     private int Item4;
     
+    private int day1;
+    private int day2;
+    private int day3;
+    private int day4;
+        
     private String Type1;
     private String Type2;
     private String Type3;
@@ -52,7 +57,7 @@ public class Cart {
                         receipt++;
                     }
                     System.out.println("This is my Next ID:" + receipt);
-                    return receipt;}//return the next valid writable receipt number
+                    return receipt;}//return the next valid writable receipt number - TESTED
 
     public void CartOrganizer(int receipt) throws SQLException{
                     
@@ -65,11 +70,12 @@ public class Cart {
                     String query6 = "SELECT Type3 FROM cart Where receipt = " + receipt + ";";
                     String query7 = "SELECT Item4 FROM cart Where receipt = " + receipt + ";";
                     String query8 = "SELECT Type4 FROM cart Where receipt = " + receipt + ";";
+                    String query9 = "SELECT Days1 FROM cart Where receipt = " + receipt + ";";
+                    String query10 = "SELECT Days2 FROM cart Where receipt = " + receipt + ";";
+                    String query11 = "SELECT Days3 FROM cart Where receipt = " + receipt + ";";
+                    String query12 = "SELECT Days4 FROM cart Where receipt = " + receipt + ";";
                     
                     Statement selector = conn.getConnection().createStatement();
-                    
-                    
-                    
                     Statement selector2 = conn.getConnection().createStatement();
                     Statement selector3 = conn.getConnection().createStatement();
                     Statement selector4 = conn.getConnection().createStatement();
@@ -77,6 +83,10 @@ public class Cart {
                     Statement selector6 = conn.getConnection().createStatement();
                     Statement selector7 = conn.getConnection().createStatement();
                     Statement selector8 = conn.getConnection().createStatement();
+                    Statement selector9 = conn.getConnection().createStatement();
+                    Statement selector10 = conn.getConnection().createStatement();
+                    Statement selector11 = conn.getConnection().createStatement();
+                    Statement selector12 = conn.getConnection().createStatement();
                     
                     
                     ResultSet rs = selector.executeQuery(query);
@@ -87,68 +97,92 @@ public class Cart {
                     ResultSet rs6 = selector6.executeQuery(query6);
                     ResultSet rs7 = selector7.executeQuery(query7);
                     ResultSet rs8 = selector8.executeQuery(query8);
+                    ResultSet rs9 = selector8.executeQuery(query8);
+                    ResultSet rs10 = selector8.executeQuery(query8);
+                    ResultSet rs11 = selector8.executeQuery(query8);
+                    ResultSet rs12 = selector8.executeQuery(query8);
                     
-                    if(rs.next()){
-                        
-                        this.Item1 = rs.getInt(1);
-                        System.out.println("Value in Item1 is " + Item1);}                    
-                    if(rs2.next()){
-                        
-                        this.Type1 = rs2.getString(1);
-                        System.out.println("Value in Type1 is " + Type1);}                                                           
-                    if(rs3.next()){
-                        
-                        this.Item2 = rs3.getInt(1);
-                        System.out.println("Value in Item2 is " + Item2);}                    
-                    if(rs4.next()){
-                        
-                        this.Type2 = rs4.getString(1);
-                        System.out.println("Value in Type2 is " + Type2);}                    
-                    if(rs5.next()){
-                        
-                        this.Item3 = rs5.getInt(1);
-                        System.out.println("Value in Item3 is " + Item3);}
+                    if(rs.next()){                        
+                        this.Item1 = rs.getInt(1);}                    
+                    
+                    if(rs2.next()){                        
+                        this.Type1 = rs2.getString(1);} 
+                    
+                    if(rs9.next()){
+                        this.day1 = rs9.getInt(1);}
+                    //CART POSITION ONE
+                    
+                    
+                    if(rs3.next()){                        
+                        this.Item2 = rs3.getInt(1);}                    
+                    
+                    if(rs4.next()){                        
+                        this.Type2 = rs4.getString(1);}
+                    
+                    if(rs10.next()){
+                        this.day2 = rs10.getInt(1);}
+                    //CART POSITION two                    
+                    
+                    
+                    if(rs5.next()){                        
+                        this.Item3 = rs5.getInt(1);}
                     
                     if(rs6.next()){
-                        this.Type3 = rs6.getString(1);
-                        System.out.println("Value in Type3 is " + Type3);}
+                        this.Type3 = rs6.getString(1);}
+                    
+                    if(rs11.next()){
+                        this.day3 = rs11.getInt(1);}
+                    //CART POSITION three
+                    
                     
                     if(rs7.next()){
-                        this.Item4 = rs7.getInt(1);
-                        System.out.println("Value in Item4 is " + Item4);}
+                        this.Item4 = rs7.getInt(1);}
                     
                     if(rs8.next()){
-                        this.Type4 = rs8.getString(1);
-                        System.out.println("Value in Type4 is " + Type4);}
+                        this.Type4 = rs8.getString(1);}
+                    
+                    if(rs12.next()){
+                        this.day4 = rs12.getInt(1);}
+                    //CART POSITION four
+                    
+                    
                         
                         if(Item1 == 0 && Item2 != 0 && Item3 != 0 && Item4 != 0 ){
                             this.Item1 = this.Item2;
                             this.Type1 = this.Type2;
+                            this.day1 = this.day2;
                             this.Item2 = this.Item3;
                             this.Type2 = this.Type3;
+                            this.day2 = this.day3;
                             this.Item3 = this.Item4;
                             this.Type3 = this.Type4;
+                            this.day3 = this.day4;
                             this.Item4 = 0;
                             this.Type4 = null;
-                            System.out.println("First IF");}
-    
+                            this.day4 = 0;
+                            System.out.println("First IF");}    
                             //  0   1   1   1
                             
                         else if(Item1 != 0 && Item2 == 0 && Item3 != 0 && Item4 != 0 ){
                             this.Item2 = this.Item3;
                             this.Type2 = this.Type3;
+                            this.day2 = this.day3;
                             this.Item3 = this.Item4;
                             this.Type3 = this.Type4;
+                            this.day3 = this.day4;
                             this.Item4 = 0;
                             this.Type4 = null;
+                            this.day4 = 0;
                         System.out.println("Second IF");} 
                             // 1    0   1   1
                             
                         else if(Item1 != 0 && Item2 != 0 && Item3 == 0 && Item4 != 0 ){
                             this.Item3 = this.Item4;
                             this.Type3 = this.Type4;
+                            this.day3 = this.day4;
                             this.Item4 = 0;
                             this.Type4 = null;
+                            this.day4 = 0;
                         System.out.println("Third IF");}
                             //   1   1   0   1
                            //All combinations for one GAP
@@ -156,12 +190,16 @@ public class Cart {
                         else if(Item1 == 0 && Item2 == 0 && Item3 != 0 && Item4 != 0 ){
                             this.Item1 = this.Item3;
                             this.Type1 = this.Type3;
+                            this.day1 = this.day3;
                             this.Item3 = 0;
                             this.Type3 = null;
+                            this.day3 = 0;
                             this.Item2 = this.Item4;
                             this.Type2 = this.Type4;
+                            this.day2 = this.day4;
                             this.Item4 = 0;
                             this.Type4 = null;
+                            this.day4 = 0;
                         System.out.println("Fourth IF");} 
                         
                             //  0   0   1   1
@@ -169,72 +207,78 @@ public class Cart {
                         else if(Item1 != 0 && Item2 == 0 && Item3 == 0 && Item4 != 0){
                             this.Item2 = this.Item4;
                             this.Type2 = this.Type4;
+                            this.day2 = this.day4;
                             this.Item4 = 0;
                             this.Type4 = null;
+                            this.day4 = 0;
                         System.out.println("Fifth IF");} 
                             //  1   0   0   1
                                                     
                         else if(Item1 == 0 && Item2 != 0 && Item3 == 0 && Item4 != 0){
                             this.Item1 = this.Item2;
                             this.Type1 = this.Type2;
+                            this.day1 = this.day2;
                             this.Item2 = this.Item4;
                             this.Type2 = this.Type4;
+                            this.day2 = this.day4;
                             this.Item4 = 0;
                             this.Type4 = null;
+                            this.day4 = 0;
                         System.out.println("Sixth IF");}
                             //  0   1   0   1
                             
-                        else if(Item1 == 0 && Item2 != 0 && Item3 == 0 && Item4 != 0){
-                            this.Item1 = this.Item2;
-                            this.Type1 = this.Type2;
-                            this.Item2 = this.Item4;
-                            this.Type2 = this.Type4;
-                            this.Item4 = 0;
-                            this.Type4 = null;
-                        System.out.println("Seventh IF");} 
-                            //  0   1   0   1   
-                            
+                                                    
                         else if(Item1 == 0 && Item2 != 0 && Item3 != 0 && Item4 == 0){
                             this.Item1 = this.Item2;
                             this.Type1 = this.Type2;
+                            this.day1 = this.day2;
                             this.Item2 = this.Item3;
                             this.Type2 = this.Type3;
+                            this.day2 = this.day3;
                             this.Item3 = 0;
                             this.Type3 = null;
-                        System.out.println("Eight IF");}
+                            this.day4 = 0;
+                        System.out.println("Seventh IF");}
                             //  0   1   1   0
                             //All combinations for two GAPs
                         
                         else if(Item1 == 0 && Item2 == 0 && Item3 == 0 && Item4 != 0){
                             this.Item1 = this.Item4;
                             this.Type1 = this.Type4;
+                            this.day1 = this.day4;
                             this.Item4 = 0;
                             this.Type4 = null;
-                        System.out.println("Nineth IF");}
+                            this.day4 = 0;
+                        System.out.println("Eight IF");}
                             //  0    0   0   1
                         
                         else if(Item1 == 0 && Item2 == 0 && Item3 != 0 && Item4 == 0){
                             this.Item1 = this.Item3;
                             this.Type1 = this.Type3;
+                            this.day1 = this.day3;
                             this.Item3 = 0;
                             this.Type3 = null;
-                        System.out.println("Tenth IF");}
+                            this.day3 = 0;
+                        System.out.println("Nineth IF");}
                             //  0   0   1   0
                             
                         else if(Item1 == 0 && Item2 != 0 && Item3 == 0 && Item4 == 0 ){
                             this.Item1 = this.Item2;
                             this.Type1 = this.Type2;
+                            this.day1 = this.day2;
                             this.Item2 = 0;
                             this.Type2 = null;
-                        System.out.println("Eleventh IF");}
+                            this.day2 = 0;
+                        System.out.println("Tenth IF");}
                             //  0   1   0   0
                            //All combinations for three GAPs        
                         
                         //                        
                         
         Statement stmt = conn.getConnection().createStatement();
-        stmt.execute("UPDATE cart SET Item1 = " + this.Item1 +", Type1 = '" + this.Type1 + "', Item2 = "+ this.Item2 + ", Type2 = '"+ this.Type2 +"', Item3 = " + this.Item3 +", Type3 ='" + this.Type3 +"', Item4 =" + this.Item4 +", Type4 ='"+ this.Type4 +"' Where receipt =" + receipt +";");
-    }//Organize the cart items and change the database Row for a certain receipt number. - TESTED
+        stmt.execute("UPDATE cart SET Item1 = " + this.Item1 +", Type1 = '" + this.Type1 + "', Days1 = "+ this.day1+", Item2 = "+ this.Item2 + ", Type2 = '"+ this.Type2 +"', Days2 = "+ this.day2+", Item3 = "
+                    + this.Item3 +", Type3 ='" + this.Type3 +"', Days3 = "+ this.day3+", Item4 =" + this.Item4 +", Type4 ='"+ this.Type4 +"', Days4 = "+ this.day4+", Where receipt =" + receipt +";");
+    }//Organize the cart items and change the database Row for a certain receipt number. - Modified
         
     public int NewCart() throws SQLException{
             
@@ -295,38 +339,45 @@ public class Cart {
                                         
                     if(rs.next()){
                     type = rs.getString(1);
-                        System.out.println("I have a next, and type is " +type);
                     
                         if(type == null || type.equals("null")){
-                            cartFull = false;
-                            System.out.println("Cartfull variable is  " +cartFull);
-                        } else {
-                            cartFull = true;
-                            System.out.println("Cart is Full boolean type = " +cartFull);
-                        }
+                            cartFull = false;}
+                            else {
+                            cartFull = true;}
                     } else{
-                        System.out.println("it doest have a next, Error close to line 288, resultSet String: " +rs.getString(1));
-                    }
+                        System.out.println("it doest have a next, Error close to line 340, resultSet String: " +rs.getString(1));}
                         
-                    return cartFull;    } //Organizes the Cart, and check if there is any item on last space. returns true for cartFull if the cart is full, or false if it ain't- TESTED
+                    return cartFull;} //Organizes the Cart, and check if there is any item on last space. returns true for cartFull if the cart is full, or false if it ain't- TESTED
     
-    public void MovieAddIntoCart(boolean type, String mName) throws SQLException{
+    public void MovieAddIntoCart(String Sold, String mName) throws SQLException{
                             
-        //TRUE IS SOLD
-        //FALSE IS RENTED
-        String state = "";
+        //FOR SOLD MOVIES
+        String state = Sold;
         
-        if(type == true)    {
-            state = "SOLD"; } else{
-            state = "RENTED";     }
-        
-                    CartOrganizer(MyCartNo()); //gets or opens a new cart, and organize it if necessary.
+        CartOrganizer(MyCartNo()); //gets or opens a new cart, and organize it if necessary.
            
                     int movieId = MovieSelected(mName);
          
                     Statement stmt = conn.getConnection().createStatement();                   
                     stmt.execute("UPDATE movie SET status = '" + state +"' WHERE (idMovie = "+ movieId +");");
-                    stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "' WHERE receipt ="+ MyCartNo()+";");} //Organize the cart, add a movie into it, change movie state to the chosen state "SOLD or RENTED".- TESTED
+                    stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "' WHERE receipt ="+ MyCartNo()+";");
+                    
+    } //Organize the cart, add a movie into it, change movie state As Sold- Modified
+    
+    public void MovieAddIntoCart(String Rented, String mName, int Days) throws SQLException{
+                            
+        //FOR RENTED MOVIES
+        String state = Rented;
+        int dayN = Days;
+        int movieId = MovieSelected(mName);
+        
+        CartOrganizer(MyCartNo()); //gets or opens a new cart, and organize it if necessary.
+           
+                    Statement stmt = conn.getConnection().createStatement();
+                    stmt.execute("UPDATE movie SET status = '" + state +"' WHERE (idMovie = "+ movieId +");");
+                    stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "', Days4 = " + dayN + ", WHERE receipt ="+ MyCartNo()+";");
+    
+    }//Organize the cart, add a movie into it, change movie state As rented and update days as well as other informations in cart and movie Tables-  Modified
                     
     public void RemoveFromCart(int ItemNumber) throws SQLException{
         
