@@ -33,7 +33,11 @@ public class Cart {
     
     private boolean cartFull;
     
+    private float pBuy;
+    private float pRent;
+    
     private String title;
+    private String status;
     
     private int movieId;
     
@@ -233,7 +237,7 @@ public class Cart {
                         
         Statement stmt = conn.getConnection().createStatement();
         stmt.execute("UPDATE cart SET Item1 = " + this.Item1 +", Type1 = '" + this.Type1 + "', Item2 = "+ this.Item2 + ", Type2 = '"+ this.Type2 +"', Item3 = " + this.Item3 +", Type3 ='" + this.Type3 +"', Item4 =" + this.Item4 +", Type4 ='"+ this.Type4 +"' Where receipt =" + receipt +";");
-    }//Organize the cart items and change the database Row for a certain receipt number.    
+    }//Organize the cart items and change the database Row for a certain receipt number. - TESTED
         
     public int NewCart() throws SQLException{
             
@@ -242,7 +246,7 @@ public class Cart {
          Statement stmt = conn.getConnection().createStatement();                   
          stmt.execute("INSERT INTO cart (receipt, status) VALUES ("+id+",'Open');");
          System.out.println("New cart number "+id+" Opened");         
-         return id;} //Create a new cart and define it's status as open, Return the Cart ID.
+         return id;} //Create a new cart and define it's status as open, Return the Cart ID. - TESTED
     
     public int MyCartNo() throws SQLException{
         int cartNo = 0;
@@ -264,7 +268,7 @@ public class Cart {
                     System.out.println(cartNo +" is my cart returned");
         
         
-        return cartNo;}//Selects The Cart Active in the database, if there's none, it runs the method to create one and run this code again, returns the cartId AKA receipt.
+        return cartNo;}//Selects The Cart Active in the database, if there's none, it runs the method to create one and run this code again, returns the cartId AKA receipt.- TESTED
     
     public int MovieSelected(String mName) throws SQLException{
                             
@@ -277,7 +281,7 @@ public class Cart {
                     }
                     
         return movieId;
-    } // Selects a movie with status "In Stock" and returns it's ID. --- if Movie iD = 0 there's no movie with this title in stock.
+    } // Selects a movie with status "In Stock" and returns it's ID. --- if Movie iD = 0 there's no movie with this title in stock. - TESTED
     
     public boolean CartFilledChecker() throws SQLException{
         
@@ -307,7 +311,7 @@ public class Cart {
                         System.out.println("it doest have a next, Error close to line 288, resultSet String: " +rs.getString(1));
                     }
                         
-                    return cartFull;    } //Organizes the Cart, and check if there is any item on last space. returns true for cartFull if the cart is full, or false if it ain't
+                    return cartFull;    } //Organizes the Cart, and check if there is any item on last space. returns true for cartFull if the cart is full, or false if it ain't- TESTED
     
     public void MovieAddIntoCart(boolean type, String mName) throws SQLException{
                             
@@ -325,7 +329,7 @@ public class Cart {
          
                     Statement stmt = conn.getConnection().createStatement();                   
                     stmt.execute("UPDATE movie SET status = '" + state +"' WHERE (idMovie = "+ movieId +");");
-                    stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "' WHERE receipt ="+ MyCartNo()+";");} //Organize the cart, add a movie into it, change movie state to the chosen state "SOLD or RENTED".                    
+                    stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "' WHERE receipt ="+ MyCartNo()+";");} //Organize the cart, add a movie into it, change movie state to the chosen state "SOLD or RENTED".- TESTED
                     
     public void RemoveFromCart(int ItemNumber) throws SQLException{
         
@@ -362,16 +366,13 @@ public class Cart {
                                 stmt.execute("UPDATE cart SET "+ item + " = 0, " + type +" = null WHERE receipt ="+ MyCartNo()+ ";");
                                 stmt.execute("UPDATE movie SET status = 'In Stock' WHERE idMovie = "+ this.movieId +";");
     CartOrganizer(MyCartNo());
-    } // Remove the item displayed into One of the panels, and update the DB movie and cart tables. Then it organizes the cart.
+    } // Remove the item displayed into One of the panels, and update the DB movie and cart tables. Then it organizes the cart. - TESTED
     
     public String PanelMovieName(int PanelNumber) throws SQLException{
         int i = PanelNumber; 
-        int movieId=0;//
+        int movieId = 0;
         String item;
-        String mName;
         int j = MyCartNo();
-
-        
         
         if(i == 1){
         item = "Item1";}
@@ -381,29 +382,31 @@ public class Cart {
         item = "Item3";}
         else{       
         item = "Item4"; }
-                                
         
                     String query = "Select " +item+ " FROM cart WHERE receipt =" + j + ";";
-                    String query2 = "SELECT title FROM  movie WHERE idMovie =" + movieId +";";
                     
                     Statement selector = conn.getConnection().createStatement();
-                    ResultSet rs = selector.executeQuery(query);//Get Movie ID
-                    ResultSet rs2 = selector.executeQuery(query2);// Gets Movie Title
+                    Statement selector2 = conn.getConnection().createStatement();
                     
+                    ResultSet rs = selector.executeQuery(query);//Get Movie ID
+                    if(rs.next()){
                     movieId = rs.getInt(1);
-                    mName = rs2.getString(1);
-                    System.out.println(mName);
-                         
+                    System.out.println("movieId is " + movieId);}                    
+                    
+                    String query2 = "SELECT title FROM  movie WHERE idMovie =" + movieId +";";
+                    
+                    ResultSet rs2 = selector2.executeQuery(query2);// Gets Movie Title
+                    if(rs2.next()){
+                    title = rs2.getString(1);
+                    System.out.println("movie Name is " + title);}                    
                      
-                     return mName;
-    } //Reads the movie ID from a certain position in the cart and returns the movie Title.
+                     return title;
+    } //Reads the movie ID from a certain position in the cart and returns the movie Title. - TESTED
 
     public String PanelType(int PanelNumber) throws SQLException{
         int i = PanelNumber; 
         String type;
-        String typeStatus;
         int j = MyCartNo();
-
         
         if(i == 1){
         type = "Type1";}
@@ -413,25 +416,23 @@ public class Cart {
         type = "Type3";}
         else{       
         type = "Type4";}
-                                
         
-                    String query = "Select " +type+ " FROM cart WHERE receipt =" + j + ";";
+                    String query = "SELECT " + type + " FROM cart WHERE receipt =" + j +";";
                     Statement selector = conn.getConnection().createStatement();
-                    ResultSet rs = selector.executeQuery(query);
-                    typeStatus = rs.getString(1);
-                        
-                    return typeStatus; }//Reads the movie ID from a certain position in the cart and returns the type of purchase (RENT OR BUY)
+                    
+                    ResultSet rs = selector.executeQuery(query);//Get Type
+                    if(rs.next()){
+                    status = rs.getString(1);
+                    System.out.println("movie Type is " + status);}                    
+                    
+                    return status;}//A certain position in the cart and returns the type of purchase (RENT OR BUY)- TESTED
     
     public float PanelPrice(int PanelNumber) throws SQLException{
         int i = PanelNumber;
-        int movieId=0;//
+        int movieId=0;
         String item;
         String type;
         int j = MyCartNo();
-        
-        float pBuy;
-        float pRent;
-        
         
         if(i == 1){
         item = "Item1";
@@ -450,46 +451,34 @@ public class Cart {
         
                     String query = "Select " +item+ " FROM cart WHERE receipt ="+j+" ;";
                     String query2 = "Select " +type+ " FROM cart WHERE receipt ="+j+" ;";
+                    
+                    
+                    ResultSet rs = selector.executeQuery(query);//Get Movie ID
+                    if(rs.next()){
+                    movieId = rs.getInt(1);
+                    System.out.println("movieId is " + movieId);}
+                    
                     String query3 = "SELECT priceBuy FROM  movie WHERE idMovie =" + movieId +";";
                     String query4 = "SELECT priceRent FROM  movie WHERE idMovie =" + movieId +";";
                     
-                    ResultSet rs = selector.executeQuery(query);
                     ResultSet rs2 = selector.executeQuery(query2);
-                    ResultSet rs3 = selector.executeQuery(query3);
-                    ResultSet rs4 = selector.executeQuery(query4);
-
-                    movieId = rs.getInt(1);
-                    type = rs2.getString(1);
-                    pBuy = rs3.getFloat(1);
-                    pRent = rs4.getFloat(1);
+                    if(rs2.next()){
+                    type = rs2.getString(1);}
                     
-                    if(type =="Buy"){
-                        return pBuy;} else{
-                        return pRent;
-                    }
-                     
-                     
-    }//Reads the movie from a certain position in the cart, reads its pricing and returns the pricing for the type of purchase (Rent or Buy)
-    
-   
-    
-    
-    
-    
-    
+                    ResultSet rs3 = selector.executeQuery(query3);
+                    if(rs3.next()){
+                    pBuy = rs3.getFloat(1);}
+                    
+                    ResultSet rs4 = selector.executeQuery(query4);
+                    if(rs4.next()){
+                    pRent = rs4.getFloat(1);}
+                    
+                    if(type.equals("Buy")){
+                        System.out.println("Price for purchase: " +pBuy);
+                        return pBuy;} 
+                    else{
+                        System.out.println("Price for Rent: " + pRent);
+                        return pRent;}
+    }//Reads the movie from a certain position in the cart, reads its pricing and returns the pricing for the type of purchase (Rent or Buy) - TESTED
     
 }
-                    
-        
-        
-    
-    
-    
-
-        
-        
-    
-
-
-  
-

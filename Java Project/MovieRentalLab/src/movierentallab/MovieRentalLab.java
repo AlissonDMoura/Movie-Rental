@@ -40,7 +40,7 @@ public class MovieRentalLab extends JFrame {
         
         Cart lala = new Cart ();
         
-        
+        System.out.println(lala.PanelPrice(1));
         
         
               
