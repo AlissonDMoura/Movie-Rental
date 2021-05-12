@@ -38,9 +38,9 @@ public class MovieRentalLab extends JFrame {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         
-        Cart lala = new Cart ();
+        //Cart lala = new Cart (); Tester
         
-        System.out.println(lala.PanelPrice(1));
+        
         
         
               

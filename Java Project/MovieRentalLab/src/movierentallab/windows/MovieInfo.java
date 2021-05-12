@@ -22,6 +22,7 @@ public class MovieInfo extends javax.swing.JFrame {
     private String movieImage;
     private String mName;
     private String mInfo;
+    private int days;
 
     /**
      * Creates new form MovieInfo
@@ -62,6 +63,7 @@ public class MovieInfo extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea(mInfo);
         jLabel1 = new javax.swing.JLabel();
         mImage = new javax.swing.JButton();
+        daySelector = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -76,7 +78,7 @@ public class MovieInfo extends javax.swing.JFrame {
             }
         });
 
-        rentButton.setText("I WANT TO RENT IT");
+        rentButton.setText("RENT FOR: ");
         rentButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 rentButtonActionPerformed(evt);
@@ -114,6 +116,13 @@ public class MovieInfo extends javax.swing.JFrame {
             }
         });
 
+        daySelector.setModel(new javax.swing.DefaultComboBoxModel(new String[] {"1 day", "2 days", "3 days - members", "4 days - members"}));
+        daySelector.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                daySelectorActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout mInfoPanelLayout = new javax.swing.GroupLayout(mInfoPanel);
         mInfoPanel.setLayout(mInfoPanelLayout);
         mInfoPanelLayout.setHorizontalGroup(
@@ -129,13 +138,15 @@ public class MovieInfo extends javax.swing.JFrame {
                         .addComponent(mImage, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(0, 75, Short.MAX_VALUE))
                     .addGroup(mInfoPanelLayout.createSequentialGroup()
-                        .addGap(123, 123, 123)
+                        .addGap(77, 77, 77)
                         .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(49, 49, 49)
+                        .addGap(58, 58, 58)
                         .addComponent(rentButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(daySelector, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(goBackButton)))
                 .addGap(84, 84, 84))
         );
@@ -155,7 +166,8 @@ public class MovieInfo extends javax.swing.JFrame {
                 .addGroup(mInfoPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(buyButton, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rentButton)
-                    .addComponent(goBackButton))
+                    .addComponent(goBackButton)
+                    .addComponent(daySelector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(49, 49, 49))
         );
 
@@ -208,6 +220,21 @@ public class MovieInfo extends javax.swing.JFrame {
 
     }//GEN-LAST:event_buyButtonActionPerformed
 
+    private void daySelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daySelectorActionPerformed
+        String day = daySelector.getSelectedItem().toString();
+                
+        if(day.equals("1 day")){
+            this.days = 1;} 
+        else if(day.equals("2 days")){
+            this.days = 2;}
+        else if(day.equals("3 days - members")){
+            this.days = 3;}
+        else if (day.equals("4 days - members")){
+            this.days = 4;}
+        
+        
+    }//GEN-LAST:event_daySelectorActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -245,6 +272,7 @@ public class MovieInfo extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buyButton;
+    private javax.swing.JComboBox daySelector;
     private javax.swing.JButton goBackButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

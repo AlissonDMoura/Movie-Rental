@@ -63,14 +63,16 @@
                           <Component id="mImage" min="-2" pref="186" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="439" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="75" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <EmptySpace min="-2" pref="123" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                           <Component id="buyButton" min="-2" pref="172" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
                           <Component id="rentButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="59" max="32767" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="daySelector" min="-2" pref="102" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Component id="goBackButton" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -98,6 +100,7 @@
                       <Component id="buyButton" alignment="3" min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="rentButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="goBackButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="daySelector" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
               </Group>
@@ -115,7 +118,7 @@
         </Component>
         <Component class="javax.swing.JButton" name="rentButton">
           <Properties>
-            <Property name="text" type="java.lang.String" value="I WANT TO RENT IT"/>
+            <Property name="text" type="java.lang.String" value="RENT FOR: "/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rentButtonActionPerformed"/>
@@ -179,6 +182,16 @@
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mImageActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="daySelector">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.DefaultComboBoxModel(new String[] {&quot;1 day&quot;, &quot;2 days&quot;, &quot;3 days - members&quot;, &quot;4 days - members&quot;})" type="code"/>
+            </Property>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="daySelectorActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

@@ -51,7 +51,7 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jPanel1" alignment="0" pref="850" max="32767" attributes="0"/>
+          <Component id="jPanel1" alignment="0" pref="873" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
@@ -93,8 +93,7 @@
                           <EmptySpace min="-2" pref="59" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="93" max="-2" attributes="0"/>
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -112,11 +111,14 @@
                                       <Component id="jButton1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox1" alignment="1" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox4" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jCheckBox2" alignment="0" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jCheckBox1" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jCheckBox4" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -130,7 +132,7 @@
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace pref="72" max="32767" attributes="0"/>
+                  <EmptySpace pref="83" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -277,16 +279,17 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
-                      <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="85" max="-2" attributes="0"/>
-                      <Component id="jLabel9" min="-2" pref="118" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                      <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
-                      <Component id="jLabel11" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="70" max="32767" attributes="0"/>
-                      <Component id="jLabel12" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="mName1" min="-2" pref="120" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="mStatus1" min="-2" pref="80" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                      <Component id="mPrice1" min="-2" pref="69" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+                      <Component id="mDays1" min="-2" pref="40" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="mTotal1" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -295,11 +298,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mStatus1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mPrice1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mDays1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mTotal1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mName1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="26" max="32767" attributes="0"/>
                   </Group>
@@ -307,30 +310,30 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel9">
+            <Component class="javax.swing.JLabel" name="mStatus1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel9"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel10">
+            <Component class="javax.swing.JLabel" name="mPrice1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel10"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel11">
+            <Component class="javax.swing.JLabel" name="mDays1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel11"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel12">
+            <Component class="javax.swing.JLabel" name="mTotal1">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel12"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel8">
+            <Component class="javax.swing.JLabel" name="mName1">
               <Properties>
                 <Property name="text" type="java.lang.String" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="&quot;  &quot;" type="code"/>
+                  <Connection code="&quot;&quot;" type="code"/>
                 </Property>
               </Properties>
             </Component>
@@ -343,15 +346,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel18" min="-2" pref="150" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
-                      <Component id="jLabel19" min="-2" pref="105" max="-2" attributes="0"/>
+                      <Component id="mName3" min="-2" pref="121" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="72" max="-2" attributes="0"/>
+                      <Component id="mStatus3" min="-2" pref="105" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                      <Component id="jLabel20" min="-2" pref="71" max="-2" attributes="0"/>
+                      <Component id="mPrice3" min="-2" pref="71" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
-                      <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
+                      <Component id="mDays3" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                      <Component id="mTotal3" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -360,11 +364,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mName3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mStatus3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mPrice3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mDays3" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mTotal3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="24" max="32767" attributes="0"/>
                   </Group>
@@ -372,27 +376,27 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel18">
+            <Component class="javax.swing.JLabel" name="mName3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel18"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel19">
+            <Component class="javax.swing.JLabel" name="mStatus3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel19"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel20">
+            <Component class="javax.swing.JLabel" name="mPrice3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel20"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel21">
+            <Component class="javax.swing.JLabel" name="mDays3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel21"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel22">
+            <Component class="javax.swing.JLabel" name="mTotal3">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel22"/>
               </Properties>
@@ -406,15 +410,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel13" min="-2" pref="145" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
-                      <Component id="jLabel14" min="-2" pref="100" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
-                      <Component id="jLabel15" min="-2" pref="76" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                      <Component id="jLabel16" min="-2" max="-2" attributes="0"/>
+                      <Component id="mName2" min="-2" pref="121" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
+                      <Component id="mStatus2" min="-2" pref="80" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                      <Component id="mPrice2" min="-2" pref="70" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <Component id="mDays2" min="-2" pref="40" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel17" min="-2" max="-2" attributes="0"/>
+                      <Component id="mTotal2" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -423,11 +428,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mName2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mStatus2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mPrice2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mDays2" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mTotal2" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="24" max="32767" attributes="0"/>
                   </Group>
@@ -435,27 +440,27 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel13">
+            <Component class="javax.swing.JLabel" name="mName2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel13"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel14">
+            <Component class="javax.swing.JLabel" name="mStatus2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel14"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel15">
+            <Component class="javax.swing.JLabel" name="mPrice2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel15"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel16">
+            <Component class="javax.swing.JLabel" name="mDays2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel16"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel17">
+            <Component class="javax.swing.JLabel" name="mTotal2">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel17"/>
               </Properties>
@@ -469,15 +474,16 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jLabel24" min="-2" pref="141" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                      <Component id="jLabel25" min="-2" pref="84" max="-2" attributes="0"/>
+                      <Component id="mName4" min="-2" pref="121" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
+                      <Component id="mStatus4" min="-2" pref="84" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="76" max="-2" attributes="0"/>
-                      <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                      <Component id="mPrice4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
-                      <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="68" max="32767" attributes="0"/>
-                      <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                      <Component id="mDays4" min="-2" pref="39" max="-2" attributes="0"/>
+                      <EmptySpace pref="74" max="32767" attributes="0"/>
+                      <Component id="mTotal4" min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -486,11 +492,11 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mName4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mStatus4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mPrice4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mDays4" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="mTotal4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="24" max="32767" attributes="0"/>
                   </Group>
@@ -498,27 +504,27 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel24">
+            <Component class="javax.swing.JLabel" name="mName4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel24"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel25">
+            <Component class="javax.swing.JLabel" name="mStatus4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel25"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel26">
+            <Component class="javax.swing.JLabel" name="mPrice4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel26"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel27">
+            <Component class="javax.swing.JLabel" name="mDays4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel27"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JLabel" name="jLabel28">
+            <Component class="javax.swing.JLabel" name="mTotal4">
               <Properties>
                 <Property name="text" type="java.lang.String" value="jLabel28"/>
               </Properties>

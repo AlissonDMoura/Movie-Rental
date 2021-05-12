@@ -17,12 +17,9 @@ import movierentallab.classes.Cart;
  */
 public class WCart extends javax.swing.JFrame {
     private JFrame window;
+    
+    Cart cart = new Cart();
 
-
-    
-    
-    
-    
 
     /**
      * Creates new form Cart
@@ -66,29 +63,29 @@ public class WCart extends javax.swing.JFrame {
         jCheckBox3 = new javax.swing.JCheckBox();
         jCheckBox4 = new javax.swing.JCheckBox();
         jPanel3 = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        mStatus1 = new javax.swing.JLabel();
+        mPrice1 = new javax.swing.JLabel();
+        mDays1 = new javax.swing.JLabel();
+        mTotal1 = new javax.swing.JLabel();
+        mName1 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
-        jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        mName3 = new javax.swing.JLabel();
+        mStatus3 = new javax.swing.JLabel();
+        mPrice3 = new javax.swing.JLabel();
+        mDays3 = new javax.swing.JLabel();
+        mTotal3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
+        mName2 = new javax.swing.JLabel();
+        mStatus2 = new javax.swing.JLabel();
+        mPrice2 = new javax.swing.JLabel();
+        mDays2 = new javax.swing.JLabel();
+        mTotal2 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
+        mName4 = new javax.swing.JLabel();
+        mStatus4 = new javax.swing.JLabel();
+        mPrice4 = new javax.swing.JLabel();
+        mDays4 = new javax.swing.JLabel();
+        mTotal4 = new javax.swing.JLabel();
 
         jLabel23.setText("jLabel23");
 
@@ -146,54 +143,55 @@ public class WCart extends javax.swing.JFrame {
             }
         });
 
-        jLabel9.setText("jLabel9");
+        mStatus1.setText("jLabel9");
 
-        jLabel10.setText("jLabel10");
+        mPrice1.setText("jLabel10");
 
-        jLabel11.setText("jLabel11");
+        mDays1.setText("jLabel11");
 
-        jLabel12.setText("jLabel12");
+        mTotal1.setText("jLabel12");
 
-        jLabel8.setText("  ");
+        mName1.setText("");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(jLabel8)
-                .addGap(85, 85, 85)
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
-                .addComponent(jLabel10)
-                .addGap(46, 46, 46)
-                .addComponent(jLabel11)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
-                .addComponent(jLabel12))
+                .addContainerGap()
+                .addComponent(mName1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(70, 70, 70)
+                .addComponent(mStatus1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addComponent(mPrice1, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(49, 49, 49)
+                .addComponent(mDays1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(mTotal1, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12)
-                    .addComponent(jLabel8))
+                    .addComponent(mStatus1)
+                    .addComponent(mPrice1)
+                    .addComponent(mDays1)
+                    .addComponent(mTotal1)
+                    .addComponent(mName1))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jLabel18.setText("jLabel18");
+        mName3.setText("jLabel18");
 
-        jLabel19.setText("jLabel19");
+        mStatus3.setText("jLabel19");
 
-        jLabel20.setText("jLabel20");
+        mPrice3.setText("jLabel20");
 
-        jLabel21.setText("jLabel21");
+        mDays3.setText("jLabel21");
 
-        jLabel22.setText("jLabel22");
+        mTotal3.setText("jLabel22");
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -201,38 +199,39 @@ public class WCart extends javax.swing.JFrame {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43)
-                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mName3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(72, 72, 72)
+                .addComponent(mStatus3, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
-                .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mPrice3, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
-                .addComponent(jLabel21)
+                .addComponent(mDays3, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel22))
+                .addComponent(mTotal3, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel18)
-                    .addComponent(jLabel19)
-                    .addComponent(jLabel20)
-                    .addComponent(jLabel21)
-                    .addComponent(jLabel22))
+                    .addComponent(mName3)
+                    .addComponent(mStatus3)
+                    .addComponent(mPrice3)
+                    .addComponent(mDays3)
+                    .addComponent(mTotal3))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        jLabel13.setText("jLabel13");
+        mName2.setText("jLabel13");
 
-        jLabel14.setText("jLabel14");
+        mStatus2.setText("jLabel14");
 
-        jLabel15.setText("jLabel15");
+        mPrice2.setText("jLabel15");
 
-        jLabel16.setText("jLabel16");
+        mDays2.setText("jLabel16");
 
-        jLabel17.setText("jLabel17");
+        mTotal2.setText("jLabel17");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -240,38 +239,39 @@ public class WCart extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(45, 45, 45)
-                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(62, 62, 62)
-                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30)
-                .addComponent(jLabel16)
+                .addComponent(mName2, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(66, 66, 66)
+                .addComponent(mStatus2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addComponent(mPrice2, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(mDays2, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel17))
+                .addComponent(mTotal2, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(jLabel14)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel16)
-                    .addComponent(jLabel17))
+                    .addComponent(mName2)
+                    .addComponent(mStatus2)
+                    .addComponent(mPrice2)
+                    .addComponent(mDays2)
+                    .addComponent(mTotal2))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
-        jLabel24.setText("jLabel24");
+        mName4.setText("jLabel24");
 
-        jLabel25.setText("jLabel25");
+        mStatus4.setText("jLabel25");
 
-        jLabel26.setText("jLabel26");
+        mPrice4.setText("jLabel26");
 
-        jLabel27.setText("jLabel27");
+        mDays4.setText("jLabel27");
 
-        jLabel28.setText("jLabel28");
+        mTotal4.setText("jLabel28");
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -279,26 +279,27 @@ public class WCart extends javax.swing.JFrame {
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(51, 51, 51)
-                .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(mName4, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(71, 71, 71)
+                .addComponent(mStatus4, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(76, 76, 76)
-                .addComponent(jLabel26)
+                .addComponent(mPrice4)
                 .addGap(51, 51, 51)
-                .addComponent(jLabel27)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addComponent(jLabel28))
+                .addComponent(mDays4, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                .addComponent(mTotal4, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel24)
-                    .addComponent(jLabel25)
-                    .addComponent(jLabel26)
-                    .addComponent(jLabel27)
-                    .addComponent(jLabel28))
+                    .addComponent(mName4)
+                    .addComponent(mStatus4)
+                    .addComponent(mPrice4)
+                    .addComponent(mDays4)
+                    .addComponent(mTotal4))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
 
@@ -318,8 +319,7 @@ public class WCart extends javax.swing.JFrame {
                         .addGap(59, 59, 59)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(52, 52, 52)
+                                .addGap(93, 93, 93)
                                 .addComponent(jLabel3)
                                 .addGap(108, 108, 108)
                                 .addComponent(jLabel4)
@@ -335,18 +335,20 @@ public class WCart extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton1))
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jCheckBox2)
-                                        .addComponent(jCheckBox3)
-                                        .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jCheckBox4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jCheckBox2)
+                                            .addComponent(jCheckBox3)
+                                            .addComponent(jCheckBox1, javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jCheckBox4, javax.swing.GroupLayout.Alignment.TRAILING))
+                                        .addComponent(jLabel2))
                                     .addGap(18, 18, 18)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))))
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -402,7 +404,7 @@ public class WCart extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 850, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 873, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -439,6 +441,8 @@ public class WCart extends javax.swing.JFrame {
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -489,33 +493,13 @@ public class WCart extends javax.swing.JFrame {
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
-    private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
-    private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
@@ -523,5 +507,25 @@ public class WCart extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JLabel mDays1;
+    private javax.swing.JLabel mDays2;
+    private javax.swing.JLabel mDays3;
+    private javax.swing.JLabel mDays4;
+    private javax.swing.JLabel mName1;
+    private javax.swing.JLabel mName2;
+    private javax.swing.JLabel mName3;
+    private javax.swing.JLabel mName4;
+    private javax.swing.JLabel mPrice1;
+    private javax.swing.JLabel mPrice2;
+    private javax.swing.JLabel mPrice3;
+    private javax.swing.JLabel mPrice4;
+    private javax.swing.JLabel mStatus1;
+    private javax.swing.JLabel mStatus2;
+    private javax.swing.JLabel mStatus3;
+    private javax.swing.JLabel mStatus4;
+    private javax.swing.JLabel mTotal1;
+    private javax.swing.JLabel mTotal2;
+    private javax.swing.JLabel mTotal3;
+    private javax.swing.JLabel mTotal4;
     // End of variables declaration//GEN-END:variables
 }

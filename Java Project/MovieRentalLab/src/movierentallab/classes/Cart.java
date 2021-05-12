@@ -40,9 +40,6 @@ public class Cart {
     private String status;
     
     private int movieId;
-    
-    
-           
     Connector conn = new Connector();
     
     public int NextReceiptNumber() throws SQLException{
