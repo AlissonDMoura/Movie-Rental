@@ -123,13 +123,7 @@ public class WindowCart extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        messageLabel = new javax.swing.JLabel();
-        labelDelete = new javax.swing.JLabel();
-        labelTitlePanel = new javax.swing.JLabel();
-        labelTypePanel = new javax.swing.JLabel();
-        labelTitlePrice = new javax.swing.JLabel();
-        labelTitleDays = new javax.swing.JLabel();
-        labelTitleTotal = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         deletePanel1 = new javax.swing.JButton();
         labelMovie1 = new javax.swing.JLabel();
@@ -144,13 +138,6 @@ public class WindowCart extends javax.swing.JFrame {
         labelPrice2 = new javax.swing.JLabel();
         labelDays2 = new javax.swing.JLabel();
         labelTotal2 = new javax.swing.JLabel();
-        jPanel5 = new javax.swing.JPanel();
-        deletePanel4 = new javax.swing.JButton();
-        labelMovie4 = new javax.swing.JLabel();
-        labelStatus4 = new javax.swing.JLabel();
-        labelPrice4 = new javax.swing.JLabel();
-        labelDays4 = new javax.swing.JLabel();
-        labelTotal4 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         deletePanel3 = new javax.swing.JButton();
         labelMovie3 = new javax.swing.JLabel();
@@ -158,26 +145,34 @@ public class WindowCart extends javax.swing.JFrame {
         labelPrice3 = new javax.swing.JLabel();
         labelDays3 = new javax.swing.JLabel();
         labelTotal3 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        deletePanel4 = new javax.swing.JButton();
+        labelMovie4 = new javax.swing.JLabel();
+        labelStatus4 = new javax.swing.JLabel();
+        labelPrice4 = new javax.swing.JLabel();
+        labelDays4 = new javax.swing.JLabel();
+        labelTotal4 = new javax.swing.JLabel();
+        labelTitleDays = new javax.swing.JLabel();
+        labelTitleTotal = new javax.swing.JLabel();
+        labelTitlePrice = new javax.swing.JLabel();
+        labelTypePanel = new javax.swing.JLabel();
+        labelTitlePanel = new javax.swing.JLabel();
+        labelDelete = new javax.swing.JLabel();
+        messageLabel = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
         checkOutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        messageLabel.setText("As a guest you pay the full amount and you can be refunded at your DVD return");
-
-        labelDelete.setText("Delete from Cart");
-
-        labelTitlePanel.setText("Movie");
-
-        labelTypePanel.setText("Buying/Renting");
-
-        labelTitlePrice.setText("Price");
-
-        labelTitleDays.setText("Days");
-
-        labelTitleTotal.setText("Total");
+        setMaximumSize(new java.awt.Dimension(860, 550));
+        setMinimumSize(new java.awt.Dimension(860, 550));
+        setPreferredSize(new java.awt.Dimension(860, 550));
+        setResizable(false);
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel3.setMaximumSize(new java.awt.Dimension(958, 7));
+        jPanel3.setPreferredSize(new java.awt.Dimension(864, 78));
+        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         deletePanel1.setText("Delete");
         deletePanel1.setActionCommand("DELETE");
@@ -186,51 +181,25 @@ public class WindowCart extends javax.swing.JFrame {
                 deletePanel1ActionPerformed(evt);
             }
         });
+        jPanel3.add(deletePanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, -1, -1));
 
         labelMovie1.setText(mPanel1);
+        jPanel3.add(labelMovie1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
 
         labelStatus1.setText(mType1);
+        jPanel3.add(labelStatus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
         labelPrice1.setText(Price1);
+        jPanel3.add(labelPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
 
         labelDays1.setText(days1);
+        jPanel3.add(labelDays1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
         labelTotal1.setText(total1);
-
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(deletePanel1)
-                .addGap(55, 55, 55)
-                .addComponent(labelMovie1, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(79, 79, 79)
-                .addComponent(labelStatus1)
-                .addGap(107, 107, 107)
-                .addComponent(labelPrice1)
-                .addGap(84, 84, 84)
-                .addComponent(labelDays1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelTotal1)
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap(36, Short.MAX_VALUE)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deletePanel1)
-                    .addComponent(labelStatus1)
-                    .addComponent(labelPrice1)
-                    .addComponent(labelDays1)
-                    .addComponent(labelTotal1)
-                    .addComponent(labelMovie1))
-                .addGap(34, 34, 34))
-        );
+        jPanel3.add(labelTotal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, -1, -1));
 
         jPanel4.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         deletePanel2.setText("Delete");
         deletePanel2.addActionListener(new java.awt.event.ActionListener() {
@@ -238,103 +207,26 @@ public class WindowCart extends javax.swing.JFrame {
                 deletePanel2ActionPerformed(evt);
             }
         });
+        jPanel4.add(deletePanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, -1, -1));
 
         labelMovie2.setText(mPanel2);
+        jPanel4.add(labelMovie2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
 
         labelStatus2.setText(mType2);
+        jPanel4.add(labelStatus2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
         labelPrice2.setText(Price2);
+        jPanel4.add(labelPrice2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
 
         labelDays2.setText(days2);
+        jPanel4.add(labelDays2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
         labelTotal2.setText(total2);
-
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(deletePanel2)
-                .addGap(57, 57, 57)
-                .addComponent(labelMovie2, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addComponent(labelStatus2)
-                .addGap(112, 112, 112)
-                .addComponent(labelPrice2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelDays2)
-                .addGap(75, 75, 75)
-                .addComponent(labelTotal2)
-                .addContainerGap())
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deletePanel2)
-                    .addComponent(labelMovie2)
-                    .addComponent(labelStatus2)
-                    .addComponent(labelPrice2)
-                    .addComponent(labelDays2)
-                    .addComponent(labelTotal2))
-                .addGap(33, 33, 33))
-        );
-
-        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
-
-        deletePanel4.setText("Delete");
-        deletePanel4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deletePanel4ActionPerformed(evt);
-            }
-        });
-
-        labelMovie4.setText(mPanel4);
-
-        labelStatus4.setText(mType4);
-
-        labelPrice4.setText(Price4);
-
-        labelDays4.setText(days4);
-
-        labelTotal4.setText(total4);
-
-        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
-        jPanel5.setLayout(jPanel5Layout);
-        jPanel5Layout.setHorizontalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(deletePanel4)
-                .addGap(51, 51, 51)
-                .addComponent(labelMovie4, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75)
-                .addComponent(labelStatus4)
-                .addGap(121, 121, 121)
-                .addComponent(labelPrice4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
-                .addComponent(labelDays4)
-                .addGap(77, 77, 77)
-                .addComponent(labelTotal4)
-                .addContainerGap())
-        );
-        jPanel5Layout.setVerticalGroup(
-            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deletePanel4)
-                    .addComponent(labelMovie4)
-                    .addComponent(labelStatus4)
-                    .addComponent(labelPrice4)
-                    .addComponent(labelDays4)
-                    .addComponent(labelTotal4))
-                .addGap(33, 33, 33))
-        );
+        jPanel4.add(labelTotal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, -1, -1));
 
         jPanel6.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel6.setPreferredSize(new java.awt.Dimension(821, 78));
+        jPanel6.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         deletePanel3.setText("Delete");
         deletePanel3.addActionListener(new java.awt.event.ActionListener() {
@@ -342,49 +234,63 @@ public class WindowCart extends javax.swing.JFrame {
                 deletePanel3ActionPerformed(evt);
             }
         });
+        jPanel6.add(deletePanel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, -1, -1));
 
         labelMovie3.setText(mPanel3);
+        jPanel6.add(labelMovie3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, -1, -1));
 
         labelStatus3.setText(mType3);
+        jPanel6.add(labelStatus3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
         labelPrice3.setText(Price3);
+        jPanel6.add(labelPrice3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
 
         labelDays3.setText(days3);
+        jPanel6.add(labelDays3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
         labelTotal3.setText(total3);
+        jPanel6.add(labelTotal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, -1, -1));
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(deletePanel3)
-                .addGap(55, 55, 55)
-                .addComponent(labelMovie3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(74, 74, 74)
-                .addComponent(labelStatus3)
-                .addGap(116, 116, 116)
-                .addComponent(labelPrice3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelDays3)
-                .addGap(76, 76, 76)
-                .addComponent(labelTotal3)
-                .addContainerGap())
-        );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
-                .addContainerGap(38, Short.MAX_VALUE)
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(deletePanel3)
-                    .addComponent(labelMovie3)
-                    .addComponent(labelStatus3)
-                    .addComponent(labelPrice3)
-                    .addComponent(labelDays3)
-                    .addComponent(labelTotal3))
-                .addGap(33, 33, 33))
-        );
+        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel5.setPreferredSize(new java.awt.Dimension(808, 78));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        deletePanel4.setText("Delete");
+        deletePanel4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deletePanel4ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(deletePanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(15, 16, -1, -1));
+
+        labelMovie4.setText(mPanel4);
+        jPanel5.add(labelMovie4, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 20, 173, -1));
+
+        labelStatus4.setText(mType4);
+        jPanel5.add(labelStatus4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
+
+        labelPrice4.setText(Price4);
+        jPanel5.add(labelPrice4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
+
+        labelDays4.setText(days4);
+        jPanel5.add(labelDays4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+
+        labelTotal4.setText(total4);
+        jPanel5.add(labelTotal4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, -1, -1));
+
+        labelTitleDays.setText("Days");
+
+        labelTitleTotal.setText("Total");
+
+        labelTitlePrice.setText("Price");
+
+        labelTypePanel.setText("Buying/Renting");
+
+        labelTitlePanel.setText("Movie");
+
+        labelDelete.setText("Delete from Cart");
+
+        messageLabel.setText("As a guest you pay the full amount and you can be refunded at your DVD return");
 
         backButton.setText("BACK");
         backButton.setToolTipText("");
@@ -401,122 +307,83 @@ public class WindowCart extends javax.swing.JFrame {
             }
         });
 
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(labelDelete)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(messageLabel))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(labelTitlePanel)
+                        .addGap(121, 121, 121)
+                        .addComponent(labelTypePanel)
+                        .addGap(110, 110, 110)
+                        .addComponent(labelTitleDays)
+                        .addGap(109, 109, 109)
+                        .addComponent(labelTitlePrice)
+                        .addGap(95, 95, 95)
+                        .addComponent(labelTitleTotal)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(96, 96, 96)
+                .addComponent(backButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(checkOutButton)
+                .addGap(100, 100, 100))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(11, 11, 11)
+                .addComponent(messageLabel)
+                .addGap(23, 23, 23)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTitleDays)
+                    .addComponent(labelTypePanel)
+                    .addComponent(labelTitlePanel)
+                    .addComponent(labelDelete)
+                    .addComponent(labelTitleTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTitlePrice))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 69, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(checkOutButton)
+                    .addComponent(backButton))
+                .addGap(25, 25, 25))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(70, 70, 70)
-                .addComponent(labelDelete)
-                .addGap(68, 68, 68)
-                .addComponent(labelTitlePanel)
-                .addGap(108, 108, 108)
-                .addComponent(labelTypePanel)
-                .addGap(109, 109, 109)
-                .addComponent(labelTitlePrice)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(labelTitleDays)
-                .addGap(101, 101, 101)
-                .addComponent(labelTitleTotal)
-                .addGap(90, 90, 90))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(backButton)
-                .addGap(701, 701, 701)
-                .addComponent(checkOutButton)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(messageLabel)
-                        .addGap(202, 202, 202))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(55, 55, 55))))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(37, 37, 37)
-                .addComponent(messageLabel)
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelDelete)
-                    .addComponent(labelTitlePanel)
-                    .addComponent(labelTypePanel)
-                    .addComponent(labelTitleDays)
-                    .addComponent(labelTitleTotal)
-                    .addComponent(labelTitlePrice))
-                .addGap(20, 20, 20)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(backButton)
-                    .addComponent(checkOutButton))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void deletePanel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePanel1ActionPerformed
-        try {
-            cart.RemoveFromCart(1);
-        } catch (SQLException ex) {Logger.getLogger(WindowCart.class.getName()).log(Level.SEVERE, null, ex);}
-        
-        this.dispose();
-        WindowCart wCart = new WindowCart(window);
-        wCart.setVisible(true);
-        wCart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        wCart.setLocationRelativeTo(null);        
-    }//GEN-LAST:event_deletePanel1ActionPerformed
-
-    private void deletePanel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePanel2ActionPerformed
-        try {
-            cart.RemoveFromCart(2);
-        } catch (SQLException ex) {Logger.getLogger(WindowCart.class.getName()).log(Level.SEVERE, null, ex);}
-        
-        this.dispose();
-        WindowCart wCart = new WindowCart(window);
-        wCart.setVisible(true);
-        wCart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        wCart.setLocationRelativeTo(null);
-    }//GEN-LAST:event_deletePanel2ActionPerformed
-
-    private void deletePanel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePanel3ActionPerformed
-        try {
-            cart.RemoveFromCart(3);
-        } catch (SQLException ex) {Logger.getLogger(WindowCart.class.getName()).log(Level.SEVERE, null, ex);}
-        
-        this.dispose();
-        WindowCart wCart = new WindowCart(window);
-        wCart.setVisible(true);
-        wCart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        wCart.setLocationRelativeTo(null);
-    }//GEN-LAST:event_deletePanel3ActionPerformed
-
-    private void deletePanel4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePanel4ActionPerformed
-        try {
-            cart.RemoveFromCart(4);
-        } catch (SQLException ex) {Logger.getLogger(WindowCart.class.getName()).log(Level.SEVERE, null, ex);}
-        
-        this.dispose();
-        WindowCart wCart = new WindowCart(window);
-        wCart.setVisible(true);
-        wCart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        wCart.setLocationRelativeTo(null);
-    }//GEN-LAST:event_deletePanel4ActionPerformed
 
     private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
 
@@ -536,6 +403,54 @@ public class WindowCart extends javax.swing.JFrame {
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_checkOutButtonActionPerformed
+
+    private void deletePanel4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePanel4ActionPerformed
+        try {
+            cart.RemoveFromCart(4);
+        } catch (SQLException ex) {Logger.getLogger(WindowCart.class.getName()).log(Level.SEVERE, null, ex);}
+
+        this.dispose();
+        WindowCart wCart = new WindowCart(window);
+        wCart.setVisible(true);
+        wCart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        wCart.setLocationRelativeTo(null);
+    }//GEN-LAST:event_deletePanel4ActionPerformed
+
+    private void deletePanel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePanel3ActionPerformed
+        try {
+            cart.RemoveFromCart(3);
+        } catch (SQLException ex) {Logger.getLogger(WindowCart.class.getName()).log(Level.SEVERE, null, ex);}
+
+        this.dispose();
+        WindowCart wCart = new WindowCart(window);
+        wCart.setVisible(true);
+        wCart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        wCart.setLocationRelativeTo(null);
+    }//GEN-LAST:event_deletePanel3ActionPerformed
+
+    private void deletePanel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePanel2ActionPerformed
+        try {
+            cart.RemoveFromCart(2);
+        } catch (SQLException ex) {Logger.getLogger(WindowCart.class.getName()).log(Level.SEVERE, null, ex);}
+
+        this.dispose();
+        WindowCart wCart = new WindowCart(window);
+        wCart.setVisible(true);
+        wCart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        wCart.setLocationRelativeTo(null);
+    }//GEN-LAST:event_deletePanel2ActionPerformed
+
+    private void deletePanel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePanel1ActionPerformed
+        try {
+            cart.RemoveFromCart(1);
+        } catch (SQLException ex) {Logger.getLogger(WindowCart.class.getName()).log(Level.SEVERE, null, ex);}
+
+        this.dispose();
+        WindowCart wCart = new WindowCart(window);
+        wCart.setVisible(true);
+        wCart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        wCart.setLocationRelativeTo(null);
+    }//GEN-LAST:event_deletePanel1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -579,6 +494,7 @@ public class WindowCart extends javax.swing.JFrame {
     private javax.swing.JButton deletePanel2;
     private javax.swing.JButton deletePanel3;
     private javax.swing.JButton deletePanel4;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
