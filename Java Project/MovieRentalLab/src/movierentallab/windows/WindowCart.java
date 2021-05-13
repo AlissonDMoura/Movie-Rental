@@ -75,7 +75,9 @@ public class WindowCart extends javax.swing.JFrame {
         this.idays1 = cart.PanelDays(1);
         this.days1 = Integer.toString(idays1);
         ftotal1 = this.idays1 * this.fPrice1;
+        if(!days1.equals("0")){
         total1 = Float.toString(ftotal1);
+        } else{ total1 = Price1;}
         //All Labels for Panel 1
         
         this.mPanel2 = cart.PanelMovieName(2); 
@@ -86,6 +88,10 @@ public class WindowCart extends javax.swing.JFrame {
         this.days2 = Integer.toString(idays2);
         ftotal2 = this.idays2 * this.fPrice2;
         total2 = Float.toString(ftotal2);
+        if(!days2.equals("0")){
+        total2 = Float.toString(ftotal2);
+        } else{ total2 = Price1;}
+        
         //All Labels for Panel 2
         
         this.mPanel3 = cart.PanelMovieName(3);        
@@ -96,6 +102,9 @@ public class WindowCart extends javax.swing.JFrame {
         this.days3 = Integer.toString(idays3);
         ftotal3 = this.idays3 * this.fPrice3;
         total3 = Float.toString(ftotal3);
+        if(!days3.equals("0")){
+        total3 = Float.toString(ftotal3);
+        } else{ total3 = Price3;}
         //All Labels for Panel 3
         
         this.mPanel4 = cart.PanelMovieName(4);        
@@ -106,6 +115,9 @@ public class WindowCart extends javax.swing.JFrame {
         this.days4 = Integer.toString(idays4);
         ftotal4 = this.idays4 * this.fPrice4;
         total4 = Float.toString(ftotal4);
+        if(!days4.equals("0")){
+        total4 = Float.toString(ftotal4);
+        } else{ total4 = Price4;}
         //All Labels for Panel 4
         
         } catch (SQLException ex) {
@@ -163,9 +175,7 @@ public class WindowCart extends javax.swing.JFrame {
         checkOutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(860, 550));
         setMinimumSize(new java.awt.Dimension(860, 550));
-        setPreferredSize(new java.awt.Dimension(860, 550));
         setResizable(false);
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
@@ -190,10 +200,10 @@ public class WindowCart extends javax.swing.JFrame {
         jPanel3.add(labelStatus1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
         labelPrice1.setText(Price1);
-        jPanel3.add(labelPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
+        jPanel3.add(labelPrice1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
         labelDays1.setText(days1);
-        jPanel3.add(labelDays1, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+        jPanel3.add(labelDays1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, -1));
 
         labelTotal1.setText(total1);
         jPanel3.add(labelTotal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, -1, -1));
@@ -216,10 +226,10 @@ public class WindowCart extends javax.swing.JFrame {
         jPanel4.add(labelStatus2, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
         labelPrice2.setText(Price2);
-        jPanel4.add(labelPrice2, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
+        jPanel4.add(labelPrice2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
 
         labelDays2.setText(days2);
-        jPanel4.add(labelDays2, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+        jPanel4.add(labelDays2, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 20, -1, -1));
 
         labelTotal2.setText(total2);
         jPanel4.add(labelTotal2, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, -1, -1));
@@ -243,10 +253,10 @@ public class WindowCart extends javax.swing.JFrame {
         jPanel6.add(labelStatus3, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
         labelPrice3.setText(Price3);
-        jPanel6.add(labelPrice3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
+        jPanel6.add(labelPrice3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 30, -1, -1));
 
         labelDays3.setText(days3);
-        jPanel6.add(labelDays3, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+        jPanel6.add(labelDays3, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
 
         labelTotal3.setText(total3);
         jPanel6.add(labelTotal3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, -1, -1));
@@ -270,10 +280,10 @@ public class WindowCart extends javax.swing.JFrame {
         jPanel5.add(labelStatus4, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 20, -1, -1));
 
         labelPrice4.setText(Price4);
-        jPanel5.add(labelPrice4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 20, -1, -1));
+        jPanel5.add(labelPrice4, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 30, -1, -1));
 
         labelDays4.setText(days4);
-        jPanel5.add(labelDays4, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 20, -1, -1));
+        jPanel5.add(labelDays4, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
 
         labelTotal4.setText(total4);
         jPanel5.add(labelTotal4, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 20, -1, -1));
@@ -347,13 +357,14 @@ public class WindowCart extends javax.swing.JFrame {
                 .addGap(11, 11, 11)
                 .addComponent(messageLabel)
                 .addGap(23, 23, 23)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelTitleDays)
-                    .addComponent(labelTypePanel)
-                    .addComponent(labelTitlePanel)
-                    .addComponent(labelDelete)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(labelTitleTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelTitlePrice))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(labelTitleDays)
+                        .addComponent(labelTypePanel)
+                        .addComponent(labelTitlePanel)
+                        .addComponent(labelDelete)
+                        .addComponent(labelTitlePrice)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)

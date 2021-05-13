@@ -26,7 +26,7 @@ public class MovieRentalLab extends JFrame {
      */
     public static void main(String[] args) throws SQLException {
         
-        System.out.println("Message");
+        
             
         JFrame window = new JFrame("Xtra-Vision");
         window.setBounds(0, 0, 860, 550);
@@ -40,7 +40,9 @@ public class MovieRentalLab extends JFrame {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         
-        //Cart lala = new Cart (); Tester
+        Cart lala = new Cart ();
+        System.out.println(lala.NewUser("1234112341234", "E@mail", "aName", "a Password", 123, "99/11"));
+        
         
         
         

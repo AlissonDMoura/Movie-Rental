@@ -105,22 +105,18 @@ public class Cart {
                     ResultSet rs12 = selector12.executeQuery(query12);
                     
                     if(rs.next()){                        
-                        this.Item1 = rs.getInt(1);}                    
-                    
+                        this.Item1 = rs.getInt(1);}
                     if(rs2.next()){                        
-                        this.Type1 = rs2.getString(1);} 
-                    
+                        this.Type1 = rs2.getString(1);}
                     if(rs9.next()){
                         this.day1 = rs9.getInt(1);}
                     //CART POSITION ONE
                     
                     
                     if(rs3.next()){                        
-                        this.Item2 = rs3.getInt(1);}                    
-                    
+                        this.Item2 = rs3.getInt(1);}
                     if(rs4.next()){                        
                         this.Type2 = rs4.getString(1);}
-                    
                     if(rs10.next()){
                         this.day2 = rs10.getInt(1);}
                     //CART POSITION two                    
@@ -128,10 +124,8 @@ public class Cart {
                     
                     if(rs5.next()){                        
                         this.Item3 = rs5.getInt(1);}
-                    
                     if(rs6.next()){
                         this.Type3 = rs6.getString(1);}
-                    
                     if(rs11.next()){
                         this.day3 = rs11.getInt(1);}
                     //CART POSITION three
@@ -139,10 +133,8 @@ public class Cart {
                     
                     if(rs7.next()){
                         this.Item4 = rs7.getInt(1);}
-                    
                     if(rs8.next()){
                         this.Type4 = rs8.getString(1);}
-                    
                     if(rs12.next()){
                         this.day4 = rs12.getInt(1);}
                     //CART POSITION four
@@ -390,8 +382,6 @@ public class Cart {
         String day;
         int movieId;
         
-        
-        
         if(i == 1){
         type = "Type1";
         item = "Item1";
@@ -422,7 +412,6 @@ public class Cart {
     
     public String PanelMovieName(int PanelNumber) throws SQLException{
         int i = PanelNumber; 
-        System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA HEREEEEEEEEEEEEEEEEEEEEEEEEEEE i = " + i);
         int movieId = 0;
         String item;
         int j = MyCartNo();
@@ -544,9 +533,9 @@ public class Cart {
                         return pRent;}}
                     
                     else { return 0;}
-    }//Reads the movie from a certain position in the cart, reads its pricing and returns the pricing for the type of purchase (Rent or Buy) - Modified
+    }//Reads the movie from a certain position in the cart, reads its pricing and returns the pricing for the type of purchase (Rent or Buy) - TESTED
     
-      public int PanelDays(int PanelNumber) throws SQLException{
+    public int PanelDays(int PanelNumber) throws SQLException{
         int i = PanelNumber; 
         String days;
         int j = MyCartNo();
@@ -568,5 +557,80 @@ public class Cart {
                     day = rs.getInt(1);
                     System.out.println("movie has " + day + " Days ");}                    
                     
-                    return day;}
+                    return day;}// Reads the DB for an certain movie positioned in the Cart, return the amount of days in the Table. - TESTED
+    
+    public void CartRented(int CartNo){
+        
+        
+        
+    }    
+    
+    public boolean NewUser(String CreditCard, String Name, String Email, String Password, int CCV, String ExpDate) throws SQLException{
+        
+            boolean isNewUser;
+            
+            Type1 = null;
+            Type2 = null;
+            Type3 = null;
+            Type4 = null;
+            
+            String state;
+            
+            String query = "Select name FROM users WHERE cCard ='"+CreditCard+"';";
+            String query2 = "INSERT INTO users (`cCard`, `e-mail`, `name`, `password`, `CCV`, `expDate`) VALUES ('"+CreditCard+"', '"+Name+"', '"+ Email+"', '"+Password+"', "+ CCV +", '"+ ExpDate + "');";
+            
+            
+            String query3 = "Select Type1 from cart where receipt = " + MyCartNo()+";";
+            String query4 = "Select Type2 from cart where receipt = " + MyCartNo()+";";
+            String query5 = "Select Type3 from cart where receipt = " + MyCartNo()+";";
+            String query6 = "Select Type4 from cart where receipt = " + MyCartNo()+";";
+            
+            
+                    
+            Statement stmt = conn.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+                            
+            
+            if(rs.next()){
+                isNewUser = false;}
+            else {
+                isNewUser = true;
+            Statement stmt2 = conn.getConnection().createStatement();
+            Statement stmt3 = conn.getConnection().createStatement();
+            Statement stmt4 = conn.getConnection().createStatement();
+            Statement stmt5 = conn.getConnection().createStatement();
+            Statement stmt6 = conn.getConnection().createStatement();
+            
+            ResultSet rs3 = stmt3.executeQuery(query3);//Type1
+            ResultSet rs4 = stmt4.executeQuery(query4);//Type2
+            ResultSet rs5 = stmt5.executeQuery(query5);//Type3
+            ResultSet rs6 = stmt6.executeQuery(query6);//Type4
+            
+            if(rs3.next()){                        
+                        Type1 = rs3.getString(1);}
+            if(rs4.next()){                        
+                        Type2 = rs4.getString(1);}
+            if(rs5.next()){
+                        Type3 = rs5.getString(1);}
+            if(rs5.next()){
+                        Type4 = rs6.getString(1);}
+                           
+            if( Type1.equals("RENTED") || Type2.equals("RENTED") || Type3.equals("RENTED") || Type4.equals("RENTED") ){
+            state = "due";
+            stmt.execute("Update cart set status = '"+ state +"', cCard = '"+ CreditCard +"';");
+            stmt2.execute(query2);}
+            
+            else {
+            state = "Finished";
+            stmt.execute("Update cart set status = '"+ state +"', cCard = '"+ CreditCard +"';");}            
+            stmt2.execute(query2);
+            
+            }                        
+        
+        return isNewUser;
+    } // Checks if the CC is already in the system with a name, return negative if there's already a name for this card or false if the user is new. - TESTED
+    
+    
+    
+    
 }
