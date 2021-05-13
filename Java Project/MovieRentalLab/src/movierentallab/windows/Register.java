@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import movierentallab.classes.Cart;
 
 /**
  *
@@ -16,6 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class Register extends javax.swing.JFrame implements ActionListener {
     private JFrame window;
+    
+    Cart cart = new Cart();
 
     /**
      * Creates new form Register
@@ -25,6 +28,8 @@ public class Register extends javax.swing.JFrame implements ActionListener {
         this.setTitle("Register Account");
         this.setLocationRelativeTo(null);   
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
+        
         
         initComponents();
     }
@@ -264,7 +269,7 @@ public class Register extends javax.swing.JFrame implements ActionListener {
           
           
           if(fullName.isEmpty()){
-          JOptionPane.showMessageDialog(this, "Your Full Name field is empty, Please insert your full name");    
+          JOptionPane.showMessageDialog(this, "Your Full Name field is empty, Please insert your name");    
           }else{
             c1 = true;    
           }
@@ -298,35 +303,29 @@ public class Register extends javax.swing.JFrame implements ActionListener {
           }
           
           if(ccv.length() != 3){
-           JOptionPane.showMessageDialog(this, "Your CVV is wrong, Please insert 3 digits");               
+           
+           JOptionPane.showMessageDialog(this, "Your CVV is wrong, Please insert 3 NUMBERS");               
            }else{
             c6 = true;    
           }
           
            if(c1 == true && c2 == true && c3 == true && c4 == true && c5 == true && c6 == true){
-           int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued. \n\n  Thank You for using Xtra-Vision", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-     
-            if(input == JOptionPane.OK_OPTION)
-                {
-
-                 this.dispose();
-                }      
-           
+               
+               int iccv = Integer.parseInt(ccv);
+               
+               if(!cart.NewUser(cCard, fullName, email, pass, iccv , expDate)){
+                   int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued. \n\n  Thank You for using Xtra-Vision", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+                 if(input == JOptionPane.OK_OPTION){
+                     this.dispose();    }                    }
+               else{
+           JOptionPane.showMessageDialog(this, "Account already registered for this Credit Card, please try a new one or login.");}
            }            
             
             
         }catch(Exception e){
-        JOptionPane.showMessageDialog(this, "Something is wrong, error: " + e.getMessage());   
-        }
+        JOptionPane.showMessageDialog(this, "Something is wrong, error: " + e.getMessage());           }
         
-        
-        
-        
-        
-        
-        
-                           
-
+    
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MousePressed

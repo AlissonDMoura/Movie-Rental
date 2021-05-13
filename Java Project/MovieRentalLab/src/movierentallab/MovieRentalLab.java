@@ -44,11 +44,8 @@ public class MovieRentalLab extends JFrame {
         window.setVisible(true);
         
         Cart lala = new Cart ();
-        try {
-            System.out.println(lala.Return());
-        } catch (ParseException ex) {
-            Logger.getLogger(MovieRentalLab.class.getName()).log(Level.SEVERE, null, ex);
-        }
+      
+        System.out.println(lala.EnterAsGuest("1234123412341234","E@Mail", 123, "12/11"));
         
         
         
