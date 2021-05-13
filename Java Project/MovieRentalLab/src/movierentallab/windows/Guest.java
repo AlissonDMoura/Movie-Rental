@@ -7,6 +7,7 @@ package movierentallab.windows;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -17,8 +18,9 @@ import javax.swing.JOptionPane;
 public class Guest extends javax.swing.JFrame implements ActionListener {
     private JFrame window;
 
+
     /**
-     * Creates new form GUest
+     * Creates new form Guest
      */
     public Guest(JFrame window) {
         this.window = window;
@@ -27,6 +29,7 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         initComponents();
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -45,6 +48,10 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
         jTextField4 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,7 +61,7 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
         jLabel1.setText("Please fill all fields");
 
         jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.setText("E-mail");
+        String email = jTextField1.getText();
         jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTextField1MousePressed(evt);
@@ -62,7 +69,6 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
         });
 
         jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.setText("Credit Card Number");
         jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTextField2MousePressed(evt);
@@ -70,7 +76,6 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
         });
 
         jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.setText("Expiry Date");
         jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTextField3MousePressed(evt);
@@ -83,10 +88,14 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
         });
 
         jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.setText("CVV");
         jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jTextField4MousePressed(evt);
+            }
+        });
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
             }
         });
 
@@ -104,6 +113,14 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
             }
         });
 
+        jLabel2.setText("E-mail");
+
+        jLabel3.setText("Credit Card Number");
+
+        jLabel4.setText("Expiry Date");
+
+        jLabel5.setText("CVV");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -111,42 +128,61 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(362, 362, 362)
+                        .addGap(49, 49, 49)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(378, 378, 378)
                         .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(310, 310, 310)
+                        .addGap(160, 160, 160)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(74, 74, 74)
+                                .addComponent(jLabel2)
+                                .addGap(41, 41, 41))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(18, 18, 18)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.DEFAULT_SIZE, 104, Short.MAX_VALUE))))
+                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addComponent(jButton1)))
-                .addContainerGap(310, Short.MAX_VALUE))
+                        .addGap(219, 219, 219)
+                        .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(jLabel5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(240, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(371, 371, 371))
+                .addGap(370, 370, 370))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(54, 54, 54)
                 .addComponent(jLabel1)
                 .addGap(41, 41, 41)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(53, 53, 53)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addGap(45, 45, 45)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(64, 64, 64)
                 .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(41, 41, 41))
         );
@@ -165,43 +201,97 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField3ActionPerformed
 
+    
+    // Action Perfomed below: validate the user inputs and create pop ups for the possible errors
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued.", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-     
-if(input == JOptionPane.OK_OPTION)
-{
-    System.out.println("oi");
-
-        
+       try{
        
-}      
+       String email = jTextField1.getText().trim();
+       String cCard = jTextField2.getText().trim();
+       String expDate = jTextField3.getText().trim();
+       String ccv = jTextField4.getText().trim();
+       boolean c1  = false;
+       boolean c2  = false;
+       boolean c3  = false;
+       boolean c4 = false;
+       
+       
+           if(email.isEmpty()){
+            JOptionPane.showMessageDialog(this, "Your Email field is empty, Please insert your email");     
+           }else{
+             c1 = true;  
+           }
+          
+           if(cCard.length() != 16){
+               JOptionPane.showMessageDialog(this, "Your Credit Card number is wrong, Please insert 16 digits");               
+           }else{
+               c2 = true;
+           }
+           
+           if(expDate.length() != 5){
+               JOptionPane.showMessageDialog(this, "Your Expiry Date is wrong, Please insert 5 digits");               
+           } else{
+              c3 = true;  
+           }
+           if(ccv.length() != 3){
+               JOptionPane.showMessageDialog(this, "Your CVV is wrong, Please insert 3 digits");               
+           } else{
+               c4 = true; 
+               
+           }  
+           
+           
+           
+           if(c1 == true && c2 == true && c3 == true && c4 == true){
+               
+            int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued. \n\n  Thank You for using Xtra-Vision", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+     
+            if(input == JOptionPane.OK_OPTION)
+                {
+                this.dispose();
+                }   
+           
+      
+       }
+        
+      
+       
+       }
+       catch(Exception e){
+       JOptionPane.showMessageDialog(this, "Something is wrong, error: " + e.getMessage());
+       }
+        
+        
+        
+ 
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    // Mouse Pressed below: set the text blank when the user click in the text field
     private void jTextField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MousePressed
-        jTextField1.setText("");
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1MousePressed
+      jTextField1.setText("");
 
+     
+    }//GEN-LAST:event_jTextField1MousePressed
+    // Mouse Pressed below: set the text blank when the user click in the text field
     private void jTextField2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MousePressed
         // TODO add your handling code here:
         jTextField2.setText("");
     }//GEN-LAST:event_jTextField2MousePressed
-
+    // Mouse Pressed below: set the text blank when the user click in the text field
     private void jTextField3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MousePressed
         // TODO add your handling code here:
         jTextField3.setText("");
     }//GEN-LAST:event_jTextField3MousePressed
-
+    // Mouse Pressed below: set the text blank when the user click in the text field
     private void jTextField4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MousePressed
         // TODO add your handling code here:
         jTextField4.setText("");
     }//GEN-LAST:event_jTextField4MousePressed
-
+    // Action Performed below: the button goes back to the last frame
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
         Account sMovie = new Account(window);
@@ -210,6 +300,10 @@ if(input == JOptionPane.OK_OPTION)
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -251,6 +345,10 @@ if(input == JOptionPane.OK_OPTION)
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

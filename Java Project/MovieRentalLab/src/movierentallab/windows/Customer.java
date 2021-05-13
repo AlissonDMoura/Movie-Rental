@@ -54,7 +54,6 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
 
         jLabel2.setText("Password: ");
 
-        jPasswordField1.setText("jPasswordField1");
         jPasswordField1.setToolTipText("");
         jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
@@ -131,28 +130,46 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    //Action Performed below: validate the user input and create pop ups
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        try{
+        String email = jTextField1.getText().trim();
+        String pass = new String(jPasswordField1.getPassword());
 
-int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued.", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-     
-if(input == JOptionPane.OK_OPTION)
-{
-    System.out.println("oi");
-
-        
-       
-}      
             
+            System.out.println(email);
+            System.out.println(pass);
+            
+            if(email.isEmpty() || pass.isEmpty()){
+            JOptionPane.showMessageDialog(this, "The field is empty, Please insert your email and password");     
+              
+            }else{
+                int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued. \n\n  Thank You for using Xtra-Vision", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+     
+                if(input == JOptionPane.OK_OPTION)
+                {
+                 this.dispose();
+                } 
+                
+            }
+    
+    
+    
+    
+    
+    
+}catch (Exception e){
+    JOptionPane.showMessageDialog(this, "Something is wrong, error: " + e.getMessage());
+}       
+       
         
     }//GEN-LAST:event_jButton1ActionPerformed
-
+    //Password Field below: set the field blank when the user click in the field and for security it hides the user password
     private void jPasswordField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MousePressed
         // TODO add your handling code here:
         jPasswordField1.setText("");
     }//GEN-LAST:event_jPasswordField1MousePressed
-
+    // Action Performed below: the button goes back to the last frame
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.dispose();
         Account sMovie = new Account(window);
