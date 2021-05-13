@@ -15,6 +15,8 @@ import java.text.SimpleDateFormat;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;    
 import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -23,6 +25,8 @@ import java.util.Calendar;
 
 
 public class Cart {
+    
+    private String specialQuery;
     
     private int receipt;
     private int clientId;
@@ -631,7 +635,7 @@ public class Cart {
         Date today = new Date();
         
         
-        return df.format(today);}//Returns today's date in String type. - 
+        return df.format(today);}//Returns today's date as a String. - 
     
     public String Return() throws SQLException, ParseException{
        int cartNo = MyCartNo();
@@ -1105,14 +1109,7 @@ public class Cart {
            return return3;}
        else if (smaller == day4){
            return return4;}
-       else {return null;}     }
-       
-       
-                  
-       
-       
-       
-       
+       else {return null;}     }// Select the amount of days in each Cart position. Save them into ints. Select the smaller int that is not equal to zero. add this int into today's Date and return the closest due day of return as a String
        
        
        
@@ -1132,27 +1129,29 @@ public class Cart {
             
             String query = "Select name FROM users WHERE cCard ='"+CreditCard+"';";
             String query2 = "INSERT INTO users (`cCard`, `e-mail`, `name`, `password`, `CCV`, `expDate`) VALUES ('"+CreditCard+"', '"+Name+"', '"+ Email+"', '"+Password+"', "+ CCV +", '"+ ExpDate + "');";
-            String query3 = "Update cart set status = '" + cartState + "', date = '"+Today()+"' Where receipt = "+ MyCartNo() +";";
+            
+            
+        try {specialQuery = "Update cart set status = '" + cartState + "', date = '"+Today()+"', return ='" + Return()+"' Where receipt = "+ MyCartNo() +";";
+        } catch (ParseException ex) {Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);}
             
             Statement stmt = conn.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(query);
+            stmt.close();
                             
+            Statement stmt2 = conn.getConnection().createStatement();
+            Statement stmt3 = conn.getConnection().createStatement();
+            
             
             if(rs.next()){
-                isNewUser = false;
-                
-            }
-            else if (cartState.equals("Due")) {
-                
-                
-                
-            }
-                return isNewUser; 
+                isNewUser = false;}
+            else{
+                isNewUser = true;
+                stmt2.execute(query2);
+                stmt2.close();    
+                stmt3.execute(specialQuery);}
             
-                                  
-        
-        
-    } // Checks if the CC is already in the system with a name, return negative if there's already a name for this card or false if the user is new. - TESTED
+            return isNewUser; 
+            } // Checks if the CC is already in the system with a name, return negative if there's already a name for this card or false if the user is new. - TESTED
     
     
     
