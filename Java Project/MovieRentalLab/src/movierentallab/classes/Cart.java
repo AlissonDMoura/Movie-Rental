@@ -5,9 +5,16 @@
  */
 package movierentallab.classes;
 
+import java.util.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.format.DateTimeFormatter;  
+import java.time.LocalDateTime;    
+import java.util.Calendar;
 
 /**
  *
@@ -29,6 +36,13 @@ public class Cart {
     private int day3;
     private int day4;
     
+    private String return1;
+    private String return2;
+    private String return3;
+    private String return4;
+    
+    private int smaller;
+    
     private int day;
         
     private String Type1;
@@ -39,6 +53,7 @@ public class Cart {
     private String priceRent = null;
     
     private boolean cartFull;
+    private boolean isNewUser;
     
     private float pBuy;
     private float pRent;
@@ -313,6 +328,7 @@ public class Cart {
                     
                     if(rs.next()){
                     movieId = rs.getInt(1);    
+                    
                     }
                     
         return movieId;
@@ -340,7 +356,7 @@ public class Cart {
                             cartFull = true;}
                     } else{
                         System.out.println("it doest have a next, Error close to line 340, resultSet String: " +rs.getString(1));}
-                        
+                    
                     return cartFull;} //Organizes the Cart, and check if there is any item on last space. returns true for cartFull if the cart is full, or false if it ain't- TESTED
     
     public void MovieAddIntoCart(String Sold, String mName) throws SQLException{
@@ -356,6 +372,8 @@ public class Cart {
                     stmt.execute("UPDATE movie SET status = '" + state +"' WHERE (idMovie = "+ movieId +");");
                     stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "' WHERE receipt ="+ MyCartNo()+";");
                     
+                    
+                    
     } //Organize the cart, add a movie into it, change movie state As Sold- TESTED
     
     public void MovieAddIntoCart(String Rented, String mName, int Days) throws SQLException{
@@ -370,6 +388,8 @@ public class Cart {
                     Statement stmt = conn.getConnection().createStatement();
                     stmt.execute("UPDATE movie SET status = '" + state +"' WHERE (idMovie = "+ movieId +");");
                     stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "', Days4 = "+ dayN + " WHERE receipt = "+ MyCartNo()+";");
+                    
+                    
     
     }//Organize the cart, add a movie into it, change movie state As rented and update days as well as other informations in cart and movie Tables-  TESTED
                     
@@ -408,6 +428,8 @@ public class Cart {
                                 stmt.execute("UPDATE cart SET "+ item + " = 0, " + type +" = null, "+ day +" = 0 WHERE receipt ="+ MyCartNo()+ ";");
                                 stmt.execute("UPDATE movie SET status = 'In stock' WHERE idMovie = "+ this.movieId +";");
     CartOrganizer(MyCartNo());
+    
+    
     } // Remove the item displayed into One of the panels, and update the DB movie and cart tables. Then it organizes the cart. - Modified
     
     public String PanelMovieName(int PanelNumber) throws SQLException{
@@ -445,12 +467,16 @@ public class Cart {
                     ResultSet rs2 = selector2.executeQuery(query2);// Gets Movie Title
                     if(rs2.next()){
                     title = rs2.getString(1);
+                    
                     System.out.println("movie Name is " + title);}                    
                      
                      return title;}
                     else { 
                         title = "empty";
-                        return title;}
+                        return title;
+                    }
+                    
+                    
     } //Reads the movie ID from a certain position in the cart and returns the movie Title. - TESTED
 
     public String PanelType(int PanelNumber) throws SQLException{
@@ -559,52 +585,30 @@ public class Cart {
                     
                     return day;}// Reads the DB for an certain movie positioned in the Cart, return the amount of days in the Table. - TESTED
     
-    public void CartRented(int CartNo){
+    public String CartState(int CartNo) throws SQLException{
         
-        
-        
-    }    
-    
-    public boolean NewUser(String CreditCard, String Name, String Email, String Password, int CCV, String ExpDate) throws SQLException{
-        
-            boolean isNewUser;
-            
-            Type1 = null;
-            Type2 = null;
-            Type3 = null;
-            Type4 = null;
-            
             String state;
-            
-            String query = "Select name FROM users WHERE cCard ='"+CreditCard+"';";
-            String query2 = "INSERT INTO users (`cCard`, `e-mail`, `name`, `password`, `CCV`, `expDate`) VALUES ('"+CreditCard+"', '"+Name+"', '"+ Email+"', '"+Password+"', "+ CCV +", '"+ ExpDate + "');";
-            
-            
+        
             String query3 = "Select Type1 from cart where receipt = " + MyCartNo()+";";
             String query4 = "Select Type2 from cart where receipt = " + MyCartNo()+";";
             String query5 = "Select Type3 from cart where receipt = " + MyCartNo()+";";
             String query6 = "Select Type4 from cart where receipt = " + MyCartNo()+";";
             
             
-                    
-            Statement stmt = conn.getConnection().createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-                            
             
-            if(rs.next()){
-                isNewUser = false;}
-            else {
-                isNewUser = true;
-            Statement stmt2 = conn.getConnection().createStatement();
             Statement stmt3 = conn.getConnection().createStatement();
             Statement stmt4 = conn.getConnection().createStatement();
             Statement stmt5 = conn.getConnection().createStatement();
             Statement stmt6 = conn.getConnection().createStatement();
             
             ResultSet rs3 = stmt3.executeQuery(query3);//Type1
+            conn.getConnection().close();
             ResultSet rs4 = stmt4.executeQuery(query4);//Type2
+            conn.getConnection().close();
             ResultSet rs5 = stmt5.executeQuery(query5);//Type3
+            conn.getConnection().close();
             ResultSet rs6 = stmt6.executeQuery(query6);//Type4
+            conn.getConnection().close();
             
             if(rs3.next()){                        
                         Type1 = rs3.getString(1);}
@@ -616,18 +620,538 @@ public class Cart {
                         Type4 = rs6.getString(1);}
                            
             if( Type1.equals("RENTED") || Type2.equals("RENTED") || Type3.equals("RENTED") || Type4.equals("RENTED") ){
-            state = "due";
-            stmt.execute("Update cart set status = '"+ state +"', cCard = '"+ CreditCard +"';");
-            stmt2.execute(query2);}
-            
+            state = "Due"; }
             else {
-            state = "Finished";
-            stmt.execute("Update cart set status = '"+ state +"', cCard = '"+ CreditCard +"';");}            
-            stmt2.execute(query2);
+            state = "Finished";}
             
-            }                        
+            return state;} //Check a Cart in DB and inform return state, due if any movie is rented and finished if all movies are sold. 
+    
+    public String Today(){
+        DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+        Date today = new Date();
         
-        return isNewUser;
+        
+        return df.format(today);}//Returns today's date in String type. - 
+    
+    public String Return() throws SQLException, ParseException{
+       int cartNo = MyCartNo();
+       
+       
+       String query1 = "Select from cart Days1 Where receipt = "+ cartNo +";";
+       String query2 = "Select from cart Days2 Where receipt = "+ cartNo +";";
+       String query3 = "Select from cart Days3 Where receipt = "+ cartNo +";";
+       String query4 = "Select from cart Days4 Where receipt = "+ cartNo +";";
+       
+       Statement stmt1 = conn.getConnection().createStatement();
+       Statement stmt2 = conn.getConnection().createStatement();
+       Statement stmt3 = conn.getConnection().createStatement();
+       Statement stmt4 = conn.getConnection().createStatement();
+       
+       ResultSet rs1 = stmt1.executeQuery(query1);
+       stmt1.close();
+       ResultSet rs2 = stmt2.executeQuery(query2);
+       stmt2.close();
+       ResultSet rs3 = stmt3.executeQuery(query3);
+       stmt3.close();
+       ResultSet rs4 = stmt4.executeQuery(query4);
+       stmt4.close();
+       
+       if(rs1.next()){
+           day1 = rs1.getInt(1);}
+       if(rs2.next()){
+           day2 = rs2.getInt(1);}
+       if(rs3.next()){
+           day3 = rs3.getInt(1);}
+       if(rs4.next()){
+           day4 = rs4.getInt(1);}
+       
+           
+       if( day1 != 0 && day2 !=0 && day3 != 0 && day4 != 0){
+           System.out.println("FIRST IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           Calendar c1 = Calendar.getInstance();
+           c1.setTime(date);
+           c1.add(Calendar.DAY_OF_MONTH, day1);
+           this.return1 = sdf.format(c1.getTime());
+           
+           Calendar c2 = Calendar.getInstance();
+           c2.setTime(date);
+           c2.add(Calendar.DAY_OF_MONTH, day2);
+           this.return2 = sdf.format(c2.getTime());
+           
+           Calendar c3 = Calendar.getInstance();
+           c3.setTime(date);
+           c3.add(Calendar.DAY_OF_MONTH, day3);
+           this.return3 = sdf.format(c3.getTime());
+           
+           Calendar c4 = Calendar.getInstance();
+           c4.setTime(date);
+           c4.add(Calendar.DAY_OF_MONTH, day4);
+           this.return4 = sdf.format(c4.getTime());
+       
+           if ( day1 <= day2 && day1 <= day3 && day1 <= day4){
+           smaller = day1;}
+            else if(day2 <= day1 && day2 <= day3 && day2 <= day4){
+           smaller = day2;}
+            else if(day3 <= day1 && day3 <= day2 && day3 <= day4){
+           smaller = day3;}
+            else if (day4 <= day1 && day4 <= day2 && day4 <= day3){
+           smaller = day4;}
+       }
+       // ALL DAYS ARE DIFFERENT FROM ZERO.
+       //   1   1   1   1
+       
+       else if( day1 != 0 && day2 !=0 && day3 != 0 && day4 == 0){
+           System.out.println("SECOND IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           Calendar c1 = Calendar.getInstance();
+           c1.setTime(date);
+           c1.add(Calendar.DAY_OF_MONTH, day1);
+           this.return1 = sdf.format(c1.getTime());
+           
+           Calendar c2 = Calendar.getInstance();
+           c2.setTime(date);
+           c2.add(Calendar.DAY_OF_MONTH, day2);
+           this.return2 = sdf.format(c2.getTime());
+           
+           Calendar c3 = Calendar.getInstance();
+           c3.setTime(date);
+           c3.add(Calendar.DAY_OF_MONTH, day3);
+           this.return3 = sdf.format(c3.getTime());
+           
+           this.return4 = null;
+           
+           if ( day1 <= day2 && day1 <= day3){
+           smaller = day1;}
+            else if(day2 <= day1 && day2 <= day3){
+           smaller = day2;}
+            else if(day3 <= day1 && day3 <= day2){
+           smaller = day3;}            
+       }
+       // JUST DAY4 IS EQUAL TO ZERO.
+       //   1   1   1   0
+       
+       else if( day1 != 0 && day2 !=0 && day3 == 0 && day4 != 0){
+           System.out.println("THIRD IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           Calendar c1 = Calendar.getInstance();
+           c1.setTime(date);
+           c1.add(Calendar.DAY_OF_MONTH, day1);
+           this.return1 = sdf.format(c1.getTime());
+           
+           Calendar c2 = Calendar.getInstance();
+           c2.setTime(date);
+           c2.add(Calendar.DAY_OF_MONTH, day2);
+           this.return2 = sdf.format(c2.getTime());
+           
+           this.return3 = null;
+           
+           Calendar c4 = Calendar.getInstance();
+           c4.setTime(date);
+           c4.add(Calendar.DAY_OF_MONTH, day4);
+           this.return4 = sdf.format(c4.getTime());
+       
+           if ( day1 <= day2 && day1 <= day4){
+           smaller = day1;}
+            else if(day2 <= day1 && day2 <= day4){
+           smaller = day2;}
+            else if (day4 <= day1 && day4 <= day2){
+           smaller = day4;}
+       }
+       //JUST DAY 3 IS EQUAL TO ZERO.
+       //   1   1   0   1
+           
+       else if( day1 != 0 && day2 == 0 && day3 != 0 && day4 != 0){
+           System.out.println("FOURTH IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           Calendar c1 = Calendar.getInstance();
+           c1.setTime(date);
+           c1.add(Calendar.DAY_OF_MONTH, day1);
+           this.return1 = sdf.format(c1.getTime());
+           
+           this.return2 = null;
+           
+           Calendar c3 = Calendar.getInstance();
+           c3.setTime(date);
+           c3.add(Calendar.DAY_OF_MONTH, day2);
+           this.return3 = sdf.format(c3.getTime());
+           
+           Calendar c4 = Calendar.getInstance();
+           c4.setTime(date);
+           c4.add(Calendar.DAY_OF_MONTH, day4);
+           this.return4 = sdf.format(c4.getTime());
+       
+           if (day1 <= day3 && day1 <= day4){
+           smaller = day1;}
+            else if(day3 <= day1 && day3 <= day4){
+           smaller = day3;}
+            else if (day4 <= day1 && day4 <= day3){
+           smaller = day4;}       
+       }    
+       // JUST DAY2 IS EQUAL TO ZERO.
+       //   1   0   1   1
+           
+       else if( day1 == 0 && day2 !=0 && day3 != 0 && day4 != 0){
+           System.out.println("FIFTH IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           this.return1 = null;
+           
+           Calendar c2 = Calendar.getInstance();
+           c2.setTime(date);
+           c2.add(Calendar.DAY_OF_MONTH, day2);
+           this.return2 = sdf.format(c2.getTime());
+           
+           Calendar c3 = Calendar.getInstance();
+           c3.setTime(date);
+           c3.add(Calendar.DAY_OF_MONTH, day2);
+           this.return3 = sdf.format(c3.getTime());
+           
+           Calendar c4 = Calendar.getInstance();
+           c4.setTime(date);
+           c4.add(Calendar.DAY_OF_MONTH, day4);
+           this.return4 = sdf.format(c4.getTime());
+       
+           if(day2 <= day3 && day2 <= day4){
+           smaller = day2;}
+            else if(day3 <= day2 && day3 <= day4){
+           smaller = day3;}
+            else if (day4 <= day2 && day4 <= day3){
+           smaller = day4;}
+              }    
+       // JUST DAY1 IS EQUAL TO ZERO.
+       //   0   1   1   1
+       
+       
+       else if( day1 == 0 && day2 ==0 && day3 != 0 && day4 != 0){
+           System.out.println("SIXTH IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           this.return1 = null;
+           this.return2 = null;
+           
+           Calendar c3 = Calendar.getInstance();
+           c3.setTime(date);
+           c3.add(Calendar.DAY_OF_MONTH, day3);
+           this.return3 = sdf.format(c3.getTime());
+           
+           Calendar c4 = Calendar.getInstance();
+           c4.setTime(date);
+           c4.add(Calendar.DAY_OF_MONTH, day4);
+           this.return4 = sdf.format(c4.getTime());
+       
+           if(day3 <= day1 && day3 <= day4){
+           smaller = day3;}
+            else if (day4 <= day3){
+           smaller = day4;}
+           
+       }    
+       // DAY1 AND DAY2 ARE EQUAL TO ZERO.
+       //   0   0   1   1
+       
+        else if( day1 == 0 && day2 !=0 && day3 == 0 && day4 != 0){
+            System.out.println("SEVENTH IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           this.return1 = null;
+           
+           Calendar c2 = Calendar.getInstance();
+           c2.setTime(date);
+           c2.add(Calendar.DAY_OF_MONTH, day2);
+           this.return2 = sdf.format(c2.getTime());
+           
+           this.return3 = null;
+           
+           Calendar c4 = Calendar.getInstance();
+           c4.setTime(date);
+           c4.add(Calendar.DAY_OF_MONTH, day4);
+           this.return4 = sdf.format(c4.getTime());
+           
+           
+           if(day2 <= day4){
+           smaller = day2;}
+           else if (day4 <= day2){
+           smaller = day4;}
+           
+        }    
+       // DAY1 AND DAY3 ARE EQUAL TO ZERO.
+       //  0   1   0   1
+        
+        else if( day1 == 0 && day2 !=0 && day3 != 0 && day4 == 0){
+            System.out.println("EIGHT IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           this.return1 = null;
+           
+           Calendar c2 = Calendar.getInstance();
+           c2.setTime(date);
+           c2.add(Calendar.DAY_OF_MONTH, day2);
+           this.return2 = sdf.format(c2.getTime());
+                      
+           Calendar c3 = Calendar.getInstance();
+           c3.setTime(date);
+           c3.add(Calendar.DAY_OF_MONTH, day3);
+           this.return3 = sdf.format(c3.getTime());
+           
+           this.return4 = null;
+        
+           
+           if(day2 <= day3){
+           smaller = day2;}
+            else if(day3 <= day2){
+           smaller = day3;}
+           
+        }    
+        // DAY1 AND DAY4 ARE EQUAL TO ZERO.
+        //  0   1   1   0
+        
+        else if( day1 != 0 && day2 ==0 && day3 == 0 && day4 != 0){
+            System.out.println("NINETH IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           Calendar c1 = Calendar.getInstance();
+           c1.setTime(date);
+           c1.add(Calendar.DAY_OF_MONTH, day1);
+           this.return1 = sdf.format(c1.getTime());
+           
+           this.return2 = null;
+           this.return3 = null;
+           
+           Calendar c4 = Calendar.getInstance();
+           c4.setTime(date);
+           c4.add(Calendar.DAY_OF_MONTH, day4);
+           this.return4 = sdf.format(c4.getTime());
+        
+           if (day1 <= day4){
+           smaller = day1;}
+            else if (day4 <= day1){
+           smaller = day4;}
+        
+        }
+        // DAY2 AND DAY3 ARE EQUAL TO ZERO.
+        // 1    0   0   1
+       
+       else if( day1 != 0 && day2 ==0 && day3 != 0 && day4 == 0){
+           System.out.println("TENTH IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           Calendar c1 = Calendar.getInstance();
+           c1.setTime(date);
+           c1.add(Calendar.DAY_OF_MONTH, day1);
+           this.return1 = sdf.format(c1.getTime());
+           
+           this.return2 = null;
+                      
+           Calendar c3 = Calendar.getInstance();
+           c3.setTime(date);
+           c3.add(Calendar.DAY_OF_MONTH, day3);
+           this.return3 = sdf.format(c3.getTime());
+           
+           this.return4 = null;
+       
+           if (day1 <= day3){
+           smaller = day1;}
+            else if(day3 <= day1){
+           smaller = day3;}
+            
+       
+       }
+        // DAY2 AND DAY4 ARE EQUAL TO ZERO.
+       //   1   0   1   0
+       
+       else if( day1 != 0 && day2 !=0 && day3 == 0 && day4 == 0){
+           System.out.println("ELEVENTH IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           Calendar c1 = Calendar.getInstance();
+           c1.setTime(date);
+           c1.add(Calendar.DAY_OF_MONTH, day1);
+           this.return1 = sdf.format(c1.getTime());
+                                 
+           Calendar c2 = Calendar.getInstance();
+           c2.setTime(date);
+           c2.add(Calendar.DAY_OF_MONTH, day2);
+           this.return2 = sdf.format(c2.getTime());
+           
+           this.return2 = null;
+           this.return4 = null;
+           
+            if ( day1 <= day2){
+           smaller = day1;}
+            else if(day2 <= day1){
+           smaller = day2;}
+            
+           
+       }
+        // DAY3 AND DAY4 ARE EQUAL TO ZERO.
+       //   1   1   0   0
+       
+       
+       else if( day1 == 0 && day2 ==0 && day3 == 0 && day4 != 0){
+           System.out.println("TWELVETH IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           this.return1 = null;
+           this.return2 = null;
+           this.return4 = null;
+           
+           Calendar c4 = Calendar.getInstance();
+           c4.setTime(date);
+           c4.add(Calendar.DAY_OF_MONTH, day4);
+           this.return4 = sdf.format(c4.getTime());
+       
+            smaller = day4;
+       
+       }
+        // ONLY DAY4 IS DIFFERENT TO ZERO.
+       //   0   0   0   1
+       
+       else if( day1 != 0 && day2 ==0 && day3 == 0 && day4 == 0){
+           System.out.println("THIRTEENTH IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           this.return3 = null;
+           this.return2 = null;
+           this.return4 = null;
+           
+           Calendar c1 = Calendar.getInstance();
+           c1.setTime(date);
+           c1.add(Calendar.DAY_OF_MONTH, day1);
+           this.return1 = sdf.format(c1.getTime());
+       
+       
+           smaller = day1;
+       }
+        // ONLY DAY1 IS DIFFERENT TO ZERO.
+       //   1   0   0   0
+           
+       else if( day1 == 0 && day2 !=0 && day3 == 0 && day4 == 0){
+           System.out.println("FOURTEENTH IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           this.return1 = null;
+           this.return3 = null;
+           this.return4 = null;
+           
+           Calendar c2 = Calendar.getInstance();
+           c2.setTime(date);
+           c2.add(Calendar.DAY_OF_MONTH, day2);
+           this.return2 = sdf.format(c2.getTime());
+       
+           smaller = day2;
+       }
+        // ONLY DAY2 IS DIFFERENT TO ZERO.
+       //   0   1   0   0
+       
+       else if( day1 == 0 && day2 ==0 && day3 != 0 && day4 == 0){
+           System.out.println("FIFTEENTH IF");
+           String sDate = Today();
+           SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+           Date date = new SimpleDateFormat("dd/MM/yyyy").parse(sDate);
+           
+           this.return1 = null;
+           this.return2 = null;
+           this.return4 = null;
+           
+           Calendar c3 = Calendar.getInstance();
+           c3.setTime(date);
+           c3.add(Calendar.DAY_OF_MONTH, day3);
+           this.return3 = sdf.format(c3.getTime());
+           
+           smaller = day3;
+       }
+        // ONLY DAY3 IS DIFFERENT TO ZERO.
+       //   0   0   1   0
+           
+            
+            
+       if(smaller == day1){
+           return return1;}
+       else if (smaller == day2){
+           return return2;}
+       else if (smaller == day3){
+           return return3;}
+       else if (smaller == day4){
+           return return4;}
+       else {return null;}     }
+       
+       
+                  
+       
+       
+       
+       
+       
+       
+       
+    
+    
+    public boolean NewUser(String CreditCard, String Name, String Email, String Password, int CCV, String ExpDate) throws SQLException{
+        
+            isNewUser = true;
+            receipt = MyCartNo();
+            String cartState = CartState(MyCartNo());
+            
+            Type1 = null;
+            Type2 = null;
+            Type3 = null;
+            Type4 = null;
+            
+            
+            String query = "Select name FROM users WHERE cCard ='"+CreditCard+"';";
+            String query2 = "INSERT INTO users (`cCard`, `e-mail`, `name`, `password`, `CCV`, `expDate`) VALUES ('"+CreditCard+"', '"+Name+"', '"+ Email+"', '"+Password+"', "+ CCV +", '"+ ExpDate + "');";
+            String query3 = "Update cart set status = '" + cartState + "', date = '"+Today()+"' Where receipt = "+ MyCartNo() +";";
+            
+            Statement stmt = conn.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+                            
+            
+            if(rs.next()){
+                isNewUser = false;
+                
+            }
+            else if (cartState.equals("Due")) {
+                
+                
+                
+            }
+                return isNewUser; 
+            
+                                  
+        
+        
     } // Checks if the CC is already in the system with a name, return negative if there's already a name for this card or false if the user is new. - TESTED
     
     
