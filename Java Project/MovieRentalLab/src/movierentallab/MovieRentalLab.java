@@ -7,6 +7,9 @@ package movierentallab;
 
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import movierentallab.classes.Cart;
 import movierentallab.classes.Connector;
@@ -41,7 +44,11 @@ public class MovieRentalLab extends JFrame {
         window.setVisible(true);
         
         Cart lala = new Cart ();
-        System.out.println(lala.NewUser("1234112341234", "E@mail", "aName", "a Password", 123, "99/11"));
+        try {
+            System.out.println(lala.Return());
+        } catch (ParseException ex) {
+            Logger.getLogger(MovieRentalLab.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
         
         

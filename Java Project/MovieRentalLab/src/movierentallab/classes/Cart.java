@@ -641,10 +641,10 @@ public class Cart {
        int cartNo = MyCartNo();
        
        
-       String query1 = "Select from cart Days1 Where receipt = "+ cartNo +";";
-       String query2 = "Select from cart Days2 Where receipt = "+ cartNo +";";
-       String query3 = "Select from cart Days3 Where receipt = "+ cartNo +";";
-       String query4 = "Select from cart Days4 Where receipt = "+ cartNo +";";
+       String query1 = "Select Days1 from cart Where receipt = "+ cartNo +";";
+       String query2 = "Select Days2 from cart Where receipt = "+ cartNo +";";
+       String query3 = "Select Days3 from cart Where receipt = "+ cartNo +";";
+       String query4 = "Select Days4 from cart Where receipt = "+ cartNo +";";
        
        Statement stmt1 = conn.getConnection().createStatement();
        Statement stmt2 = conn.getConnection().createStatement();
@@ -652,13 +652,10 @@ public class Cart {
        Statement stmt4 = conn.getConnection().createStatement();
        
        ResultSet rs1 = stmt1.executeQuery(query1);
-       stmt1.close();
        ResultSet rs2 = stmt2.executeQuery(query2);
-       stmt2.close();
        ResultSet rs3 = stmt3.executeQuery(query3);
-       stmt3.close();
        ResultSet rs4 = stmt4.executeQuery(query4);
-       stmt4.close();
+       
        
        if(rs1.next()){
            day1 = rs1.getInt(1);}
