@@ -90,7 +90,7 @@ public class WindowCart extends javax.swing.JFrame {
         total2 = Float.toString(ftotal2);
         if(!days2.equals("0")){
         total2 = Float.toString(ftotal2);
-        } else{ total2 = Price1;}
+        } else{ total2 = Price2;}
         
         //All Labels for Panel 2
         
