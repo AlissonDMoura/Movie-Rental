@@ -19,6 +19,7 @@ public class ReturnMovie extends javax.swing.JFrame {
     private JFrame window;
     Connector conn = new Connector();
     private String email;
+    private String cCardDb= null;;
 
 
     /**
@@ -170,11 +171,10 @@ creditCardField.setText("");        // TODO add your handling code here:
   try{
 
           String cCard = creditCardField.getText().trim();
-          String cCardDb = null;
           boolean c1 = false;
           boolean c2 = false;
           if(cCard.isEmpty() || cCard.length() != 16){
-          JOptionPane.showMessageDialog(this, "Something wrong, Please insert 16 digits of your Credit Card");    
+          JOptionPane.showMessageDialog(this, "Something is wrong, Please insert 16 digits of your Credit Card");    
           }else{
               
                     String query = "SELECT creditcard FROM cart WHERE creditcard =" + cCard +";";
@@ -241,6 +241,16 @@ creditCardField.setText("");        // TODO add your handling code here:
 
     }//GEN-LAST:event_nextRmovieActionPerformed
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    
+    
     /**
      * @param args the command line arguments
      */
