@@ -250,7 +250,7 @@ public class Register extends javax.swing.JFrame implements ActionListener {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    // Action Perfomed below: validate the user inputs and create pop ups for the possible errors
+
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         try{
           String fullName = jTextField1.getText().trim();
@@ -327,41 +327,41 @@ public class Register extends javax.swing.JFrame implements ActionListener {
         
     
     }//GEN-LAST:event_jButton2ActionPerformed
-    // Mouse Pressed below: set the text to empty when the user clicks
+
     private void jTextField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MousePressed
     jTextField1.setText("");
     }//GEN-LAST:event_jTextField1MousePressed
-    // Mouse Pressed below: set the text to empty when the user clicks
+
     private void jTextField2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MousePressed
         // TODO add your handling code here:
         jTextField2.setText("");
     }//GEN-LAST:event_jTextField2MousePressed
-    // Mouse Pressed below: set the text to empty when the user clicks
+
     private void jTextField3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MousePressed
         // TODO add your handling code here:
         jTextField3.setText("");
     }//GEN-LAST:event_jTextField3MousePressed
-    // Mouse Pressed below: set the text to empty when the user clicks
+
     private void jTextField5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MousePressed
         // TODO add your handling code here:
         jTextField5.setText("");
     }//GEN-LAST:event_jTextField5MousePressed
-    // Mouse Pressed below: set the text to empty when the user clicks
+
     private void jTextField4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MousePressed
         // TODO add your handling code here:
         jTextField4.setText("");
     }//GEN-LAST:event_jTextField4MousePressed
-    // Mouse Pressed below: set the text to empty when the user clicks
+
     private void jTextField6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField6MousePressed
         // TODO add your handling code here:
         jTextField6.setText("");
     }//GEN-LAST:event_jTextField6MousePressed
-    // Mouse Pressed below: set the text to empty when the user clicks
+
     private void jTextField7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField7MousePressed
         // TODO add your handling code here:
         jTextField7.setText("");
     }//GEN-LAST:event_jTextField7MousePressed
-    // Action Performed below: the button goes back to the last frame
+
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
         Account sMovie = new Account(window);
