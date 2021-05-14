@@ -6,6 +6,7 @@
 package movierentallab.windows;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -160,6 +161,23 @@ creditCardField.setText("");        // TODO add your handling code here:
     }//GEN-LAST:event_creditCardFieldMousePressed
 
     private void nextRmovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextRmovieActionPerformed
+      try{
+          String cCard = creditCardField.getText().trim();
+          
+          
+          
+          
+          
+          
+      }catch(Exception e){
+        JOptionPane.showMessageDialog(this, "Something is wrong, error: " + e.getMessage());           }
+       
+       
+        
+        
+        
+        
+        
         this.dispose();
         CheckOut sMovie = new CheckOut(window);
         
