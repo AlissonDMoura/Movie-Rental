@@ -21,8 +21,29 @@ import javax.mail.internet.MimeMessage;
  * @author mvini
  */
 public class JavaMail {
-    public static void main(String[] args) {
-    Properties props = new Properties();
+    private String emailTo;
+  
+    
+    
+    public JavaMail(){}
+ 
+    public String getEmailTo() {
+        return emailTo;
+    }
+
+    public void setEmailTo(String emailto) {
+        this.emailTo = emailTo;
+    }
+
+    public void validEmail(String email) throws Exception{
+        if(!email.trim().matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")){
+            throw new Exception ("this is NOT a valid e-mail");
+        }
+    }
+
+   
+    public void sendEmail(String emailTo){
+           Properties props = new Properties();
     // Connection parameter with the Gmail server
     props.put("mail.smtp.host", "smtp.gmail.com");
     props.put("mail.smtp.socketFactory.port", "465");
@@ -50,8 +71,9 @@ public class JavaMail {
       //Xtra-Vision email
 
       Address[] toUser = InternetAddress //Recipient of the email
-                 .parse("mvinimariano@hotmail.com, Alissonmaster@hotmail.com");
+                 .parse(emailTo);
 
+      
       message.setRecipients(Message.RecipientType.TO, toUser);
       message.setSubject("Your Xtra-Vision Receipt");//Subject
       message.setText("This is your Xtra-Vision receipt as requested");
@@ -63,7 +85,16 @@ public class JavaMail {
      } catch (MessagingException e) {
         throw new RuntimeException(e);
     }
-  }
+       
+       
+       
+       
+       
+   }
+
+    
+    
+
     
 }
 
