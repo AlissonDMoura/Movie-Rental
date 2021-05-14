@@ -57,6 +57,7 @@ public class Cart {
     private String priceBuy = null;
     private String priceRent = null;
     
+    
     private boolean cartFull;
     private boolean isNewUser;
     
