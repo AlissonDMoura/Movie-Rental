@@ -140,7 +140,7 @@ public class ReturnMovie extends javax.swing.JFrame {
     private void creditCardFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_creditCardFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_creditCardFieldActionPerformed
-
+    // Action Performed below: the button goes back to the last frame
     private void BacktoMmenuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BacktoMmenuActionPerformed
         
 //BACK BUTTON//
@@ -160,11 +160,11 @@ public class ReturnMovie extends javax.swing.JFrame {
         
         //BACK BUTTON//
     }//GEN-LAST:event_BacktoMmenuActionPerformed
-
+    // Mouse Pressed below: set the text blank when the user click in the text field
     private void creditCardFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditCardFieldMousePressed
 creditCardField.setText("");        // TODO add your handling code here:
     }//GEN-LAST:event_creditCardFieldMousePressed
-
+    // Action Performed below: check if the credit card input is in the database and give some pop ups
     private void nextRmovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextRmovieActionPerformed
   try{
 
@@ -183,7 +183,7 @@ creditCardField.setText("");        // TODO add your handling code here:
                     if(rs.next()){
                     cCardDb = rs.getString(1);
                     System.out.println("movie has " + cCardDb + " Days ");}
-                    conn.CloseConnection();                       
+
                     
                     if(cCard.equals(cCardDb)){
                     JOptionPane.showMessageDialog(this, "We have found your Order");     
@@ -203,7 +203,9 @@ creditCardField.setText("");        // TODO add your handling code here:
                         
                     }
  
-              
+                    selector.close();
+                    rs.close();
+                    conn.CloseConnection();       
               
               
               
