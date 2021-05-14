@@ -71,6 +71,7 @@ public class Cart {
     private int movieId;
     Connector conn = new Connector();
     
+    
     public int NextReceiptNumber() throws SQLException{
                     String query = "SELECT receipt FROM cart;";
                     Statement selector = conn.getConnection().createStatement();
@@ -81,7 +82,7 @@ public class Cart {
                         receipt++;                    }
                      rs.close();
                      selector.close();
-                     conn.getConnection().close();
+                     conn.CloseConnection();
                     System.out.println("This is my Next ID:" + receipt);
                     return receipt;}//return the next valid writable receipt number - TESTED
 
@@ -102,31 +103,21 @@ public class Cart {
                     String query12 = "SELECT Days4 FROM cart Where receipt = " + receipt + ";";
                     
                     Statement selector = conn.getConnection().createStatement();
-                    Statement selector2 = conn.getConnection().createStatement();
-                    Statement selector3 = conn.getConnection().createStatement();
-                    Statement selector4 = conn.getConnection().createStatement();
-                    Statement selector5 = conn.getConnection().createStatement();
-                    Statement selector6 = conn.getConnection().createStatement();
-                    Statement selector7 = conn.getConnection().createStatement();
-                    Statement selector8 = conn.getConnection().createStatement();
-                    Statement selector9 = conn.getConnection().createStatement();
-                    Statement selector10 = conn.getConnection().createStatement();
-                    Statement selector11 = conn.getConnection().createStatement();
-                    Statement selector12 = conn.getConnection().createStatement();
+                    
                     
                     
                     ResultSet rs = selector.executeQuery(query);
-                    ResultSet rs2 = selector2.executeQuery(query2);
-                    ResultSet rs3 = selector3.executeQuery(query3);
-                    ResultSet rs4 = selector4.executeQuery(query4);
-                    ResultSet rs5 = selector5.executeQuery(query5);
-                    ResultSet rs6 = selector6.executeQuery(query6);
-                    ResultSet rs7 = selector7.executeQuery(query7);
-                    ResultSet rs8 = selector8.executeQuery(query8);
-                    ResultSet rs9 = selector9.executeQuery(query9);
-                    ResultSet rs10 = selector10.executeQuery(query10);
-                    ResultSet rs11 = selector11.executeQuery(query11);
-                    ResultSet rs12 = selector12.executeQuery(query12);
+                    ResultSet rs2 = selector.executeQuery(query2);
+                    ResultSet rs3 = selector.executeQuery(query3);
+                    ResultSet rs4 = selector.executeQuery(query4);
+                    ResultSet rs5 = selector.executeQuery(query5);
+                    ResultSet rs6 = selector.executeQuery(query6);
+                    ResultSet rs7 = selector.executeQuery(query7);
+                    ResultSet rs8 = selector.executeQuery(query8);
+                    ResultSet rs9 = selector.executeQuery(query9);
+                    ResultSet rs10 = selector.executeQuery(query10);
+                    ResultSet rs11 = selector.executeQuery(query11);
+                    ResultSet rs12 = selector.executeQuery(query12);
                     
                     if(rs.next()){                        
                         this.Item1 = rs.getInt(1);}
@@ -176,19 +167,8 @@ public class Cart {
                     rs12.close();
                     
                     selector.close();
-                    selector2.close();
-                    selector3.close();
-                    selector4.close();
-                    selector5.close();
-                    selector6.close();
-                    selector7.close();
-                    selector8.close();
-                    selector9.close();
-                    selector10.close();
-                    selector11.close();
-                    selector12.close();
                     
-                    conn.getConnection().close();
+                                      
                     
                         
                         if(Item1 == 0 && Item2 != 0 && Item3 != 0 && Item4 != 0 ){
@@ -322,6 +302,9 @@ public class Cart {
         Statement stmt = conn.getConnection().createStatement();
         stmt.execute("UPDATE cart SET Item1 = " + this.Item1 +", Type1 = '" + this.Type1 + "', Days1 = "+ this.day1+", Item2 = "+ this.Item2 + ", Type2 = '"+ this.Type2 +"', Days2 = "+ this.day2+", Item3 = "
                     + this.Item3 +", Type3 ='" + this.Type3 +"', Days3 = "+ this.day3+", Item4 =" + this.Item4 +", Type4 ='"+ this.Type4 +"', Days4 = "+ this.day4+" Where receipt =" + receipt +";");
+        
+        stmt.close();
+        conn.CloseConnection();
     }//Organize the cart items and change the database Row for a certain receipt number. - TESTED
         
     public int NewCart() throws SQLException{
@@ -331,8 +314,9 @@ public class Cart {
          Statement stmt = conn.getConnection().createStatement();                   
          stmt.execute("INSERT INTO cart (receipt, status) VALUES ("+id+",'Open');");
          stmt.close();
-         conn.getConnection().close();
+         
          System.out.println("New cart number "+id+" Opened"); 
+         conn.CloseConnection();
          return id;} //Create a new cart and define it's status as open, Return the Cart ID. - TESTED
     
     public int MyCartNo() throws SQLException{
@@ -356,8 +340,8 @@ public class Cart {
                     
                     rs.close();
                     selector.close();
-                    conn.getConnection().close();
-        
+                    conn.CloseConnection();
+                            
         
         return cartNo;}//Selects The Cart Active in the database, if there's none, it runs the method to create one and run this code again, returns the cartId AKA receipt.- TESTED
     
@@ -369,8 +353,10 @@ public class Cart {
                     
                     if(rs.next()){
                     movieId = rs.getInt(1);    
-                    
-                    }
+                                                        }
+                    rs.close();
+                    selector.close();
+                    conn.CloseConnection();
                     
         return movieId;
     } // Selects a movie with status "In Stock" and returns it's ID. --- if Movie iD = 0 there's no movie with this title in stock. - TESTED
@@ -398,6 +384,9 @@ public class Cart {
                     } else{
                         System.out.println("it doest have a next, Error close to line 340, resultSet String: " +rs.getString(1));}
                     
+                    rs.close();
+                    selector.close();
+                    conn.CloseConnection();
                     return cartFull;} //Organizes the Cart, and check if there is any item on last space. returns true for cartFull if the cart is full, or false if it ain't- TESTED
     
     public void MovieAddIntoCart(String Sold, String mName) throws SQLException{
@@ -414,7 +403,8 @@ public class Cart {
                     stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "' WHERE receipt ="+ MyCartNo()+";");
                     
                     
-                    
+                    stmt.close();
+                    conn.CloseConnection();
     } //Organize the cart, add a movie into it, change movie state As Sold- TESTED
     
     public void MovieAddIntoCart(String Rented, String mName, int Days) throws SQLException{
@@ -430,7 +420,8 @@ public class Cart {
                     stmt.execute("UPDATE movie SET status = '" + state +"' WHERE (idMovie = "+ movieId +");");
                     stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "', Days4 = "+ dayN + " WHERE receipt = "+ MyCartNo()+";");
                     
-                    
+                    stmt.close();
+                    conn.CloseConnection();
     
     }//Organize the cart, add a movie into it, change movie state As rented and update days as well as other informations in cart and movie Tables-  TESTED
                     
@@ -468,6 +459,10 @@ public class Cart {
                                 
                                 stmt.execute("UPDATE cart SET "+ item + " = 0, " + type +" = null, "+ day +" = 0 WHERE receipt ="+ MyCartNo()+ ";");
                                 stmt.execute("UPDATE movie SET status = 'In stock' WHERE idMovie = "+ this.movieId +";");
+                              
+                                rs.close();
+                                stmt.close();
+                                conn.CloseConnection();
     CartOrganizer(MyCartNo());
     
     
@@ -500,33 +495,31 @@ public class Cart {
                     ResultSet rs = selector.executeQuery(query);//Get Movie ID
                     if(rs.next()){
                     movieId = rs.getInt(1);
-                    rs.close();
-                    selector.close();
                     System.out.println("movieId is " + movieId);}    
                     
                     if(movieId != 0){
                     String query2 = "SELECT title FROM movie WHERE idMovie =" + movieId +";";
-                    Statement selector2 = conn.getConnection().createStatement();
-                    ResultSet rs2 = selector2.executeQuery(query2);// Gets Movie Title
+                    
+                    ResultSet rs2 = selector.executeQuery(query2);// Gets Movie Title
                     if(rs2.next()){
                     title = rs2.getString(1);
                     
                     
                     System.out.println("movie Name is " + title);}
                     rs.close();
-                    selector.close();
                     rs2.close();                     
-                    selector2.close();
-                    conn.getConnection().close();
+                    selector.close();
+                    conn.CloseConnection();
+                    
+                    
                      return title;}
                     else { 
                         rs.close();
                         selector.close();
-                        conn.getConnection().close();
+                        conn.CloseConnection();
                         title = "empty";
                         return title;
-                        
-                    }
+                                            }
                     
                     
     } //Reads the movie ID from a certain position in the cart and returns the movie Title. - TESTED
@@ -553,8 +546,9 @@ public class Cart {
                     status = rs.getString(1);
                     System.out.println("movie Type is " + status);}
                     rs.close();
-                    selector.close();                   
-                    conn.getConnection().close();
+                    selector.close();  
+                    conn.CloseConnection();
+                    
                     return status;}//A certain position in the cart and returns the type of purchase (RENT OR BUY)- TESTED
     
     public float PanelPrice(int PanelNumber) throws SQLException{
@@ -587,7 +581,7 @@ public class Cart {
                     if(rs.next()){
                     movieId = rs.getInt(1);
                     System.out.println("movieId is " + movieId);}
-                    rs.close();
+                    
                     
                     String query3 = "SELECT priceBuy FROM  movie WHERE idMovie =" + movieId +";";
                     String query4 = "SELECT priceRent FROM  movie WHERE idMovie =" + movieId +";";
@@ -597,31 +591,42 @@ public class Cart {
                     ResultSet rs2 = selector.executeQuery(query2);
                     if(rs2.next()){
                     type = rs2.getString(1);}
-                    rs2.close();
+                    
                     
                     ResultSet rs3 = selector.executeQuery(query3);
                     if(rs3.next()){
                     pBuy = rs3.getFloat(1);}
-                    rs3.close();
+                    
                     
                     ResultSet rs4 = selector.executeQuery(query4);
                     if(rs4.next()){
                     pRent = rs4.getFloat(1);}
-                    rs4.close();
-                    selector.close();
+                    
+                    
                     
                     if(type.equals("SOLD")){
                         System.out.println("Price for purchase: " +pBuy);
                         conn.getConnection().close();
+                        rs.close();
+                        rs2.close();
+                        rs3.close();
+                        rs4.close();
+                        selector.close();
+                        conn.CloseConnection();
                         return pBuy;} 
                     else{
                         System.out.println("Price for Rent: " + pRent);
-                        conn.getConnection().close();
+                        rs.close();
+                        rs2.close();
+                        rs3.close();
+                        rs4.close();
+                        selector.close();
+                        conn.CloseConnection();
                         return pRent;}}
                     
-                    else { rs.close();
-                           selector.close();
-                           conn.getConnection().close();
+                    else { rs.close();                        
+                        selector.close();
+                        conn.CloseConnection();
                         return 0;}
     }//Reads the movie from a certain position in the cart, reads its pricing and returns the pricing for the type of purchase (Rent or Buy) - TESTED
     
@@ -646,10 +651,10 @@ public class Cart {
                     if(rs.next()){
                     day = rs.getInt(1);
                     System.out.println("movie has " + day + " Days ");}  
-                    rs.close();
-                    selector.close();
-                    conn.getConnection().close();
                     
+                    rs.close();
+                    selector.close(); 
+                    conn.CloseConnection();
                     return day;}// Reads the DB for an certain movie positioned in the Cart, return the amount of days in the Table. - TESTED
     
     public String CartState(int CartNo) throws SQLException{
@@ -672,25 +677,25 @@ public class Cart {
             if(rs3.next()){                        
                         Type1 = rs3.getString(1);
                         System.out.println(Type1);            }
-            rs3.close();
+            
             
             
             if(rs4.next()){                        
                         Type2 = rs4.getString(1);
             System.out.println(Type2);}
-            rs4.close();
+            
             
             
             if(rs5.next()){
                         Type3 = rs5.getString(1);
                         System.out.println(Type3);}
-            rs5.close();
+            
             
             
             if(rs6.next()){
                         Type4 = rs6.getString(1);
                         System.out.println(Type4);}
-            rs6.close();
+            
             
                            
             if( !Type1.equals("RENTED") || Type2.equals("RENTED") || Type3.equals("RENTED") || Type4.equals("RENTED") ){
@@ -698,8 +703,13 @@ public class Cart {
             else {
             state = "Finished";}
             
+            rs3.close();
+            rs4.close();
+            rs5.close();
+            rs6.close();
             stmt.close();
-            conn.getConnection().close();
+            conn.CloseConnection();
+            
             return state;} //Check a Cart in DB and inform return state, due if any movie is rented and finished if all movies are sold. 
     
     public String Today(){
@@ -718,15 +728,13 @@ public class Cart {
        String query3 = "Select Days3 from cart Where receipt = "+ cartNo +";";
        String query4 = "Select Days4 from cart Where receipt = "+ cartNo +";";
        
-       Statement stmt1 = conn.getConnection().createStatement();
-       Statement stmt2 = conn.getConnection().createStatement();
-       Statement stmt3 = conn.getConnection().createStatement();
-       Statement stmt4 = conn.getConnection().createStatement();
+       Statement stmt = conn.getConnection().createStatement();
        
-       ResultSet rs1 = stmt1.executeQuery(query1);
-       ResultSet rs2 = stmt2.executeQuery(query2);
-       ResultSet rs3 = stmt3.executeQuery(query3);
-       ResultSet rs4 = stmt4.executeQuery(query4);
+       
+       ResultSet rs1 = stmt.executeQuery(query1);
+       ResultSet rs2 = stmt.executeQuery(query2);
+       ResultSet rs3 = stmt.executeQuery(query3);
+       ResultSet rs4 = stmt.executeQuery(query4);
        
        
        if(rs1.next()){
@@ -1171,14 +1179,45 @@ public class Cart {
             
             
        if(smaller == day1){
+           rs1.close();
+           rs2.close();
+           rs3.close();
+           rs4.close();
+           stmt.close();
+           conn.CloseConnection();
            return return1;}
        else if (smaller == day2){
+           rs1.close();
+           rs2.close();
+           rs3.close();
+           rs4.close();
+           stmt.close();
+           conn.CloseConnection();
            return return2;}
        else if (smaller == day3){
+           rs1.close();
+           rs2.close();
+           rs3.close();
+           rs4.close();
+           stmt.close();
+           conn.CloseConnection();
            return return3;}
        else if (smaller == day4){
+           rs1.close();
+           rs2.close();
+           rs3.close();
+           rs4.close();
+           stmt.close();
+           conn.CloseConnection();
            return return4;}
-       else {return null;}     }// Select the amount of days in each Cart position. Save them into ints. Select the smaller int that is not equal to zero. add this int into today's Date and return the closest due day of return as a String - TESTED
+       else {
+           rs1.close();
+           rs2.close();
+           rs3.close();
+           rs4.close();
+           stmt.close();
+           conn.CloseConnection();
+           return null;}     }// Select the amount of days in each Cart position. Save them into ints. Select the smaller int that is not equal to zero. add this int into today's Date and return the closest due day of return as a String - TESTED
             
     public boolean NewUser(String CreditCard, String Name, String Email, String Password, int CCV, String ExpDate) throws SQLException{
         
@@ -1201,19 +1240,17 @@ public class Cart {
             
             Statement stmt = conn.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(query);
-            stmt.close();
-                            
-            Statement stmt2 = conn.getConnection().createStatement();
-            Statement stmt3 = conn.getConnection().createStatement();
-            
             
             if(rs.next()){
                 isNewUser = false;}
             else{
                 isNewUser = true;
-                stmt2.execute(query2);
-                stmt3.execute(specialQuery);}
+                stmt.execute(query2);
+                stmt.execute(specialQuery);}
             
+            rs.close();
+            stmt.close();
+            conn.CloseConnection();
             return isNewUser; 
             } // Checks if the CC is already in the system with a name, return negative if there's already a name for this card or false if the user is new. - TESTED
     
@@ -1226,7 +1263,6 @@ public class Cart {
         String query2 = "Select `cCard` from `users` Where `e-mail` = '"+ Email+"' AND `password` = '"+ Password+"';";
         
         Statement stmt = conn.getConnection().createStatement();
-        Statement stmt2 = conn.getConnection().createStatement();
         ResultSet rs = stmt.executeQuery(query);
         ResultSet rs2 = stmt.executeQuery(query2);
         
@@ -1239,8 +1275,12 @@ public class Cart {
             String CreditCard = rs2.getString(1);
             try {specialQuery = "Update cart set status = '" + cartState + "', date = '"+ Today()+"', return ='" + Return()+"', creditcard = '"+ CreditCard+"' Where receipt = "+ MyCartNo() +";";
         } catch (ParseException ex) {Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);}
-        stmt2.execute(specialQuery);}
+        stmt.execute(specialQuery);}
             
+        rs.close();
+        rs2.close();
+        stmt.close();
+        conn.CloseConnection();
         return isNewUser;
     }// Check if is there user data in DB, if not returns true, If threre's it fetches the CCard from Db and Writes the Sale in the DB and returns false.
     
@@ -1266,10 +1306,6 @@ public class Cart {
             Statement stmt = conn.getConnection().createStatement();
             ResultSet rs = stmt.executeQuery(query);
             
-                            
-            Statement stmt2 = conn.getConnection().createStatement();
-            Statement stmt3 = conn.getConnection().createStatement();
-            
             if(rs.next()){
                 System.out.println("I HAVE A NEXT RIGHT HERE"); 
                 System.out.println("MY RS GET STRING IS " + rs.getString(1));
@@ -1282,12 +1318,19 @@ public class Cart {
                 else{
                     System.out.println("SO MY STRING IS STG ELSE, I SHOULD HAVE A TRUE, WRITTING YOUR SALE INTO THE DB");
                     isNewUser = true;
-                    stmt2.execute(query2);
-                    stmt2.close();    
-                    stmt3.execute(specialQuery);
+                    stmt.execute(query2);
+                    stmt.execute(specialQuery);
+                    
+                    rs.close();
+                    stmt.close();
+                    conn.CloseConnection();
                 return isNewUser; }            } 
             else{ isNewUser = false;
                 System.out.println("ERROR NONE SITUATION CONTEMPLED HERE, please check your cart query and contact your Programmer, he made a boo boo");
+                
+                rs.close();
+                stmt.close();
+                conn.CloseConnection();
                 return isNewUser;
                         }
     }//Verify if the card Still have any receipts open, If there False = Message to close last receipt,  If True Accept payment and write into database.
