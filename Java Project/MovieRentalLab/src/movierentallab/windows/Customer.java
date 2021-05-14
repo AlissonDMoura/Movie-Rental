@@ -141,7 +141,7 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
     }// </editor-fold>//GEN-END:initComponents
     //Action Performed below: validate the user input and create pop ups
     private void signNpayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signNpayButtonActionPerformed
-        try{
+        
         email = eMailTxtField.getText().trim();
         pass = new String(passTxtField.getPassword());
 
@@ -151,7 +151,7 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
             if(email.isEmpty() || pass.isEmpty()){
             JOptionPane.showMessageDialog(this, "The field is empty, Please insert your email and password");}
             
-            else try {
+            try {
                 if(!cart.UserLogin(email, pass)){
                     int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued. \n\n  Thank You for using Xtra-Vision", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
                     if(input == JOptionPane.OK_OPTION){this.dispose();}               }
@@ -172,9 +172,8 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
     
     
     
-}catch (Exception e){
-    JOptionPane.showMessageDialog(this, "Something is wrong, error: " + e.getMessage());
-}       
+
+       
        
         
     }//GEN-LAST:event_signNpayButtonActionPerformed

@@ -27,6 +27,7 @@ import java.util.logging.Logger;
 public class Cart {
     
     private String specialQuery;
+    private String cartState;
     
     private int receipt;
     private int clientId;
@@ -706,7 +707,11 @@ public class Cart {
     
     public String CartState(int CartNo) throws SQLException{
         
-            String state;
+        CartOrganizer(CartNo);
+        CartOrganizer(CartNo);
+        //It works second time, means one situation wasn't contempled in the If's of Cart Organizer
+        
+            this.cartState = null;
         
             String query3 = "Select Type1 from cart where receipt = " + MyCartNo()+";";
             String query4 = "Select Type2 from cart where receipt = " + MyCartNo()+";";
@@ -750,12 +755,12 @@ public class Cart {
             conn.conn.close();
             
                            
-            if( !Type1.equals("RENTED") || Type2.equals("RENTED") || Type3.equals("RENTED") || Type4.equals("RENTED") ){
-            state = "Due"; }
+            if( Type1.equals("RENTED") || Type2.equals("RENTED") || Type3.equals("RENTED") || Type4.equals("RENTED") ){
+            cartState = "Due"; }
             else {
-            state = "Finished";}
+            cartState = "Finished";}
 
-            return state;} //Check a Cart in DB and inform return state, due if any movie is rented and finished if all movies are sold. 
+            return cartState;} //Check a Cart in DB and inform return state, due if any movie is rented and finished if all movies are sold. = TESTED
     
     public String Today(){
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
@@ -1266,7 +1271,7 @@ public class Cart {
         
             isNewUser = true;
             specialQuery = null;
-            String cartState = CartState(MyCartNo());
+            
             
             Type1 = null;
             Type2 = null;
@@ -1278,7 +1283,7 @@ public class Cart {
             String query2 = "INSERT INTO users (`cCard`, `e-mail`, `name`, `password`, `CCV`, `expDate`) VALUES ('"+CreditCard+"', '"+Name+"', '"+ Email+"', '"+Password+"', "+ CCV +", '"+ ExpDate + "');";
             
             
-        try {specialQuery = "Update `cart` set `status` = '" + cartState + "', `date` = '"+ Today()+"', `return` ='" + Return()+"', `creditcard` = '"+ CreditCard+"' Where `receipt` = "+ MyCartNo() +";";
+        try {specialQuery = "Update `cart` set `status` = '" + CartState(MyCartNo()) + "', `date` = '"+ Today()+"', `return` ='" + Return()+"', `creditcard` = '"+ CreditCard+"' Where `receipt` = "+ MyCartNo() +";";
         } catch (ParseException ex) {Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);}
             
             Statement stmt = conn.getConnection().createStatement();
@@ -1365,9 +1370,10 @@ public class Cart {
                     rs.close();
                     stmt.close();
                     conn.conn.close();
-                return isNewUser;}                
+                return isNewUser;}
+                
                 else{
-                    System.out.println("SO MY STRING IS STG ELSE, I SHOULD HAVE A TRUE, WRITTING YOUR SALE INTO THE DB");
+                    System.out.println("SO MY STRING IS Stg Else, I SHOULD HAVE A TRUE, WRITTING YOUR SALE INTO THE DB");
                     isNewUser = true;
                     stmt.execute(query2);
                     stmt.execute(specialQuery);
@@ -1375,9 +1381,12 @@ public class Cart {
                     rs.close();
                     stmt.close();
                     conn.conn.close();
-                return isNewUser; }            } 
-            else{ isNewUser = false;
-                System.out.println("ERROR NONE SITUATION CONTEMPLED HERE, please check your cart query and contact your Programmer, he made a boo boo");
+                return isNewUser; }            }
+            else{ isNewUser = true;
+                
+                System.out.println("FIRST TIMER! WELCOME! -- PLEASE ENJOY!");
+                    stmt.execute(query2);
+                    stmt.execute(specialQuery);
 
                     rs.close();
                     stmt.close();

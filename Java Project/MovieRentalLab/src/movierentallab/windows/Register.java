@@ -322,7 +322,7 @@ public class Register extends javax.swing.JFrame implements ActionListener {
                int iccv = Integer.parseInt(ccv);
                
               try {
-                  if(!cart.NewUser(cCard, fullName, email, pass, iccv , expDate)){
+                  if(cart.NewUser(cCard, email, fullName, pass, iccv , expDate)){
                       int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued. \n\n  Thank You for using Xtra-Vision", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
                       if(input == JOptionPane.OK_OPTION){
                           this.dispose();    }                    }
