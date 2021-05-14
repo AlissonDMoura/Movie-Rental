@@ -162,7 +162,7 @@ creditCardField.setText("");        // TODO add your handling code here:
 
     private void nextRmovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextRmovieActionPerformed
       try{
-          
+          String cCard = creditCardField.getText().trim();
           
           
           

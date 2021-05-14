@@ -80,8 +80,6 @@ public class Cart {
                      while(rs.next()){
                         receipt = rs.getInt(1);
                         receipt++;                    }
-                     rs.close();
-                     selector.close();
                      conn.CloseConnection();
                     System.out.println("This is my Next ID:" + receipt);
                     return receipt;}//return the next valid writable receipt number - TESTED
@@ -154,19 +152,6 @@ public class Cart {
                         this.day4 = rs12.getInt(1);}
                     //CART POSITION four
                     
-                    rs2.close();
-                    rs3.close();
-                    rs4.close();
-                    rs5.close();
-                    rs6.close();
-                    rs7.close();
-                    rs8.close();
-                    rs9.close();
-                    rs10.close();
-                    rs11.close();
-                    rs12.close();
-                    
-                    selector.close();
                     
                                       
                     
@@ -303,7 +288,6 @@ public class Cart {
         stmt.execute("UPDATE cart SET Item1 = " + this.Item1 +", Type1 = '" + this.Type1 + "', Days1 = "+ this.day1+", Item2 = "+ this.Item2 + ", Type2 = '"+ this.Type2 +"', Days2 = "+ this.day2+", Item3 = "
                     + this.Item3 +", Type3 ='" + this.Type3 +"', Days3 = "+ this.day3+", Item4 =" + this.Item4 +", Type4 ='"+ this.Type4 +"', Days4 = "+ this.day4+" Where receipt =" + receipt +";");
         
-        stmt.close();
         conn.CloseConnection();
     }//Organize the cart items and change the database Row for a certain receipt number. - TESTED
         
@@ -313,7 +297,6 @@ public class Cart {
         
          Statement stmt = conn.getConnection().createStatement();                   
          stmt.execute("INSERT INTO cart (receipt, status) VALUES ("+id+",'Open');");
-         stmt.close();
          
          System.out.println("New cart number "+id+" Opened"); 
          conn.CloseConnection();
@@ -338,8 +321,7 @@ public class Cart {
             
                     System.out.println(cartNo +" is my cart returned");
                     
-                    rs.close();
-                    selector.close();
+
                     conn.CloseConnection();
                             
         
@@ -354,8 +336,7 @@ public class Cart {
                     if(rs.next()){
                     movieId = rs.getInt(1);    
                                                         }
-                    rs.close();
-                    selector.close();
+
                     conn.CloseConnection();
                     
         return movieId;
@@ -384,8 +365,7 @@ public class Cart {
                     } else{
                         System.out.println("it doest have a next, Error close to line 340, resultSet String: " +rs.getString(1));}
                     
-                    rs.close();
-                    selector.close();
+
                     conn.CloseConnection();
                     return cartFull;} //Organizes the Cart, and check if there is any item on last space. returns true for cartFull if the cart is full, or false if it ain't- TESTED
     
@@ -403,7 +383,7 @@ public class Cart {
                     stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "' WHERE receipt ="+ MyCartNo()+";");
                     
                     
-                    stmt.close();
+
                     conn.CloseConnection();
     } //Organize the cart, add a movie into it, change movie state As Sold- TESTED
     
@@ -420,7 +400,7 @@ public class Cart {
                     stmt.execute("UPDATE movie SET status = '" + state +"' WHERE (idMovie = "+ movieId +");");
                     stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "', Days4 = "+ dayN + " WHERE receipt = "+ MyCartNo()+";");
                     
-                    stmt.close();
+
                     conn.CloseConnection();
     
     }//Organize the cart, add a movie into it, change movie state As rented and update days as well as other informations in cart and movie Tables-  TESTED
@@ -460,8 +440,7 @@ public class Cart {
                                 stmt.execute("UPDATE cart SET "+ item + " = 0, " + type +" = null, "+ day +" = 0 WHERE receipt ="+ MyCartNo()+ ";");
                                 stmt.execute("UPDATE movie SET status = 'In stock' WHERE idMovie = "+ this.movieId +";");
                               
-                                rs.close();
-                                stmt.close();
+
                                 conn.CloseConnection();
     CartOrganizer(MyCartNo());
     
@@ -506,16 +485,13 @@ public class Cart {
                     
                     
                     System.out.println("movie Name is " + title);}
-                    rs.close();
-                    rs2.close();                     
-                    selector.close();
+
                     conn.CloseConnection();
                     
                     
                      return title;}
                     else { 
-                        rs.close();
-                        selector.close();
+
                         conn.CloseConnection();
                         title = "empty";
                         return title;
@@ -545,8 +521,7 @@ public class Cart {
                     if(rs.next()){
                     status = rs.getString(1);
                     System.out.println("movie Type is " + status);}
-                    rs.close();
-                    selector.close();  
+
                     conn.CloseConnection();
                     
                     return status;}//A certain position in the cart and returns the type of purchase (RENT OR BUY)- TESTED
@@ -606,26 +581,16 @@ public class Cart {
                     
                     if(type.equals("SOLD")){
                         System.out.println("Price for purchase: " +pBuy);
-                        conn.getConnection().close();
-                        rs.close();
-                        rs2.close();
-                        rs3.close();
-                        rs4.close();
-                        selector.close();
+
                         conn.CloseConnection();
                         return pBuy;} 
                     else{
                         System.out.println("Price for Rent: " + pRent);
-                        rs.close();
-                        rs2.close();
-                        rs3.close();
-                        rs4.close();
-                        selector.close();
+
                         conn.CloseConnection();
                         return pRent;}}
                     
-                    else { rs.close();                        
-                        selector.close();
+                    else { 
                         conn.CloseConnection();
                         return 0;}
     }//Reads the movie from a certain position in the cart, reads its pricing and returns the pricing for the type of purchase (Rent or Buy) - TESTED
@@ -652,8 +617,7 @@ public class Cart {
                     day = rs.getInt(1);
                     System.out.println("movie has " + day + " Days ");}  
                     
-                    rs.close();
-                    selector.close(); 
+
                     conn.CloseConnection();
                     return day;}// Reads the DB for an certain movie positioned in the Cart, return the amount of days in the Table. - TESTED
     
@@ -702,12 +666,7 @@ public class Cart {
             state = "Due"; }
             else {
             state = "Finished";}
-            
-            rs3.close();
-            rs4.close();
-            rs5.close();
-            rs6.close();
-            stmt.close();
+
             conn.CloseConnection();
             
             return state;} //Check a Cart in DB and inform return state, due if any movie is rented and finished if all movies are sold. 
@@ -1179,43 +1138,23 @@ public class Cart {
             
             
        if(smaller == day1){
-           rs1.close();
-           rs2.close();
-           rs3.close();
-           rs4.close();
-           stmt.close();
+
            conn.CloseConnection();
            return return1;}
        else if (smaller == day2){
-           rs1.close();
-           rs2.close();
-           rs3.close();
-           rs4.close();
-           stmt.close();
+
            conn.CloseConnection();
            return return2;}
        else if (smaller == day3){
-           rs1.close();
-           rs2.close();
-           rs3.close();
-           rs4.close();
-           stmt.close();
+
            conn.CloseConnection();
            return return3;}
        else if (smaller == day4){
-           rs1.close();
-           rs2.close();
-           rs3.close();
-           rs4.close();
-           stmt.close();
+
            conn.CloseConnection();
            return return4;}
        else {
-           rs1.close();
-           rs2.close();
-           rs3.close();
-           rs4.close();
-           stmt.close();
+
            conn.CloseConnection();
            return null;}     }// Select the amount of days in each Cart position. Save them into ints. Select the smaller int that is not equal to zero. add this int into today's Date and return the closest due day of return as a String - TESTED
             
@@ -1248,8 +1187,7 @@ public class Cart {
                 stmt.execute(query2);
                 stmt.execute(specialQuery);}
             
-            rs.close();
-            stmt.close();
+
             conn.CloseConnection();
             return isNewUser; 
             } // Checks if the CC is already in the system with a name, return negative if there's already a name for this card or false if the user is new. - TESTED
@@ -1277,9 +1215,7 @@ public class Cart {
         } catch (ParseException ex) {Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);}
         stmt.execute(specialQuery);}
             
-        rs.close();
-        rs2.close();
-        stmt.close();
+
         conn.CloseConnection();
         return isNewUser;
     }// Check if is there user data in DB, if not returns true, If threre's it fetches the CCard from Db and Writes the Sale in the DB and returns false.
@@ -1321,15 +1257,13 @@ public class Cart {
                     stmt.execute(query2);
                     stmt.execute(specialQuery);
                     
-                    rs.close();
-                    stmt.close();
+
                     conn.CloseConnection();
                 return isNewUser; }            } 
             else{ isNewUser = false;
                 System.out.println("ERROR NONE SITUATION CONTEMPLED HERE, please check your cart query and contact your Programmer, he made a boo boo");
                 
-                rs.close();
-                stmt.close();
+
                 conn.CloseConnection();
                 return isNewUser;
                         }

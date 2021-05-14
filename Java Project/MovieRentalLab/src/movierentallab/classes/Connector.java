@@ -66,8 +66,6 @@ public String getMovieInfo(String movieName) throws SQLException{
                         movieInfo = eInfo.getString(1);                    }
                     System.out.println("Movie info Saved for " + movieName);
                
-                    eInfo.close();
-                    selector.close();
                     CloseConnection();
                     return movieInfo;  }   // Returns the movie info section from a movie.
      
@@ -88,8 +86,7 @@ public int getMovieStock(String movieName) throws SQLException{
                     movieStock =rs.getInt(1);
                     System.out.println("Total in stock for " + movieName + " is " + movieStock);
                
-                    rs.close();
-                    ps.close();
+
                     CloseConnection();
                     return movieStock;  }    //Returns the number of movies with same title that holds status "in stock"
 
@@ -109,8 +106,7 @@ public int getMoviesRented(String mName) throws SQLException{
                     int moviesRented =rs.getInt(1);
                     System.out.println("Total movies Rented for " + mName + " is " + moviesRented);
                     
-                    rs.close();
-                    ps.close();
+
                     CloseConnection();
                     return moviesRented;}// Returns the amount of movies rented
 
@@ -130,8 +126,7 @@ public int getSoldMovies(String mName) throws SQLException{
                     int soldMovies =rs.getInt(1);
                     System.out.println("Total Sold movies for " + mName + " is " + soldMovies);
                     
-                    rs.close();
-                    ps.close();
+
                     CloseConnection();
                     return soldMovies;}//Return the amount of sold movies for a certain title.
 
@@ -144,8 +139,7 @@ public int getMovieId(String movieName) throws SQLException{
                     int movieId = eId.getInt(1);
                     System.out.println("This is your ID for "+movieName+ " "+ movieId);
                     
-                    eId.close();
-                    selector.close();
+
                     CloseConnection();
                     return movieId;
 } // Return the first movie iD with status in stock.
@@ -158,8 +152,7 @@ public String getMovieStatus(int movieId) throws SQLException{
                     String mStatus = eStatus.getString(1);
                     System.out.println("movie iD "+movieId+ " Status is "+ mStatus);
                     
-                    eStatus.close();
-                    selector.close();
+
                     CloseConnection();
                     return mStatus;}// Return the Status of a Specific movie with a certain ID.
 
@@ -171,8 +164,7 @@ public String getMovieTitle(int movieId) throws SQLException{
                     String mTitle = eTitle.getString(1);
                     System.out.println("movie ID "+ movieId+ " is Registered as  "+ mTitle); 
                     
-                    eTitle.close();
-                    selector.close();
+
                     CloseConnection();
                     return mTitle;} //Return the title registerd under a certain ID.
 
@@ -184,8 +176,7 @@ public float getMovieRentPrice(String mName) throws SQLException{
                     float mRent = ePrice.getFloat(1);
                     System.out.println("movie "+ mName + " Costs "+ mRent + " per day."); 
                     
-                    ePrice.close();
-                    selector.close();
+
                     CloseConnection();
                     return mRent; }// Return the daily price of a movie.
 
@@ -197,8 +188,7 @@ public float getMovieBuyPrice(String mName) throws SQLException{
                     float mBuy = ePrice.getFloat(1);
                     System.out.println("movie "+ mName + " Costs "+ mBuy ); 
                     
-                    ePrice.close();
-                    selector.close();
+
                     CloseConnection();
                     return mBuy; }// Return the total price of a movie
      
