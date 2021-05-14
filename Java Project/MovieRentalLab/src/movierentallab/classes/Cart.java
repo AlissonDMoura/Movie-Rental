@@ -544,28 +544,27 @@ public class Cart {
                     if(rs.next()){
                     movieId = rs.getInt(1);
                     System.out.println("movieId is " + movieId);}    
+                    rs.close();
+                    selector.close();
+                    conn.conn.close();
                     
                     if(movieId != 0){
                     String query2 = "SELECT title FROM movie WHERE idMovie =" + movieId +";";
                     
+                    selector = conn.getConnection().createStatement();
                     ResultSet rs2 = selector.executeQuery(query2);// Gets Movie Title
                     if(rs2.next()){
                     title = rs2.getString(1);
                     
-                    
                     System.out.println("movie Name is " + title);}
-
-                    conn.CloseConnection();
-                    
-                    rs.close();
                     rs2.close();
                     selector.close();
                     conn.conn.close();
+                    
                      return title;}
                     else { 
-                    rs.close();
-                    selector.close();
-                    conn.conn.close();
+                    
+                    
                         title = "empty";
                         return title;
                                             }
@@ -621,65 +620,61 @@ public class Cart {
         item = "Item4";
         type = "Type4";}
                     
-                    Statement selector = conn.getConnection().createStatement();
+                    
         
                     String query = "Select " +item+ " FROM cart WHERE receipt ="+j+" ;";
                     String query2 = "Select " +type+ " FROM cart WHERE receipt ="+j+" ;";
                     
-                    
+                    Statement selector = conn.getConnection().createStatement();
                     ResultSet rs = selector.executeQuery(query);//Get Movie ID
                     if(rs.next()){
                     movieId = rs.getInt(1);
                     System.out.println("movieId is " + movieId);}
-                    
+                    rs.close();
+                    selector.close();
+                    conn.conn.close();
                     
                     String query3 = "SELECT priceBuy FROM  movie WHERE idMovie =" + movieId +";";
                     String query4 = "SELECT priceRent FROM  movie WHERE idMovie =" + movieId +";";
                     
                     if(movieId != 0){
                     
+                    selector = conn.getConnection().createStatement();
                     ResultSet rs2 = selector.executeQuery(query2);
                     if(rs2.next()){
                     type = rs2.getString(1);}
+                    rs2.close();
+                    selector.close();
+                    conn.conn.close();
                     
-                    
+                    selector = conn.getConnection().createStatement();
                     ResultSet rs3 = selector.executeQuery(query3);
                     if(rs3.next()){
                     pBuy = rs3.getFloat(1);}
+                    rs3.close();
+                    selector.close();
+                    conn.conn.close();
                     
-                    
+                    selector = conn.getConnection().createStatement();
                     ResultSet rs4 = selector.executeQuery(query4);
                     if(rs4.next()){
                     pRent = rs4.getFloat(1);}
-                    
+                    rs4.close();
+                    selector.close();
+                    conn.conn.close();
                     
                     
                     if(type.equals("SOLD")){
                         System.out.println("Price for purchase: " +pBuy);
 
-                        rs.close();
-                        rs2.close();
-                        rs3.close();
-                        rs4.close();
-                        selector.close();
-                        conn.conn.close();
+                        
                         return pBuy;} 
                     else{
                         System.out.println("Price for Rent: " + pRent);
 
-                        rs.close();
-                        rs2.close();
-                        rs3.close();
-                        rs4.close();
-                        selector.close();
-                        conn.conn.close();
                         return pRent;}}
                     
-                    else { 
-                        rs.close();
-                        selector.close();
-                        conn.conn.close();
-                        return 0;}
+                    else {return 0;}
     }//Reads the movie from a certain position in the cart, reads its pricing and returns the pricing for the type of purchase (Rent or Buy) - TESTED
     
     public int PanelDays(int PanelNumber) throws SQLException{
@@ -720,35 +715,40 @@ public class Cart {
             String query6 = "Select Type4 from cart where receipt = " + MyCartNo()+";";
             
             Statement stmt = conn.getConnection().createStatement();
-                        
             ResultSet rs3 = stmt.executeQuery(query3);//Type1
-            ResultSet rs4 = stmt.executeQuery(query4);//Type2
-            ResultSet rs5 = stmt.executeQuery(query5);//Type3
-            ResultSet rs6 = stmt.executeQuery(query6);//Type4
-            
-            
             if(rs3.next()){                        
                         Type1 = rs3.getString(1);
                         System.out.println(Type1);            }
+            stmt.close();
+            rs3.close();
+            conn.conn.close();
             
-            
-            
+            stmt = conn.getConnection().createStatement();
+            ResultSet rs4 = stmt.executeQuery(query4);//Type2
             if(rs4.next()){                        
                         Type2 = rs4.getString(1);
             System.out.println(Type2);}
+            stmt.close();
+            rs4.close();
+            conn.conn.close();
             
-            
-            
+            stmt = conn.getConnection().createStatement();
+            ResultSet rs5 = stmt.executeQuery(query5);//Type3
             if(rs5.next()){
                         Type3 = rs5.getString(1);
                         System.out.println(Type3);}
+            stmt.close();
+            rs5.close();
+            conn.conn.close();
             
-            
-            
+            stmt = conn.getConnection().createStatement();
+            ResultSet rs6 = stmt.executeQuery(query6);//Type4
             if(rs6.next()){
                         Type4 = rs6.getString(1);
                         System.out.println(Type4);}
-            
+            stmt.close();
+            rs5.close();
+            conn.conn.close();
             
                            
             if( !Type1.equals("RENTED") || Type2.equals("RENTED") || Type3.equals("RENTED") || Type4.equals("RENTED") ){
@@ -756,13 +756,6 @@ public class Cart {
             else {
             state = "Finished";}
 
-            rs3.close();
-            rs4.close();
-            rs5.close();
-            rs6.close();
-            stmt.close();
-            conn.conn.close();
-            
             return state;} //Check a Cart in DB and inform return state, due if any movie is rented and finished if all movies are sold. 
     
     public String Today(){
@@ -1282,11 +1275,11 @@ public class Cart {
             Type4 = null;
             
             
-            String query = "Select name FROM users WHERE creditcard ='"+CreditCard+"';";
+            String query = "Select name FROM users WHERE cCard ='"+CreditCard+"';";
             String query2 = "INSERT INTO users (`cCard`, `e-mail`, `name`, `password`, `CCV`, `expDate`) VALUES ('"+CreditCard+"', '"+Name+"', '"+ Email+"', '"+Password+"', "+ CCV +", '"+ ExpDate + "');";
             
             
-        try {specialQuery = "Update cart set status = '" + cartState + "', date = '"+ Today()+"', return ='" + Return()+"', creditcard = '"+ CreditCard+"' Where receipt = "+ MyCartNo() +";";
+        try {specialQuery = "Update `cart` set `status` = '" + cartState + "', `date` = '"+ Today()+"', `return` ='" + Return()+"', `creditcard` = '"+ CreditCard+"' Where `receipt` = "+ MyCartNo() +";";
         } catch (ParseException ex) {Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);}
             
             Statement stmt = conn.getConnection().createStatement();
@@ -1330,7 +1323,7 @@ public class Cart {
         ResultSet rs2 = stmt.executeQuery(query2);
         if(rs2.next()){
             String CreditCard = rs2.getString(1);
-            try {specialQuery = "Update cart set status = '" + cartState + "', date = '"+ Today()+"', return ='" + Return()+"', creditcard = '"+ CreditCard+"' Where receipt = "+ MyCartNo() +";";
+            try {specialQuery = "Update `cart` set `status` = '" + cartState + "', `date` = '"+ Today()+"', `return` ='" + Return()+"', `creditcard` = '"+ CreditCard+"' Where `receipt` = "+ MyCartNo() +";";
         } catch (ParseException ex) {Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);}
         stmt.execute(specialQuery);}
         rs2.close();
@@ -1356,7 +1349,7 @@ public class Cart {
             String query2 = "INSERT INTO users (`cCard`, `e-mail`, `CCV`, `expDate`) VALUES ('"+CreditCard+"', '"+ Email+"', "+ CCV +", '"+ ExpDate + "');";
             
             
-        try {specialQuery = "Update cart set status = '" + cartState + "', date = '"+ Today()+"', return ='" + Return()+"', creditcard = '"+ CreditCard+"' Where receipt = "+ MyCartNo() +";";
+        try {specialQuery = "Update `cart` set `status` = '" + cartState + "', `date` = '"+ Today()+"', `return` ='" + Return()+"', `creditcard` = '"+ CreditCard+"' Where `receipt` = "+ MyCartNo() +";";
         } catch (ParseException ex) {Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);}
             
             Statement stmt = conn.getConnection().createStatement();

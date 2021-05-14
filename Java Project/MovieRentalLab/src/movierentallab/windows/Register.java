@@ -7,6 +7,9 @@ package movierentallab.windows;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import movierentallab.classes.Cart;
@@ -45,13 +48,13 @@ public class Register extends javax.swing.JFrame implements ActionListener {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        nameTxtBox = new javax.swing.JTextField();
+        eMailTxtBox = new javax.swing.JTextField();
+        passwordTxtBox = new javax.swing.JTextField();
+        cCardTxtBox = new javax.swing.JTextField();
+        cPasswTxtBox = new javax.swing.JTextField();
+        ExpDateTxtBox = new javax.swing.JTextField();
+        cvvTxtBox = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
@@ -69,52 +72,57 @@ public class Register extends javax.swing.JFrame implements ActionListener {
 
         jLabel1.setText("Please fill all fields");
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        nameTxtBox.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        nameTxtBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField1MousePressed(evt);
+                nameTxtBoxMousePressed(evt);
             }
         });
 
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+        eMailTxtBox.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        eMailTxtBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField2MousePressed(evt);
+                eMailTxtBoxMousePressed(evt);
             }
         });
 
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
+        passwordTxtBox.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        passwordTxtBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField3MousePressed(evt);
+                passwordTxtBoxMousePressed(evt);
+            }
+        });
+        passwordTxtBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordTxtBoxActionPerformed(evt);
             }
         });
 
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
+        cCardTxtBox.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cCardTxtBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField4MousePressed(evt);
+                cCardTxtBoxMousePressed(evt);
             }
         });
 
-        jTextField5.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField5.addMouseListener(new java.awt.event.MouseAdapter() {
+        cPasswTxtBox.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cPasswTxtBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField5MousePressed(evt);
+                cPasswTxtBoxMousePressed(evt);
             }
         });
 
-        jTextField6.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField6.addMouseListener(new java.awt.event.MouseAdapter() {
+        ExpDateTxtBox.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ExpDateTxtBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField6MousePressed(evt);
+                ExpDateTxtBoxMousePressed(evt);
             }
         });
 
-        jTextField7.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField7.addMouseListener(new java.awt.event.MouseAdapter() {
+        cvvTxtBox.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cvvTxtBox.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField7MousePressed(evt);
+                cvvTxtBoxMousePressed(evt);
             }
         });
 
@@ -178,17 +186,17 @@ public class Register extends javax.swing.JFrame implements ActionListener {
                                 .addComponent(jLabel7)
                                 .addGap(26, 26, 26)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)
-                            .addComponent(jTextField3)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cCardTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(nameTxtBox)
+                            .addComponent(eMailTxtBox)
+                            .addComponent(passwordTxtBox)
+                            .addComponent(cPasswTxtBox, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(ExpDateTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(42, 42, 42)
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(cvvTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(185, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -202,28 +210,28 @@ public class Register extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(nameTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eMailTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passwordTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cPasswTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cCardTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ExpDateTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cvvTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -252,14 +260,14 @@ public class Register extends javax.swing.JFrame implements ActionListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        try{
-          String fullName = jTextField1.getText().trim();
-          String email = jTextField2.getText().trim();
-          String pass = jTextField3.getText().trim();
-          String pass2 = jTextField5.getText().trim();
-          String cCard = jTextField4.getText().trim();
-          String expDate = jTextField6.getText().trim();
-          String ccv = jTextField7.getText().trim();  
+        
+          String fullName = nameTxtBox.getText().trim();
+          String email = eMailTxtBox.getText().trim();
+          String pass = passwordTxtBox.getText().trim();
+          String pass2 = cPasswTxtBox.getText().trim();
+          String cCard = cCardTxtBox.getText().trim();
+          String expDate = ExpDateTxtBox.getText().trim();
+          String ccv = cvvTxtBox.getText().trim();  
           boolean c1  = false;
           boolean c2  = false;
           boolean c3  = false;
@@ -313,54 +321,57 @@ public class Register extends javax.swing.JFrame implements ActionListener {
                
                int iccv = Integer.parseInt(ccv);
                
-               if(!cart.NewUser(cCard, fullName, email, pass, iccv , expDate)){
-                   int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued. \n\n  Thank You for using Xtra-Vision", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-                 if(input == JOptionPane.OK_OPTION){
-                     this.dispose();    }                    }
-               else{
-           JOptionPane.showMessageDialog(this, "Account already registered for this Credit Card, please try a new one or login.");}
+              try {
+                  if(!cart.NewUser(cCard, fullName, email, pass, iccv , expDate)){
+                      int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued. \n\n  Thank You for using Xtra-Vision", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+                      if(input == JOptionPane.OK_OPTION){
+                          this.dispose();    }                    }
+                  else{
+                      JOptionPane.showMessageDialog(this, "Account already registered for this Credit Card, please try a new one or login.");}
+              } catch (SQLException ex) {
+                  Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
+              }
            }            
             
             
-        }catch(Exception e){
-        JOptionPane.showMessageDialog(this, "Something is wrong, error: " + e.getMessage());           }
+        
         
     
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jTextField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MousePressed
-    jTextField1.setText("");
-    }//GEN-LAST:event_jTextField1MousePressed
+    private void nameTxtBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameTxtBoxMousePressed
+    nameTxtBox.setText("");
+    }//GEN-LAST:event_nameTxtBoxMousePressed
 
-    private void jTextField2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MousePressed
+    private void eMailTxtBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eMailTxtBoxMousePressed
         // TODO add your handling code here:
-        jTextField2.setText("");
-    }//GEN-LAST:event_jTextField2MousePressed
+        eMailTxtBox.setText("");
+    }//GEN-LAST:event_eMailTxtBoxMousePressed
 
-    private void jTextField3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MousePressed
+    private void passwordTxtBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passwordTxtBoxMousePressed
         // TODO add your handling code here:
-        jTextField3.setText("");
-    }//GEN-LAST:event_jTextField3MousePressed
+        passwordTxtBox.setText("");
+    }//GEN-LAST:event_passwordTxtBoxMousePressed
 
-    private void jTextField5MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField5MousePressed
+    private void cPasswTxtBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cPasswTxtBoxMousePressed
         // TODO add your handling code here:
-        jTextField5.setText("");
-    }//GEN-LAST:event_jTextField5MousePressed
+        cPasswTxtBox.setText("");
+    }//GEN-LAST:event_cPasswTxtBoxMousePressed
 
-    private void jTextField4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MousePressed
+    private void cCardTxtBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cCardTxtBoxMousePressed
         // TODO add your handling code here:
-        jTextField4.setText("");
-    }//GEN-LAST:event_jTextField4MousePressed
+        cCardTxtBox.setText("");
+    }//GEN-LAST:event_cCardTxtBoxMousePressed
 
-    private void jTextField6MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField6MousePressed
+    private void ExpDateTxtBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExpDateTxtBoxMousePressed
         // TODO add your handling code here:
-        jTextField6.setText("");
-    }//GEN-LAST:event_jTextField6MousePressed
+        ExpDateTxtBox.setText("");
+    }//GEN-LAST:event_ExpDateTxtBoxMousePressed
 
-    private void jTextField7MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField7MousePressed
+    private void cvvTxtBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cvvTxtBoxMousePressed
         // TODO add your handling code here:
-        jTextField7.setText("");
-    }//GEN-LAST:event_jTextField7MousePressed
+        cvvTxtBox.setText("");
+    }//GEN-LAST:event_cvvTxtBoxMousePressed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
@@ -370,6 +381,10 @@ public class Register extends javax.swing.JFrame implements ActionListener {
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void passwordTxtBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTxtBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordTxtBoxActionPerformed
 
     /**
      * @param args the command line arguments
@@ -407,6 +422,11 @@ public class Register extends javax.swing.JFrame implements ActionListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField ExpDateTxtBox;
+    private javax.swing.JTextField cCardTxtBox;
+    private javax.swing.JTextField cPasswTxtBox;
+    private javax.swing.JTextField cvvTxtBox;
+    private javax.swing.JTextField eMailTxtBox;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -418,13 +438,8 @@ public class Register extends javax.swing.JFrame implements ActionListener {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField nameTxtBox;
+    private javax.swing.JTextField passwordTxtBox;
     // End of variables declaration//GEN-END:variables
 
     @Override
