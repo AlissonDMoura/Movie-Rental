@@ -25,6 +25,7 @@ public class Connector {
             private static final String PASS = "2019146";
             
             
+            
 public Connection getConnection(){
                             
                 
@@ -38,8 +39,7 @@ public Connection getConnection(){
                                         
                     //catch error and report the connection wasn't stabilished.
                 } catch (SQLException ex) {
-                    throw new RuntimeException("Error Connecting", ex);
-                }
+                    throw new RuntimeException("Error Connecting", ex);               }
                 
             }// Connects into the dataBase
             

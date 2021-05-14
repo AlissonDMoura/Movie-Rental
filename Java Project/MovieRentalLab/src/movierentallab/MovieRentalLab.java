@@ -45,7 +45,7 @@ public class MovieRentalLab extends JFrame {
         
         Cart lala = new Cart ();
       
-        System.out.println(lala.EnterAsGuest("1234123412341234","E@Mail", 123, "12/11"));
+        
         
         
         
