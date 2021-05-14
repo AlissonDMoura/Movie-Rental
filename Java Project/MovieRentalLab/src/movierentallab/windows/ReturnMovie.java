@@ -5,8 +5,11 @@
  */
 package movierentallab.windows;
 
+import java.sql.ResultSet;
+import java.sql.Statement;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import movierentallab.classes.Connector;
 
 /**
  *
@@ -14,6 +17,8 @@ import javax.swing.JOptionPane;
  */
 public class ReturnMovie extends javax.swing.JFrame {
     private JFrame window;
+    Connector conn = new Connector();
+
 
     /**
      * Creates new form ReturnMovie
@@ -161,10 +166,51 @@ creditCardField.setText("");        // TODO add your handling code here:
     }//GEN-LAST:event_creditCardFieldMousePressed
 
     private void nextRmovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextRmovieActionPerformed
-      try{
+  try{
+
           String cCard = creditCardField.getText().trim();
+          String cCardDb = null;
+          boolean c1 = false;
           
-          
+          if(cCard.isEmpty() || cCard.length() != 16){
+          JOptionPane.showMessageDialog(this, "Something wrong, Please insert 16 digits of your Credit Card");    
+          }else{
+              
+                    String query = "SELECT creditcard FROM cart WHERE creditcard =" + cCard +";";
+                    Statement selector = conn.getConnection().createStatement();
+                    
+                    ResultSet rs = selector.executeQuery(query);//Get days amount
+                    if(rs.next()){
+                    cCardDb = rs.getString(1);
+                    System.out.println("movie has " + cCardDb + " Days ");}
+                    conn.CloseConnection();                       
+                    
+                    if(cCard.equals(cCardDb)){
+                    JOptionPane.showMessageDialog(this, "We have found your Order");     
+                     c1 = true;    
+                    }else{
+                    JOptionPane.showMessageDialog(this, "I'm sorry, we could't find your order :( ");      
+                    }
+                    
+                    if(c1== true){
+                        this.dispose();
+                         CheckOut sMovie = new CheckOut(window);
+                         sMovie.setVisible(true);
+                         sMovie.setLocationRelativeTo(null);
+                          sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
+        
+                        
+                        
+                    }
+ 
+              
+              
+              
+              
+              
+              
+               
+          } 
           
           
           
@@ -172,20 +218,10 @@ creditCardField.setText("");        // TODO add your handling code here:
       }catch(Exception e){
         JOptionPane.showMessageDialog(this, "Something is wrong, error: " + e.getMessage());           }
        
-       
         
         
         
-        
-        
-        this.dispose();
-        CheckOut sMovie = new CheckOut(window);
-        
-        String cCard = creditCardField.getText();
-      
-        sMovie.setVisible(true);
-        sMovie.setLocationRelativeTo(null);
-        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
     }//GEN-LAST:event_nextRmovieActionPerformed
 
     /**
