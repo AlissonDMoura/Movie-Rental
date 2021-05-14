@@ -7,8 +7,12 @@ package movierentallab.windows;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import movierentallab.classes.Cart;
 
 /**
  *
@@ -16,6 +20,11 @@ import javax.swing.JOptionPane;
  */
 public class Customer extends javax.swing.JFrame implements ActionListener {
     private JFrame window;
+    
+    Cart cart = new Cart();
+    
+    private String email;
+    private String pass;
 
     /**
      * Creates new form Customer
@@ -40,10 +49,10 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jTextField1 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        passTxtField = new javax.swing.JPasswordField();
+        eMailTxtField = new javax.swing.JTextField();
+        signNpayButton = new javax.swing.JButton();
+        backButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -54,24 +63,24 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
 
         jLabel2.setText("Password: ");
 
-        jPasswordField1.setToolTipText("");
-        jPasswordField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        passTxtField.setToolTipText("");
+        passTxtField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jPasswordField1MousePressed(evt);
+                passTxtFieldMousePressed(evt);
             }
         });
 
-        jButton1.setText("Sign in and Pay");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        signNpayButton.setText("Sign in and Pay");
+        signNpayButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                signNpayButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("BACK");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setText("BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -81,7 +90,7 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(signNpayButton)
                 .addGap(353, 353, 353))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -92,11 +101,11 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
                             .addComponent(jLabel2))
                         .addGap(2, 2, 2)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(passTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(eMailTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(60, 60, 60)
-                        .addComponent(jButton2)))
+                        .addComponent(backButton)))
                 .addContainerGap(303, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -105,15 +114,15 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
                 .addGap(175, 175, 175)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(eMailTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(22, 22, 22)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(passTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
-                .addComponent(jButton1)
+                .addComponent(signNpayButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 156, Short.MAX_VALUE)
-                .addComponent(jButton2)
+                .addComponent(backButton)
                 .addGap(36, 36, 36))
         );
 
@@ -131,27 +140,32 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     //Action Performed below: validate the user input and create pop ups
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void signNpayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_signNpayButtonActionPerformed
         try{
-        String email = jTextField1.getText().trim();
-        String pass = new String(jPasswordField1.getPassword());
+        email = eMailTxtField.getText().trim();
+        pass = new String(passTxtField.getPassword());
 
-            
             System.out.println(email);
             System.out.println(pass);
             
             if(email.isEmpty() || pass.isEmpty()){
-            JOptionPane.showMessageDialog(this, "The field is empty, Please insert your email and password");     
-              
-            }else{
-                int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued. \n\n  Thank You for using Xtra-Vision", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
-     
-                if(input == JOptionPane.OK_OPTION)
-                {
-                 this.dispose();
-                } 
+            JOptionPane.showMessageDialog(this, "The field is empty, Please insert your email and password");}
+            
+            else try {
+                if(!cart.UserLogin(email, pass)){
+                    int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued. \n\n  Thank You for using Xtra-Vision", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+                    if(input == JOptionPane.OK_OPTION){this.dispose();}               }
+                else{ 
+                JOptionPane.showMessageDialog(this, "Combination Email + Password not found in database, please register first.");}
+        } catch (SQLException ex) {
+            Logger.getLogger(Customer.class.getName()).log(Level.SEVERE, null, ex);
+        }
                 
-            }
+                
+                
+                
+                
+            
     
     
     
@@ -163,21 +177,21 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
 }       
        
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_signNpayButtonActionPerformed
     //Password Field below: set the field blank when the user click in the field and for security it hides the user password
-    private void jPasswordField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPasswordField1MousePressed
+    private void passTxtFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passTxtFieldMousePressed
         // TODO add your handling code here:
-        jPasswordField1.setText("");
-    }//GEN-LAST:event_jPasswordField1MousePressed
+        passTxtField.setText("");
+    }//GEN-LAST:event_passTxtFieldMousePressed
     // Action Performed below: the button goes back to the last frame
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.dispose();
         Account sMovie = new Account(window);
       
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,13 +229,13 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton backButton;
+    private javax.swing.JTextField eMailTxtField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JPasswordField passTxtField;
+    private javax.swing.JButton signNpayButton;
     // End of variables declaration//GEN-END:variables
 
     @Override

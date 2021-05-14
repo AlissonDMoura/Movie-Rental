@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import movierentallab.classes.Cart;
 
 /**
  *
@@ -17,6 +18,9 @@ import javax.swing.JOptionPane;
  */
 public class Guest extends javax.swing.JFrame implements ActionListener {
     private JFrame window;
+    
+    Cart cart = new Cart();
+    
 
 
     /**
@@ -42,12 +46,12 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        eMailTxtField = new javax.swing.JTextField();
+        cCardTxtField = new javax.swing.JTextField();
+        ExpDateTxtField = new javax.swing.JTextField();
+        ccvTextField = new javax.swing.JTextField();
+        backButton = new javax.swing.JButton();
+        payButton = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -60,56 +64,56 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
 
         jLabel1.setText("Please fill all fields");
 
-        jTextField1.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        String email = jTextField1.getText();
-        jTextField1.addMouseListener(new java.awt.event.MouseAdapter() {
+        eMailTxtField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        String email = eMailTxtField.getText();
+        eMailTxtField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField1MousePressed(evt);
+                eMailTxtFieldMousePressed(evt);
             }
         });
 
-        jTextField2.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField2.addMouseListener(new java.awt.event.MouseAdapter() {
+        cCardTxtField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        cCardTxtField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField2MousePressed(evt);
+                cCardTxtFieldMousePressed(evt);
             }
         });
 
-        jTextField3.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField3.addMouseListener(new java.awt.event.MouseAdapter() {
+        ExpDateTxtField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ExpDateTxtField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField3MousePressed(evt);
+                ExpDateTxtFieldMousePressed(evt);
             }
         });
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        ExpDateTxtField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                ExpDateTxtFieldActionPerformed(evt);
             }
         });
 
-        jTextField4.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        jTextField4.addMouseListener(new java.awt.event.MouseAdapter() {
+        ccvTextField.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        ccvTextField.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                jTextField4MousePressed(evt);
+                ccvTextFieldMousePressed(evt);
             }
         });
-        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+        ccvTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField4ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setText("BACK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                ccvTextFieldActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Pay");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setText("BACK");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                backButtonActionPerformed(evt);
+            }
+        });
+
+        payButton.setText("Pay");
+        payButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                payButtonActionPerformed(evt);
             }
         });
 
@@ -129,7 +133,7 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(49, 49, 49)
-                        .addComponent(jButton1))
+                        .addComponent(backButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(378, 378, 378)
                         .addComponent(jLabel1))
@@ -144,21 +148,21 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
                                 .addComponent(jLabel3)
                                 .addGap(18, 18, 18)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(eMailTxtField)
+                            .addComponent(cCardTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(219, 219, 219)
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(ExpDateTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(29, 29, 29)
                         .addComponent(jLabel5)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(ccvTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(240, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(payButton, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(370, 370, 370))
         );
         jPanel1Layout.setVerticalGroup(
@@ -168,22 +172,22 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
                 .addComponent(jLabel1)
                 .addGap(41, 41, 41)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eMailTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(45, 45, 45)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cCardTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(42, 42, 42)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ExpDateTxtField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ccvTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64)
-                .addComponent(jButton2)
+                .addComponent(payButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 95, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(backButton)
                 .addGap(41, 41, 41))
         );
 
@@ -202,19 +206,19 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
     }// </editor-fold>//GEN-END:initComponents
 
     
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void ExpDateTxtFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExpDateTxtFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_ExpDateTxtFieldActionPerformed
 
     
     // Action Perfomed below: validate the user inputs and create pop ups for the possible errors
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void payButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_payButtonActionPerformed
        try{
        
-       String email = jTextField1.getText().trim();
-       String cCard = jTextField2.getText().trim();
-       String expDate = jTextField3.getText().trim();
-       String ccv = jTextField4.getText().trim();
+       String email = eMailTxtField.getText().trim();
+       String cCard = cCardTxtField.getText().trim();
+       String expDate = ExpDateTxtField.getText().trim();
+       String ccv = ccvTextField.getText().trim();
        boolean c1  = false;
        boolean c2  = false;
        boolean c3  = false;
@@ -249,12 +253,18 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
            
            if(c1 == true && c2 == true && c3 == true && c4 == true){
                
-            int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued. \n\n  Thank You for using Xtra-Vision", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+               int iccv = Integer.parseInt(ccv);
+               if(cart.EnterAsGuest(cCard, email, iccv, expDate)){
+           int input = JOptionPane.showOptionDialog(null, "Payment Successful! \n\n Please wait for your DVD to be issued. \n\n  Thank You for using Xtra-Vision", "Confirmation", JOptionPane.DEFAULT_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
      
-            if(input == JOptionPane.OK_OPTION)
-                {
-                this.dispose();
-                }   
+            if(input == JOptionPane.OK_OPTION){
+                this.dispose();}                 }
+               else{
+               JOptionPane.showMessageDialog(this, "Your Credit Card has an Open Receipt, please return your current DVDs before you rent again");     
+               }
+               
+                              
+            
            
       
        }
@@ -269,41 +279,41 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
         
         
  
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_payButtonActionPerformed
     // Mouse Pressed below: set the text blank when the user click in the text field
-    private void jTextField1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField1MousePressed
-      jTextField1.setText("");
+    private void eMailTxtFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eMailTxtFieldMousePressed
+      eMailTxtField.setText("");
 
      
-    }//GEN-LAST:event_jTextField1MousePressed
+    }//GEN-LAST:event_eMailTxtFieldMousePressed
     // Mouse Pressed below: set the text blank when the user click in the text field
-    private void jTextField2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField2MousePressed
+    private void cCardTxtFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cCardTxtFieldMousePressed
         // TODO add your handling code here:
-        jTextField2.setText("");
-    }//GEN-LAST:event_jTextField2MousePressed
+        cCardTxtField.setText("");
+    }//GEN-LAST:event_cCardTxtFieldMousePressed
     // Mouse Pressed below: set the text blank when the user click in the text field
-    private void jTextField3MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField3MousePressed
+    private void ExpDateTxtFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ExpDateTxtFieldMousePressed
         // TODO add your handling code here:
-        jTextField3.setText("");
-    }//GEN-LAST:event_jTextField3MousePressed
+        ExpDateTxtField.setText("");
+    }//GEN-LAST:event_ExpDateTxtFieldMousePressed
     // Mouse Pressed below: set the text blank when the user click in the text field
-    private void jTextField4MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextField4MousePressed
+    private void ccvTextFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ccvTextFieldMousePressed
         // TODO add your handling code here:
-        jTextField4.setText("");
-    }//GEN-LAST:event_jTextField4MousePressed
+        ccvTextField.setText("");
+    }//GEN-LAST:event_ccvTextFieldMousePressed
     // Action Performed below: the button goes back to the last frame
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         this.dispose();
         Account sMovie = new Account(window);
       
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
-    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+    private void ccvTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccvTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField4ActionPerformed
+    }//GEN-LAST:event_ccvTextFieldActionPerformed
 
     /**
      * @param args the command line arguments
@@ -342,18 +352,18 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JTextField ExpDateTxtField;
+    private javax.swing.JButton backButton;
+    private javax.swing.JTextField cCardTxtField;
+    private javax.swing.JTextField ccvTextField;
+    private javax.swing.JTextField eMailTxtField;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
+    private javax.swing.JButton payButton;
     // End of variables declaration//GEN-END:variables
 
     @Override

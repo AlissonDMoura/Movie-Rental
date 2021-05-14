@@ -65,6 +65,9 @@ public class Cart {
     private String title;
     private String status;
     
+    private String userName;
+    private String userCcard;
+    
     private int movieId;
     Connector conn = new Connector();
     
@@ -606,24 +609,26 @@ public class Cart {
             Statement stmt6 = conn.getConnection().createStatement();
             
             ResultSet rs3 = stmt3.executeQuery(query3);//Type1
-            conn.getConnection().close();
             ResultSet rs4 = stmt4.executeQuery(query4);//Type2
-            conn.getConnection().close();
             ResultSet rs5 = stmt5.executeQuery(query5);//Type3
-            conn.getConnection().close();
             ResultSet rs6 = stmt6.executeQuery(query6);//Type4
-            conn.getConnection().close();
+            
             
             if(rs3.next()){                        
-                        Type1 = rs3.getString(1);}
+                        Type1 = rs3.getString(1);
+                        System.out.println(Type1);
+            }
             if(rs4.next()){                        
-                        Type2 = rs4.getString(1);}
+                        Type2 = rs4.getString(1);
+            System.out.println(Type2);}
             if(rs5.next()){
-                        Type3 = rs5.getString(1);}
+                        Type3 = rs5.getString(1);
+                        System.out.println(Type3);}
             if(rs5.next()){
-                        Type4 = rs6.getString(1);}
+                        Type4 = rs6.getString(1);
+            System.out.println(Type4);}
                            
-            if( Type1.equals("RENTED") || Type2.equals("RENTED") || Type3.equals("RENTED") || Type4.equals("RENTED") ){
+            if( !Type1.equals("RENTED") || Type2.equals("RENTED") || Type3.equals("RENTED") || Type4.equals("RENTED") ){
             state = "Due"; }
             else {
             state = "Finished";}
@@ -635,7 +640,7 @@ public class Cart {
         Date today = new Date();
         
         
-        return df.format(today);}//Returns today's date as a String. - 
+        return df.format(today);}//Returns today's date as a String. - TESTED
     
     public String Return() throws SQLException, ParseException{
        int cartNo = MyCartNo();
@@ -1106,16 +1111,12 @@ public class Cart {
            return return3;}
        else if (smaller == day4){
            return return4;}
-       else {return null;}     }// Select the amount of days in each Cart position. Save them into ints. Select the smaller int that is not equal to zero. add this int into today's Date and return the closest due day of return as a String
-       
-       
-       
-    
-    
+       else {return null;}     }// Select the amount of days in each Cart position. Save them into ints. Select the smaller int that is not equal to zero. add this int into today's Date and return the closest due day of return as a String - TESTED
+            
     public boolean NewUser(String CreditCard, String Name, String Email, String Password, int CCV, String ExpDate) throws SQLException{
         
             isNewUser = true;
-            receipt = MyCartNo();
+            specialQuery = null;
             String cartState = CartState(MyCartNo());
             
             Type1 = null;
@@ -1124,11 +1125,11 @@ public class Cart {
             Type4 = null;
             
             
-            String query = "Select name FROM users WHERE cCard ='"+CreditCard+"';";
+            String query = "Select name FROM users WHERE creditcard ='"+CreditCard+"';";
             String query2 = "INSERT INTO users (`cCard`, `e-mail`, `name`, `password`, `CCV`, `expDate`) VALUES ('"+CreditCard+"', '"+Name+"', '"+ Email+"', '"+Password+"', "+ CCV +", '"+ ExpDate + "');";
             
             
-        try {specialQuery = "Update cart set status = '" + cartState + "', date = '"+Today()+"', return ='" + Return()+"' Where receipt = "+ MyCartNo() +";";
+        try {specialQuery = "Update cart set status = '" + cartState + "', date = '"+ Today()+"', return ='" + Return()+"', creditcard = '"+ CreditCard+"' Where receipt = "+ MyCartNo() +";";
         } catch (ParseException ex) {Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);}
             
             Statement stmt = conn.getConnection().createStatement();
@@ -1144,13 +1145,85 @@ public class Cart {
             else{
                 isNewUser = true;
                 stmt2.execute(query2);
-                stmt2.close();    
                 stmt3.execute(specialQuery);}
             
             return isNewUser; 
             } // Checks if the CC is already in the system with a name, return negative if there's already a name for this card or false if the user is new. - TESTED
     
+    public boolean UserLogin(String Email, String Password) throws SQLException{
+        isNewUser = true;
+        specialQuery = null;
+        String cartState = CartState(MyCartNo());
+        
+        String query = "Select `name` from `users` Where `e-mail` = '"+ Email+"' AND `password` = '"+ Password+"';";
+        String query2 = "Select `cCard` from `users` Where `e-mail` = '"+ Email+"' AND `password` = '"+ Password+"';";
+        
+        Statement stmt = conn.getConnection().createStatement();
+        Statement stmt2 = conn.getConnection().createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        ResultSet rs2 = stmt.executeQuery(query2);
+        
+        if(rs.next()){
+        userName = rs.getString(1);
+        isNewUser = false;}
+        else{isNewUser = true;}
+        
+        if(rs2.next()){
+            String CreditCard = rs2.getString(1);
+            try {specialQuery = "Update cart set status = '" + cartState + "', date = '"+ Today()+"', return ='" + Return()+"', creditcard = '"+ CreditCard+"' Where receipt = "+ MyCartNo() +";";
+        } catch (ParseException ex) {Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);}
+        stmt2.execute(specialQuery);}
+            
+        return isNewUser;
+    }// Check if is there user data in DB, if not returns true, If threre's it fetches the CCard from Db and Writes the Sale in the DB and returns false.
     
-    
-    
+    public boolean EnterAsGuest(String CreditCard, String Email, int CCV, String ExpDate) throws SQLException{
+        
+            isNewUser = true;
+            receipt = MyCartNo();
+            String cartState = CartState(MyCartNo());
+            
+            Type1 = null;
+            Type2 = null;
+            Type3 = null;
+            Type4 = null;
+            
+            
+            String query = "Select status FROM cart WHERE creditcard = '"+CreditCard+"';";
+            String query2 = "INSERT INTO users (`cCard`, `e-mail`, `CCV`, `expDate`) VALUES ('"+CreditCard+"', '"+ Email+"', "+ CCV +", '"+ ExpDate + "');";
+            
+            
+        try {specialQuery = "Update cart set status = '" + cartState + "', date = '"+ Today()+"', return ='" + Return()+"', creditcard = '"+ CreditCard+"' Where receipt = "+ MyCartNo() +";";
+        } catch (ParseException ex) {Logger.getLogger(Cart.class.getName()).log(Level.SEVERE, null, ex);}
+            
+            Statement stmt = conn.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+                            
+            Statement stmt2 = conn.getConnection().createStatement();
+            Statement stmt3 = conn.getConnection().createStatement();
+            
+            if(rs.next()){
+                System.out.println("I HAVE A NEXT RIGHT HERE"); 
+                System.out.println("MY RS GET STRING IS " + rs.getString(1));
+                
+                if(rs.getString(1).equals("Due")){
+                    System.out.println("SO MY STRING WAS DUE, SO I SHOULD HAVE A FALSE.");
+                    
+                    isNewUser = false;
+                return isNewUser;}                
+                else{
+                    System.out.println("SO MY STRING IS STG ELSE, I SHOULD HAVE A TRUE, WRITTING YOUR SALE INTO THE DB");
+                    isNewUser = true;
+                    stmt2.execute(query2);
+                    stmt2.close();    
+                    stmt3.execute(specialQuery);
+                return isNewUser; }            } 
+            else{ isNewUser = false;
+                System.out.println("ERROR NONE SITUATION CONTEMPLED HERE, please check your cart query and contact your Programmer, he made a boo boo");
+                return isNewUser;
+                        }
+    }//Verify if the card Still have any receipts open, If there False = Message to close last receipt,  If True Accept payment and write into database.
+
+
 }
