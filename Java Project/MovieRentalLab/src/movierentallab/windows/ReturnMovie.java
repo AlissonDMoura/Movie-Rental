@@ -162,6 +162,8 @@ creditCardField.setText("");        // TODO add your handling code here:
     private void nextRmovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextRmovieActionPerformed
         this.dispose();
         CheckOut sMovie = new CheckOut(window);
+        
+        String cCard = creditCardField.getText();
       
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);

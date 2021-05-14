@@ -193,6 +193,7 @@ public class MovieInfo extends javax.swing.JFrame {
 
         try {
             cart.MovieAddIntoCart("RENTED", mName, days);
+            
         } catch (SQLException ex) {
             Logger.getLogger(MovieInfo.class.getName()).log(Level.SEVERE, null, ex);
         }

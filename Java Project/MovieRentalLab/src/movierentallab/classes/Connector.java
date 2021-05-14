@@ -29,7 +29,7 @@ public class Connector {
             
 public Connection getConnection() throws SQLException{
     
-    if(conn == null){
+   // if(conn == null){
                 
                 try {                           
                     //connects to the database, return a message confirming it was successful, and return the connection
@@ -40,16 +40,17 @@ public Connection getConnection() throws SQLException{
                                                            
                                         
                     //catch error and report the connection wasn't stabilished.
-                } catch (SQLException ex) {
+               }
+                catch (SQLException ex) {
                     throw new RuntimeException("Error Connecting", ex);               }
-                            }
-                            else {conn.close();
-                            conn = DriverManager.getConnection(URL, USER, PASS);
+                          //  }
+                            //else {conn.close();
+                            //conn = DriverManager.getConnection(URL, USER, PASS);
                             
-                            System.out.println("Retrieving again");
-                            return conn;
+                           // System.out.println("Retrieving again");
+                           // return conn;
                             
-                                    }
+                                    //}
             }// Connects into the dataBase
             
 public String getMovieInfo(String movieName) throws SQLException{
