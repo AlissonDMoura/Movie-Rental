@@ -18,6 +18,7 @@ import movierentallab.classes.Connector;
 public class ReturnMovie extends javax.swing.JFrame {
     private JFrame window;
     Connector conn = new Connector();
+    private String email;
 
 
     /**
@@ -171,7 +172,7 @@ creditCardField.setText("");        // TODO add your handling code here:
           String cCard = creditCardField.getText().trim();
           String cCardDb = null;
           boolean c1 = false;
-          
+          boolean c2 = false;
           if(cCard.isEmpty() || cCard.length() != 16){
           JOptionPane.showMessageDialog(this, "Something wrong, Please insert 16 digits of your Credit Card");    
           }else{
@@ -187,10 +188,24 @@ creditCardField.setText("");        // TODO add your handling code here:
                     
                     if(cCard.equals(cCardDb)){
                     JOptionPane.showMessageDialog(this, "We have found your Order");     
-                     c1 = true;    
+                     c1 = true;  
+                     c2 = true;
                     }else{
                     JOptionPane.showMessageDialog(this, "I'm sorry, we could't find your order :( ");      
                     }
+                    if(c2 == true){
+                    String query2 = "SELECT email FROM users WHERE cCard =" + cCard +";";
+                        try (Statement selector4 = conn.getConnection().createStatement()) {
+                            ResultSet rs2 = selector.executeQuery(query2);
+                            if(rs2.next()){
+                                email = rs2.getString(1);
+                                
+                                System.out.println("movie Name is " + email);}
+                            selector4.close();
+                            rs2.close();
+                        }}
+                      
+                    
                     
                     if(c1== true){
                         this.dispose();
