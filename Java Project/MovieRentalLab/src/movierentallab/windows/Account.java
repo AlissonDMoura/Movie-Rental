@@ -6,6 +6,7 @@
 package movierentallab.windows;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,6 +14,7 @@ import javax.swing.JFrame;
  */
 public class Account extends javax.swing.JFrame {
 private JFrame window;
+MovieInfo mI = new MovieInfo();
     /**
      * Creates new form Account
      */
@@ -150,12 +152,25 @@ private JFrame window;
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.dispose();
+       
+        if(mI.daySelectorGuest() ==  true){
+            
+        JOptionPane.showMessageDialog(this, "Sorry, You can't rent a movie for more than 2 days in Guest mode \n\n If you want to rent for more than 2 days you can register.");      
+            
+        }else{
+                this.dispose();
         Guest sMovie = new Guest(window);
       
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
-        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
+            
+            
+            
+            
+        }
+        
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

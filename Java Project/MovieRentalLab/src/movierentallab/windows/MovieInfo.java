@@ -50,6 +50,10 @@ public class MovieInfo extends javax.swing.JFrame {
         initComponents();
     }
 
+    MovieInfo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -255,6 +259,18 @@ public class MovieInfo extends javax.swing.JFrame {
         System.out.println("Vaiable days is " + days);
     }//GEN-LAST:event_daySelectorActionPerformed
 
+    public boolean  daySelectorGuest(){
+        boolean dayGuest = false;
+        
+      String day = daySelector.getSelectedItem().toString();
+       if(day.equals("3 days - members") || day.equals("4 days - members")){
+         dayGuest = true;  
+       } else{
+           dayGuest = false;
+       }
+        
+     return  dayGuest;  
+    }
     /**
      * @param args the command line arguments
      */
