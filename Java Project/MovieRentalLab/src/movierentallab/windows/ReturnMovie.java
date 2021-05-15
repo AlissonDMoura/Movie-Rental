@@ -209,7 +209,7 @@ creditCardField.setText("");        // TODO add your handling code here:
                     
                     if(c1== true){
                         this.dispose();
-                         CheckOut sMovie = new CheckOut(window);
+                         CheckOut sMovie = new CheckOut(window,cCardDb);
                          sMovie.setVisible(true);
                          sMovie.setLocationRelativeTo(null);
                           sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   

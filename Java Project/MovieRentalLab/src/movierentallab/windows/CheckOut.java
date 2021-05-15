@@ -20,7 +20,7 @@ public class CheckOut extends javax.swing.JFrame implements ActionListener{
     /**
      * Creates new form CheckOut
      */
-    public CheckOut(JFrame window) {
+    public CheckOut(JFrame window, String cCardDb) {
     this.window = window;
     this.setTitle("Check Out");
     this.setLocationRelativeTo(null);   

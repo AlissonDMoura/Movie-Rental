@@ -15,6 +15,7 @@ import movierentallab.classes.JavaMail;
  */
 public class ReturnInvoice extends javax.swing.JFrame {
     private JFrame window;
+     private String cCardDb= null;;
 
     /**
      * Creates new form ReturnInvoice
@@ -105,9 +106,9 @@ public class ReturnInvoice extends javax.swing.JFrame {
                                 .addComponent(jButton3)))
                         .addGap(62, 62, 62))))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(151, 151, 151)
+                .addGap(164, 164, 164)
                 .addComponent(jLabel2)
-                .addGap(72, 72, 72)
+                .addGap(59, 59, 59)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 224, Short.MAX_VALUE))
         );
@@ -146,7 +147,7 @@ public class ReturnInvoice extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
          this.dispose();
-        CheckOut sMovie = new CheckOut(window);
+        CheckOut sMovie = new CheckOut(window,cCardDb);
       
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
