@@ -36,6 +36,21 @@ public class Cart {
     private int Item3;
     private int Item4;
     
+    private String mName1;
+    private String mName2;
+    private String mName3;
+    private String mName4;
+    
+    private float price1;
+    private float price2;
+    private float price3;
+    private float price4;
+    
+    private float total1;
+    private float total2;
+    private float total3;
+    private float total4;
+    
     private int checkOutReceipt;
     
     private int day1;
@@ -519,11 +534,11 @@ public class Cart {
     
     } // Remove the item displayed into One of the panels, and update the DB movie and cart tables. Then it organizes the cart. - Modified
     
-    public String PanelMovieName(int PanelNumber) throws SQLException{
+    public String PanelMovieName(int PanelNumber, int receipt) throws SQLException{
         int i = PanelNumber; 
         int movieId = 0;
         String item;
-        int j = MyCartNo();
+        int j = receipt;
         
         if(i == 1){
         item = "Item1";
@@ -575,10 +590,10 @@ public class Cart {
                     
     } //Reads the movie ID from a certain position in the cart and returns the movie Title. - TESTED
 
-    public String PanelType(int PanelNumber) throws SQLException{
+    public String PanelType(int PanelNumber, int receipt) throws SQLException{
         int i = PanelNumber; 
         String type;
-        int j = MyCartNo();
+        int j = receipt;
         
         if(i == 1){
         type = "Type1";}
@@ -603,12 +618,12 @@ public class Cart {
                     
                     return status;}//A certain position in the cart and returns the type of purchase (RENT OR BUY)- TESTED
     
-    public float PanelPrice(int PanelNumber) throws SQLException{
+    public float PanelPrice(int PanelNumber, int receipt) throws SQLException{
         int i = PanelNumber;
         int movieId=0;
         String item;
         String type;
-        int j = MyCartNo();
+        int j = receipt;
         
         if(i == 1){
         item = "Item1";
@@ -683,7 +698,7 @@ public class Cart {
     public int PanelDays(int PanelNumber, int receipt) throws SQLException{
         int i = PanelNumber; 
         String days;
-        int j = MyCartNo();
+        int j = receipt;
         
         if(i == 1){
         days = "Days1";}
@@ -1421,173 +1436,56 @@ public class Cart {
             return checkOutReceipt;}  // Return the cart receipt for Checkout when its due and the cCard number match with it.
     
     
-    public float CheckOutPrice(int receipt) throws SQLException{
-            Item1 = 0;
-            Type1 = null;
-            day1 = 0;
+    public String CheckOutReceipt(int receipt, float donation) throws SQLException{
             
-            Item2 = 0;
-            Type2 = null;
-            day2 = 0;
-            
-            Item3 = 0;
-            Type3 = null;
-            day3 = 0;
-            
-            Item4 = 0;
-            Type4 = null;
-            day4 = 0;
-            
-            
-                       
-            String query = "Select item1 from cart where receipt = "+receipt+" ;";
-            Statement stmt = conn.getConnection().createStatement();
-            ResultSet rs = stmt.executeQuery(query);
-                if(rs.next()){
-                    Item1 = rs.getInt(1);}
-                rs.close();
-                stmt.close();
-                conn.conn.close();
-            //Get item 1 from cart
-                
-            query = "Select Days1 from cart where receipt = "+receipt+" ;";
-                stmt = conn.getConnection().createStatement();
-                rs = stmt.executeQuery(query);
-                if(rs.next()){
-                    day1 = rs.getInt(1);}
-                rs.close();
-                stmt.close();
-                conn.conn.close();
-                //get day 1 from cart
-                
-                query = "Select Type1 from cart where receipt = "+receipt+" ;";
-                stmt = conn.getConnection().createStatement();
-                rs = stmt.executeQuery(query);
-                if(rs.next()){
-                    Type1 = rs.getString(1);}
-                rs.close();
-                stmt.close();
-                conn.conn.close();
-                //get Type 1 from cart
-                
- 
-                
-                query = "Select item2 from cart where receipt = "+receipt+" ;";
-                stmt = conn.getConnection().createStatement();
-                rs = stmt.executeQuery(query);
-                if(rs.next()){
-                    Item2 = rs.getInt(1);}
-                rs.close();
-                stmt.close();
-                conn.conn.close();
-                //get Item 2 from cart
-                
-                query = "Select Days2 from cart where receipt = "+receipt+" ;";
-                stmt = conn.getConnection().createStatement();
-                rs = stmt.executeQuery(query);
-                if(rs.next()){
-                    day2 = rs.getInt(1);}
-                rs.close();
-                stmt.close();
-                conn.conn.close();
-                //get day 2 from cart
-                
-                query = "Select Type2 from cart where receipt = "+receipt+" ;";
-                stmt = conn.getConnection().createStatement();
-                rs = stmt.executeQuery(query);
-                if(rs.next()){
-                    Type2 = rs.getString(1);}
-                rs.close();
-                stmt.close();
-                conn.conn.close();
-                //get Type 2 from cart
-                
-                
-            
-                query = "Select item3 from cart where receipt = "+receipt+" ;";
-                stmt = conn.getConnection().createStatement();
-                rs = stmt.executeQuery(query);
-                if(rs.next()){
-                    Item3 = rs.getInt(1);}
-                rs.close();
-                stmt.close();
-                conn.conn.close();
-                //get Item 3 from cart
-                
-                query = "Select Days3 from cart where receipt = "+receipt+" ;";
-                stmt = conn.getConnection().createStatement();
-                rs = stmt.executeQuery(query);
-                if(rs.next()){
-                    day3 = rs.getInt(1);}
-                rs.close();
-                stmt.close();
-                conn.conn.close();
-                //get day 3 from cart
-                
-                query = "Select Type3 from cart where receipt = "+receipt+" ;";
-                stmt = conn.getConnection().createStatement();
-                rs = stmt.executeQuery(query);
-                if(rs.next()){
-                    Type3 = rs.getString(1);}
-                rs.close();
-                stmt.close();
-                conn.conn.close();
-                //get Type 3 from cart
-                
-                
-                
-                
-                query = "Select item4 from cart where receipt = "+receipt+" ;";
-                stmt = conn.getConnection().createStatement();
-                rs = stmt.executeQuery(query);
-                if(rs.next()){
-                    Item4 = rs.getInt(1);}
-                rs.close();
-                stmt.close();
-                conn.conn.close();
-                //get Item 4 from cart
-             
-                query = "Select Days4 from cart where receipt = "+receipt+" ;";
-                stmt = conn.getConnection().createStatement();
-                rs = stmt.executeQuery(query);
-                if(rs.next()){
-                    day4 = rs.getInt(1);}
-                rs.close();
-                stmt.close();
-                conn.conn.close();
-                //get day 4 from cart
-              
-                query = "Select Type4 from cart where receipt = "+receipt+" ;";
-                stmt = conn.getConnection().createStatement();
-                rs = stmt.executeQuery(query);
-                if(rs.next()){
-                    Type4 = rs.getString(1);}
-                rs.close();
-                stmt.close();
-                conn.conn.close();
-                //get Type 4 from cart
+            float totalOverall;
         
+            mName1 = PanelMovieName(1, receipt);
+            Type1 = PanelType(1, receipt);
+            day1 = PanelDays(1, receipt);
+            price1 = PanelPrice(1, receipt);
+            
+            if(day1 != 0){
+                  total1 = (day1 * price1);}
+            else{ total1 = price1;}
+            //information of movie positioned in position 1
+            
+            mName2 = PanelMovieName(2, receipt);
+            Type2 = PanelType(2, receipt);
+            day2 = PanelDays(2, receipt);
+            price2 = PanelPrice(2, receipt);
+            if(day2 != 0){
+                  total2 = (day2 * price2);}
+            else{ total2 = price2;}
+            //information of movie positioned in position 2
+            
+            mName3 = PanelMovieName(3, receipt);
+            Type3 = PanelType(3, receipt);
+            day3 = PanelDays(3, receipt);
+            price3 = PanelPrice(3, receipt);
+            if(day3 != 0){
+                  total3 = (day3 * price3);}
+            else{ total3 = price3;}
+            //information of movie positioned in position 3
+            
+            mName4 = PanelMovieName(4, receipt);
+            Type4 = PanelType(4, receipt);
+            day4 = PanelDays(4, receipt);
+            price4 = PanelPrice(4, receipt);
+            if(day4 != 0){
+                  total4 = (day4 * price4);}
+            else{ total4 = price4;}
+            //information of movie positioned in position 4
+            
+            totalOverall = (total1 + total2 + total3 + total4 + donation);
                 
                 
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                
-                return 0;
-                
-                
-                
-                
-                
-                
-                
-        
+                return "Position 1: Movie "+mName1+", was "+Type1+" and was due for "+day1+" days; Costs for this movie was "+total1+". \n"
+                     + "Position 2: Movie "+mName2+", was "+Type2+" and was due for "+day2+" days; Costs for this movie was "+total2+". \n"
+                     + "Position 3: Movie "+mName3+", was "+Type3+" and was due for "+day3+" days; Costs for this movie was "+total3+". \n"
+                     + "Position 4: Movie "+mName4+", was "+Type4+" and was due for "+day4+" days; Costs for this movie was "+total1+". \n"
+                     + "You have donated  $"+donation+" for needded IT Students, thank your for your support! \n"  
+                     + " The total of this purchase was $" + totalOverall + "Thank you for your Prefference! Come back Soon!";
     }
     
     

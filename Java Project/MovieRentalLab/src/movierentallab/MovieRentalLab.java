@@ -44,7 +44,7 @@ public class MovieRentalLab extends JFrame {
         window.setVisible(true);
         
         Cart lala = new Cart ();
-      
+        System.out.println(lala.CheckOutReceipt(11, 0));
         
         
         

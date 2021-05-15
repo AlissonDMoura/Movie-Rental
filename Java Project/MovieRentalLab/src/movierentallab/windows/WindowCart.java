@@ -68,9 +68,9 @@ public class WindowCart extends javax.swing.JFrame {
   
         try {
            
-        this.mPanel1 = cart.PanelMovieName(1);        
-        this.mType1 = cart.PanelType(1);
-        this.fPrice1 = cart.PanelPrice(1);
+        this.mPanel1 = cart.PanelMovieName(1, cart.MyCartNo());        
+        this.mType1 = cart.PanelType(1, cart.MyCartNo());
+        this.fPrice1 = cart.PanelPrice(1, cart.MyCartNo());
         this.Price1 = Float.toString(fPrice1);
         this.idays1 = cart.PanelDays(1,cart.MyCartNo());
         this.days1 = Integer.toString(idays1);
@@ -80,9 +80,9 @@ public class WindowCart extends javax.swing.JFrame {
         } else{ total1 = Price1;}
         //All Labels for Panel 1
         
-        this.mPanel2 = cart.PanelMovieName(2); 
-        this.mType2 = cart.PanelType(2);
-        this.fPrice2 = cart.PanelPrice(2);
+        this.mPanel2 = cart.PanelMovieName(2, cart.MyCartNo()); 
+        this.mType2 = cart.PanelType(2, cart.MyCartNo());
+        this.fPrice2 = cart.PanelPrice(2, cart.MyCartNo());
         this.Price2 = Float.toString(fPrice2);
         this.idays2 = cart.PanelDays(2, cart.MyCartNo());
         this.days2 = Integer.toString(idays2);
@@ -94,9 +94,9 @@ public class WindowCart extends javax.swing.JFrame {
         
         //All Labels for Panel 2
         
-        this.mPanel3 = cart.PanelMovieName(3);        
-        this.mType3 = cart.PanelType(3);
-        this.fPrice3 = cart.PanelPrice(3);
+        this.mPanel3 = cart.PanelMovieName(3, cart.MyCartNo());        
+        this.mType3 = cart.PanelType(3, cart.MyCartNo());
+        this.fPrice3 = cart.PanelPrice(3, cart.MyCartNo());
         this.Price3 = Float.toString(fPrice3);
         this.idays3 = cart.PanelDays(3, cart.MyCartNo());
         this.days3 = Integer.toString(idays3);
@@ -107,9 +107,9 @@ public class WindowCart extends javax.swing.JFrame {
         } else{ total3 = Price3;}
         //All Labels for Panel 3
         
-        this.mPanel4 = cart.PanelMovieName(4);        
-        this.mType4 = cart.PanelType(4);
-        this.fPrice4 = cart.PanelPrice(4);
+        this.mPanel4 = cart.PanelMovieName(4, cart.MyCartNo());        
+        this.mType4 = cart.PanelType(4, cart.MyCartNo());
+        this.fPrice4 = cart.PanelPrice(4, cart.MyCartNo());
         this.Price4 = Float.toString(fPrice4);
         this.idays4 = cart.PanelDays(4, cart.MyCartNo());
         this.days4 = Integer.toString(idays4);
