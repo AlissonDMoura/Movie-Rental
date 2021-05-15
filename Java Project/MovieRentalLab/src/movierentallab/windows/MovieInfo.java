@@ -50,6 +50,10 @@ public class MovieInfo extends javax.swing.JFrame {
         initComponents();
     }
 
+    MovieInfo() {
+    
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -254,6 +258,7 @@ public class MovieInfo extends javax.swing.JFrame {
         
         System.out.println("Vaiable days is " + days);
     }//GEN-LAST:event_daySelectorActionPerformed
+
 
     /**
      * @param args the command line arguments

@@ -6,6 +6,7 @@
 package movierentallab.windows;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -150,12 +151,16 @@ private JFrame window;
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        this.dispose();
+
+                this.dispose();
         Guest sMovie = new Guest(window);
       
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
-        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
+
+        
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
