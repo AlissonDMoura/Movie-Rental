@@ -7,12 +7,7 @@ package movierentallab;
 
 
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
-import movierentallab.classes.Cart;
-import movierentallab.classes.Connector;
 import movierentallab.windows.MainMenu;
 
 

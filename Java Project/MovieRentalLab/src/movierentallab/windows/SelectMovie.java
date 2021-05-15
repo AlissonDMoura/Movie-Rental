@@ -6,7 +6,6 @@
 package movierentallab.windows;
 
 import javax.swing.JFrame;
-import movierentallab.MovieRentalLab;
 import movierentallab.classes.Movie;
 
 
