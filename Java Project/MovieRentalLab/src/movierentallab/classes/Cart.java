@@ -1303,7 +1303,7 @@ public class Cart {
             
             
             String query = "Select name FROM users WHERE cCard ='"+CreditCard+"';";
-            String query2 = "INSERT INTO users (`cCard`, `e-mail`, `name`, `password`, `CCV`, `expDate`) VALUES ('"+CreditCard+"', '"+Name+"', '"+ Email+"', '"+Password+"', "+ CCV +", '"+ ExpDate + "');";
+            String query2 = "INSERT INTO users (`cCard`, `email`, `name`, `password`, `CCV`, `expDate`) VALUES ('"+CreditCard+"', '"+Name+"', '"+ Email+"', '"+Password+"', "+ CCV +", '"+ ExpDate + "');";
             
             
         try {specialQuery = "Update `cart` set `status` = '" + CartState(MyCartNo()) + "', `date` = '"+ Today()+"', `return` ='" + Return()+"', `creditcard` = '"+ CreditCard+"' Where `receipt` = "+ MyCartNo() +";";
@@ -1331,8 +1331,8 @@ public class Cart {
         specialQuery = null;
         String cartState = CartState(MyCartNo());
         
-        String query = "Select `name` from `users` Where `e-mail` = '"+ Email+"' AND `password` = '"+ Password+"';";
-        String query2 = "Select `cCard` from `users` Where `e-mail` = '"+ Email+"' AND `password` = '"+ Password+"';";
+        String query = "Select `name` from `users` Where `email` = '"+ Email+"' AND `password` = '"+ Password+"';";
+        String query2 = "Select `cCard` from `users` Where `email` = '"+ Email+"' AND `password` = '"+ Password+"';";
         
         Statement stmt = conn.getConnection().createStatement();
         ResultSet rs = stmt.executeQuery(query);
@@ -1373,7 +1373,7 @@ public class Cart {
             
             
             String query = "Select status FROM cart WHERE creditcard = '"+CreditCard+"';";
-            String query2 = "INSERT INTO users (`cCard`, `e-mail`, `CCV`, `expDate`) VALUES ('"+CreditCard+"', '"+ Email+"', "+ CCV +", '"+ ExpDate + "');";
+            String query2 = "INSERT INTO users (`cCard`, `email`, `CCV`, `expDate`) VALUES ('"+CreditCard+"', '"+ Email+"', "+ CCV +", '"+ ExpDate + "');";
             
             
         try {specialQuery = "Update `cart` set `status` = '" + cartState + "', `date` = '"+ Today()+"', `return` ='" + Return()+"', `creditcard` = '"+ CreditCard+"' Where `receipt` = "+ MyCartNo() +";";
@@ -1592,11 +1592,11 @@ public class Cart {
     }// returns a receipt of a purchase for a cart number and a donation price. - TESTED
     
  
-    public String UserEmail(int CreditCard) throws SQLException{
+    public String UserEmail(String CreditCard) throws SQLException{
         
         userEmail = null;
         
-        String query = "Select `e-mail` from `users` where `cCard` = '"+ CreditCard+"' ;";
+        String query = "Select `email` from `users` where `cCard` = '"+ CreditCard+"' ;";
         Statement stmt = conn.getConnection().createStatement();
         ResultSet rs = stmt.executeQuery(query);
         
