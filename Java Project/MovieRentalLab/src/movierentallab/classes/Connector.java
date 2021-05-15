@@ -201,5 +201,20 @@ public void CloseConnection() throws SQLException{
     
 }
 
+
+public float getMovieRentPrice(int movieId) throws SQLException{
+                    String query = "SELECT priceRent FROM movie where idMovie = '" + movieId +"';";
+                    Statement selector = getConnection().createStatement();
+                    ResultSet ePrice = selector.executeQuery(query);
+                    
+                    float mRent = ePrice.getFloat(1);
+                    System.out.println("movie Costs "+ mRent + " per day.");                    
+
+                    CloseConnection();
+                    return mRent; }
+
+
+
+
 }
     
