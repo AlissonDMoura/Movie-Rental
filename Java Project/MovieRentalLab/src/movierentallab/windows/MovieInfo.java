@@ -51,7 +51,7 @@ public class MovieInfo extends javax.swing.JFrame {
     }
 
     MovieInfo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    
     }
 
     /**
@@ -259,18 +259,7 @@ public class MovieInfo extends javax.swing.JFrame {
         System.out.println("Vaiable days is " + days);
     }//GEN-LAST:event_daySelectorActionPerformed
 
-    public boolean  daySelectorGuest(){
-        boolean dayGuest = false;
-        
-      String day = daySelector.getSelectedItem().toString();
-       if(day.equals("3 days - members") || day.equals("4 days - members")){
-         dayGuest = true;  
-       } else{
-           dayGuest = false;
-       }
-        
-     return  dayGuest;  
-    }
+
     /**
      * @param args the command line arguments
      */
