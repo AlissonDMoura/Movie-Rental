@@ -102,6 +102,7 @@ public class MovieInfo extends javax.swing.JFrame {
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(3);
+        jTextArea1.setFont(new java.awt.Font("Monotype Corsiva", 2, 24)); // NOI18N
         jTextArea1.setLineWrap(true);
         jTextArea1.setRows(3);
         jTextArea1.setWrapStyleWord(true);

@@ -5,8 +5,12 @@
  */
 package movierentallab.windows;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import movierentallab.classes.Cart;
 
 /**
  *
@@ -14,6 +18,12 @@ import javax.swing.JOptionPane;
  */
 public class Account extends javax.swing.JFrame {
 private JFrame window;
+Cart cart = new Cart();
+
+private int receipt;
+
+private int daychk;
+
     /**
      * Creates new form Account
      */
@@ -36,10 +46,11 @@ private JFrame window;
 
         jButton2 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        goBackButton = new javax.swing.JButton();
+        CustomerButton = new javax.swing.JButton();
+        RegisterButton = new javax.swing.JButton();
+        GuestButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jButton2.setText("jButton2");
 
@@ -48,33 +59,36 @@ private JFrame window;
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
 
-        jButton1.setText("BACK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        goBackButton.setText("BACK");
+        goBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                goBackButtonActionPerformed(evt);
             }
         });
 
-        jButton3.setText("Already a Customer");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        CustomerButton.setText("Already a Customer");
+        CustomerButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                CustomerButtonActionPerformed(evt);
             }
         });
 
-        jButton4.setText("Register");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        RegisterButton.setText("Register");
+        RegisterButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                RegisterButtonActionPerformed(evt);
             }
         });
 
-        jButton5.setText("Enter as a Guest");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        GuestButton.setText("Enter as a Guest");
+        GuestButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                GuestButtonActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
+        jLabel1.setText("Register as a User, Login, or Enter basic payment information");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -84,26 +98,32 @@ private JFrame window;
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
-                        .addComponent(jButton1))
+                        .addComponent(goBackButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(329, 329, 329)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addContainerGap(352, Short.MAX_VALUE))
+                            .addComponent(RegisterButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(CustomerButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(GuestButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addGap(0, 111, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addGap(107, 107, 107))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(jButton3)
-                .addGap(51, 51, 51)
-                .addComponent(jButton4)
                 .addGap(56, 56, 56)
-                .addComponent(jButton5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(jLabel1)
+                .addGap(53, 53, 53)
+                .addComponent(CustomerButton)
+                .addGap(51, 51, 51)
+                .addComponent(RegisterButton)
+                .addGap(56, 56, 56)
+                .addComponent(GuestButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 155, Short.MAX_VALUE)
+                .addComponent(goBackButton)
                 .addGap(29, 29, 29))
         );
 
@@ -121,7 +141,7 @@ private JFrame window;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void goBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackButtonActionPerformed
         // TODO add your handling code here:
         this.dispose();
         WindowCart sMovie = new WindowCart(window);
@@ -130,38 +150,63 @@ private JFrame window;
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_goBackButtonActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void CustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerButtonActionPerformed
         this.dispose();
         Customer sMovie = new Customer(window);
       
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_CustomerButtonActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
+        
+        
+        
+        
         this.dispose();
         Register sMovie = new Register(window);
       
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_RegisterButtonActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void GuestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuestButtonActionPerformed
 
-                this.dispose();
+    try {
+        receipt = cart.MyCartNo();
+        System.out.println("my Receipt is " + receipt);
+        daychk = cart.PanelDays(1, receipt);
+        System.out.println("dayChk is" + daychk);
+        
+        
+        if(daychk < 2){
+            daychk = cart.PanelDays(2, receipt);
+        System.out.println("FIRST IF dayChk is" + daychk);}
+        if(daychk < 2){
+            daychk = cart.PanelDays(3, receipt);
+        System.out.println("SECOND IF dayChk is" + daychk);}
+        if(daychk < 2){
+            daychk = cart.PanelDays(4, receipt);
+        System.out.println("SECOND IF dayChk is" + daychk);}
+        
+        if(daychk >= 2){
+            JOptionPane.showMessageDialog(this, "As a Guest you can only Rent movies for a maximun of 2 days, please register to proceed.");}
+        else {
+        this.dispose();
         Guest sMovie = new Guest(window);
       
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
-        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);    
-
+        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  }     
         
-
-    }//GEN-LAST:event_jButton5ActionPerformed
+        
+    } catch (SQLException ex) {
+        Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);}
+    }//GEN-LAST:event_GuestButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -199,11 +244,12 @@ private JFrame window;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton CustomerButton;
+    private javax.swing.JButton GuestButton;
+    private javax.swing.JButton RegisterButton;
+    private javax.swing.JButton goBackButton;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
