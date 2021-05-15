@@ -25,6 +25,10 @@ public class CheckOut extends javax.swing.JFrame implements ActionListener{
     this.setTitle("Check Out");
     this.setLocationRelativeTo(null);   
     this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+    
+    
+    
     initComponents();
     }
 

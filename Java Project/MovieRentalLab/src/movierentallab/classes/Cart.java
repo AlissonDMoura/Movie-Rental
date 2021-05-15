@@ -36,6 +36,8 @@ public class Cart {
     private int Item3;
     private int Item4;
     
+    private int checkOutReceipt;
+    
     private int day1;
     private int day2;
     private int day3;
@@ -678,7 +680,7 @@ public class Cart {
                     else {return 0;}
     }//Reads the movie from a certain position in the cart, reads its pricing and returns the pricing for the type of purchase (Rent or Buy) - TESTED
     
-    public int PanelDays(int PanelNumber) throws SQLException{
+    public int PanelDays(int PanelNumber, int receipt) throws SQLException{
         int i = PanelNumber; 
         String days;
         int j = MyCartNo();
@@ -1396,5 +1398,205 @@ public class Cart {
                         }
     }//Verify if the card Still have any receipts open, If there False = Message to close last receipt,  If True Accept payment and write into database.
 
-
+    
+    
+    
+    
+    
+    
+    
+    public int CheckOutCart(String cCardNumber) throws SQLException{
+            
+            checkOutReceipt = 0;
+        
+            String query = "Select receipt from cart where creditcard = '"+ cCardNumber +"' and status = 'Due' ;";
+            Statement stmt = conn.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            
+            if(rs.next()){
+                checkOutReceipt = rs.getInt(1);}
+            rs.close();
+            stmt.close();
+            conn.conn.close();
+            return checkOutReceipt;}  // Return the cart receipt for Checkout when its due and the cCard number match with it.
+    
+    
+    public float CheckOutPrice(int receipt) throws SQLException{
+            Item1 = 0;
+            Type1 = null;
+            day1 = 0;
+            
+            Item2 = 0;
+            Type2 = null;
+            day2 = 0;
+            
+            Item3 = 0;
+            Type3 = null;
+            day3 = 0;
+            
+            Item4 = 0;
+            Type4 = null;
+            day4 = 0;
+            
+            
+                       
+            String query = "Select item1 from cart where receipt = "+receipt+" ;";
+            Statement stmt = conn.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    Item1 = rs.getInt(1);}
+                rs.close();
+                stmt.close();
+                conn.conn.close();
+            //Get item 1 from cart
+                
+            query = "Select Days1 from cart where receipt = "+receipt+" ;";
+                stmt = conn.getConnection().createStatement();
+                rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    day1 = rs.getInt(1);}
+                rs.close();
+                stmt.close();
+                conn.conn.close();
+                //get day 1 from cart
+                
+                query = "Select Type1 from cart where receipt = "+receipt+" ;";
+                stmt = conn.getConnection().createStatement();
+                rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    Type1 = rs.getString(1);}
+                rs.close();
+                stmt.close();
+                conn.conn.close();
+                //get Type 1 from cart
+                
+ 
+                
+                query = "Select item2 from cart where receipt = "+receipt+" ;";
+                stmt = conn.getConnection().createStatement();
+                rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    Item2 = rs.getInt(1);}
+                rs.close();
+                stmt.close();
+                conn.conn.close();
+                //get Item 2 from cart
+                
+                query = "Select Days2 from cart where receipt = "+receipt+" ;";
+                stmt = conn.getConnection().createStatement();
+                rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    day2 = rs.getInt(1);}
+                rs.close();
+                stmt.close();
+                conn.conn.close();
+                //get day 2 from cart
+                
+                query = "Select Type2 from cart where receipt = "+receipt+" ;";
+                stmt = conn.getConnection().createStatement();
+                rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    Type2 = rs.getString(1);}
+                rs.close();
+                stmt.close();
+                conn.conn.close();
+                //get Type 2 from cart
+                
+                
+            
+                query = "Select item3 from cart where receipt = "+receipt+" ;";
+                stmt = conn.getConnection().createStatement();
+                rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    Item3 = rs.getInt(1);}
+                rs.close();
+                stmt.close();
+                conn.conn.close();
+                //get Item 3 from cart
+                
+                query = "Select Days3 from cart where receipt = "+receipt+" ;";
+                stmt = conn.getConnection().createStatement();
+                rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    day3 = rs.getInt(1);}
+                rs.close();
+                stmt.close();
+                conn.conn.close();
+                //get day 3 from cart
+                
+                query = "Select Type3 from cart where receipt = "+receipt+" ;";
+                stmt = conn.getConnection().createStatement();
+                rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    Type3 = rs.getString(1);}
+                rs.close();
+                stmt.close();
+                conn.conn.close();
+                //get Type 3 from cart
+                
+                
+                
+                
+                query = "Select item4 from cart where receipt = "+receipt+" ;";
+                stmt = conn.getConnection().createStatement();
+                rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    Item4 = rs.getInt(1);}
+                rs.close();
+                stmt.close();
+                conn.conn.close();
+                //get Item 4 from cart
+             
+                query = "Select Days4 from cart where receipt = "+receipt+" ;";
+                stmt = conn.getConnection().createStatement();
+                rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    day4 = rs.getInt(1);}
+                rs.close();
+                stmt.close();
+                conn.conn.close();
+                //get day 4 from cart
+              
+                query = "Select Type4 from cart where receipt = "+receipt+" ;";
+                stmt = conn.getConnection().createStatement();
+                rs = stmt.executeQuery(query);
+                if(rs.next()){
+                    Type4 = rs.getString(1);}
+                rs.close();
+                stmt.close();
+                conn.conn.close();
+                //get Type 4 from cart
+        
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                return 0;
+                
+                
+                
+                
+                
+                
+                
+        
+    }
+    
+    
 }
+    
+    
+    
+    
+    
+    
+    
+

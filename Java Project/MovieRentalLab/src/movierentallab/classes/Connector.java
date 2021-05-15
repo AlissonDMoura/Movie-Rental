@@ -202,6 +202,31 @@ public void CloseConnection() throws SQLException{
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 public float getMovieRentPrice(int movieId) throws SQLException{
                     String query = "SELECT priceRent FROM movie where idMovie = '" + movieId +"';";
                     Statement selector = getConnection().createStatement();

@@ -72,7 +72,7 @@ public class WindowCart extends javax.swing.JFrame {
         this.mType1 = cart.PanelType(1);
         this.fPrice1 = cart.PanelPrice(1);
         this.Price1 = Float.toString(fPrice1);
-        this.idays1 = cart.PanelDays(1);
+        this.idays1 = cart.PanelDays(1,cart.MyCartNo());
         this.days1 = Integer.toString(idays1);
         ftotal1 = this.idays1 * this.fPrice1;
         if(!days1.equals("0")){
@@ -84,7 +84,7 @@ public class WindowCart extends javax.swing.JFrame {
         this.mType2 = cart.PanelType(2);
         this.fPrice2 = cart.PanelPrice(2);
         this.Price2 = Float.toString(fPrice2);
-        this.idays2 = cart.PanelDays(2);
+        this.idays2 = cart.PanelDays(2, cart.MyCartNo());
         this.days2 = Integer.toString(idays2);
         ftotal2 = this.idays2 * this.fPrice2;
         total2 = Float.toString(ftotal2);
@@ -98,7 +98,7 @@ public class WindowCart extends javax.swing.JFrame {
         this.mType3 = cart.PanelType(3);
         this.fPrice3 = cart.PanelPrice(3);
         this.Price3 = Float.toString(fPrice3);
-        this.idays3 = cart.PanelDays(3);
+        this.idays3 = cart.PanelDays(3, cart.MyCartNo());
         this.days3 = Integer.toString(idays3);
         ftotal3 = this.idays3 * this.fPrice3;
         total3 = Float.toString(ftotal3);
@@ -111,7 +111,7 @@ public class WindowCart extends javax.swing.JFrame {
         this.mType4 = cart.PanelType(4);
         this.fPrice4 = cart.PanelPrice(4);
         this.Price4 = Float.toString(fPrice4);
-        this.idays4 = cart.PanelDays(4);
+        this.idays4 = cart.PanelDays(4, cart.MyCartNo());
         this.days4 = Integer.toString(idays4);
         ftotal4 = this.idays4 * this.fPrice4;
         total4 = Float.toString(ftotal4);
