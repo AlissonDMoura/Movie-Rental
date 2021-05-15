@@ -151,7 +151,7 @@ private int daychk;
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
     }//GEN-LAST:event_goBackButtonActionPerformed
-
+// dispose actual window and open Frame SelectMovie
     private void CustomerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CustomerButtonActionPerformed
         this.dispose();
         Customer sMovie = new Customer(window);
@@ -160,11 +160,8 @@ private int daychk;
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_CustomerButtonActionPerformed
-
+//dispose this frame and open Frame for Customer Login page.
     private void RegisterButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RegisterButtonActionPerformed
-        
-        
-        
         
         this.dispose();
         Register sMovie = new Register(window);
@@ -173,7 +170,7 @@ private int daychk;
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_RegisterButtonActionPerformed
-
+//dispose the actual windo and Open userRegister window
     private void GuestButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuestButtonActionPerformed
 
     try {
@@ -207,7 +204,7 @@ private int daychk;
     } catch (SQLException ex) {
         Logger.getLogger(Account.class.getName()).log(Level.SEVERE, null, ex);}
     }//GEN-LAST:event_GuestButtonActionPerformed
-
+//Validates if any movies has more than 2 days, If no: opens the GuestRegister Page; If yes: message informing the amount of days is too big.
     /**
      * @param args the command line arguments
      */
@@ -253,3 +250,4 @@ private int daychk;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables
 }
+//class fully commented;

@@ -15,58 +15,61 @@ public class Movie {
     private String name;
     private String mInfo;
     private String mImage;
-
     private String status;
     
     private int days;
+    private int ID;
 
-    public void setbPrice(float bPrice) {
-        this.bPrice = bPrice;
-    }
-
-    public int getDays() {
-        return days;
-    }
-
-    public void setDays(int days) {
-        this.days = days;
-    }
-    
     private float rPrice;
     private float bPrice;
     
-    private int ID;
+    
+    
+    
+    public void setbPrice(float bPrice) {
+        this.bPrice = bPrice;
+    }//Set price for Movie
+
+    public int getDays() {
+        return days;
+    }//return days for Movie
+
+    public void setDays(int days) {
+        this.days = days;
+    }//Set days for Movie
+    
+    
     
     
     Connector conn = new Connector();
     
         public String getName() {
         return name;
-    }
+    }//return name for Movie
 
     public String getmInfo() {
         return mInfo;
-    }
+    }//return movieInfo for Movie
 
     public String getmImage() {
         return mImage;
-    }
+    }//return movie Image path for Movie
 
     public String getStatus() {
         return status;
-    }
+    }//return movieStatus for Movie
 
     public float getrPrice() {
         return rPrice;
-    }
+    }//return movie rent Price
 
     public float getbPrice() {
         return bPrice;
-    }
+    }//return movie buy price
 
     public int getID() {
         return ID;
-    }
+    }//return movie Id
    
     
     
@@ -76,24 +79,25 @@ public class Movie {
     public void setName(String name) {
         
         this.name = name;
-    }
+    }// set Movie Name
 
     public void setmInfo(String mInfo) {
         this.mInfo = mInfo;
-    }
+    }//set Movie Info
 
     public void setmImage(String mImage) {
         this.mImage = mImage;
-    }
+    }// set Movie image path
 
     public void setStatus(String status) {
         this.status = status;
-    }
+    }//set movie status
 
     public void setRprice(float rPrice) {
         this.rPrice = rPrice;
-    }
+    }// set movie rent price.
     
     
         
 }
+//Class fully commented

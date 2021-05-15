@@ -9,6 +9,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import movierentallab.classes.Cart;
 import movierentallab.classes.Connector;
 import movierentallab.classes.Movie;
@@ -197,21 +198,22 @@ public class MovieInfo extends javax.swing.JFrame {
     private void rentButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rentButtonActionPerformed
 
         try {
+            if(cart.CartFilledChecker()){
+                JOptionPane.showMessageDialog(this, "Oh NO! Your cart is already full!");}
+            else{
             cart.MovieAddIntoCart("RENTED", mName, days);
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(MovieInfo.class.getName()).log(Level.SEVERE, null, ex);
-        }
-//        System.out.println("I would rent for " + days);  --- TESTING THE BUTTON
-        
-        this.dispose();
+            this.dispose();
         
         WindowCart sMovie = new WindowCart(window);
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(MovieInfo.class.getName()).log(Level.SEVERE, null, ex);
+        }        
     }//GEN-LAST:event_rentButtonActionPerformed
-
+//Verifies if the cart is full, validate, if cart isn't full, writes the movie into the cart.
     private void goBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackButtonActionPerformed
 
         this.dispose();
@@ -223,7 +225,7 @@ public class MovieInfo extends javax.swing.JFrame {
         //BACK BUTTON//
 
     }//GEN-LAST:event_goBackButtonActionPerformed
-
+//dispose the actual window and open the movie List frame.
     private void mImageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mImageActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_mImageActionPerformed
@@ -231,19 +233,26 @@ public class MovieInfo extends javax.swing.JFrame {
     private void buyButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buyButtonActionPerformed
         
         try {
-            cart.MovieAddIntoCart("SOLD", mName);
+            if(cart.CartFilledChecker()){
+                JOptionPane.showMessageDialog(this, "Oh NO! Your cart is already full!");}
+            else{
+                cart.MovieAddIntoCart("SOLD", mName);
+                this.dispose();
+            WindowCart sMovie = new WindowCart(window);
+
+            sMovie.setVisible(true);
+            sMovie.setLocationRelativeTo(null);
+            sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);}
+            
+            
+            
         } catch (SQLException ex) {
             Logger.getLogger(MovieInfo.class.getName()).log(Level.SEVERE, null, ex);}
         
-        this.dispose();
-        WindowCart sMovie = new WindowCart(window);
-
-        sMovie.setVisible(true);
-        sMovie.setLocationRelativeTo(null);
-        sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        
 
     }//GEN-LAST:event_buyButtonActionPerformed
-
+//Verifies if the cart is full, validate, if cart isn't full, writes the movie into the cart.
     private void daySelectorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_daySelectorActionPerformed
         
         String day = daySelector.getSelectedItem().toString();
@@ -259,7 +268,7 @@ public class MovieInfo extends javax.swing.JFrame {
         
         System.out.println("Vaiable days is " + days);
     }//GEN-LAST:event_daySelectorActionPerformed
-
+//Selects the variable days for the method MovieRent to use and write into the Database.
 
     /**
      * @param args the command line arguments
@@ -308,3 +317,4 @@ public class MovieInfo extends javax.swing.JFrame {
     private javax.swing.JButton rentButton;
     // End of variables declaration//GEN-END:variables
 }
+//Class Fully commented.

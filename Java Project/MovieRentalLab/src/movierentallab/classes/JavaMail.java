@@ -22,27 +22,29 @@ import javax.mail.internet.MimeMessage;
  */
 public class JavaMail {
      private String emailTo;
+     private String receipt;
+     
 
-
-
-    public JavaMail(){}
+    public JavaMail(){
+    
+    }
 
     public String getEmailTo() {
         return emailTo;
-    }
+    }// returns string for e-mail
 
     public void setEmailTo(String emailto) {
         this.emailTo = emailTo;
-    }
+    }//Set the e-mail String
 
     public void validEmail(String email) throws Exception{
         if(!email.trim().matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$")){
             throw new Exception ("this is NOT a valid e-mail");
         }
-    }
+    }//Validates the Email String
 
 
-    public void sendEmail(String emailTo){
+    public void sendEmail(String emailTo, String Invoice){
        Properties props = new Properties();
     // Connection parameter with the Gmail server
     props.put("mail.smtp.host", "smtp.gmail.com");
@@ -75,7 +77,7 @@ public class JavaMail {
 
       message.setRecipients(Message.RecipientType.TO, toUser);
       message.setSubject("Your Xtra-Vision Receipt");//Subject
-      message.setText("This is your Xtra-Vision receipt as requested");
+      message.setText("This is your Xtra-Vision receipt as requested: \n" + Invoice);
       //Method to send the email
       Transport.send(message);
 
@@ -86,7 +88,7 @@ public class JavaMail {
     }
     
     
-    }
+    }//Create new session for Email XtraVision, send a invoice String to a informed e-mail.
     
     
     
@@ -99,4 +101,4 @@ public class JavaMail {
 }
 
 
-//https://www.devmedia.com.br/enviando-email-com-javamail-utilizando-gmail/18034
+//Class fully commented.

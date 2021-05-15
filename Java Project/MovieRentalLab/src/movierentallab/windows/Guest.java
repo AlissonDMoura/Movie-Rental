@@ -280,7 +280,7 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
         
  
     }//GEN-LAST:event_payButtonActionPerformed
-    // Mouse Pressed below: set the text blank when the user click in the text field
+    // Collects the strings from the text Boxes, validate the values. when everything is validated it verifies if the guest has an open cart or not. If not: prints the information into the DB and message of success; If yes: Error for cart open.
     private void eMailTxtFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_eMailTxtFieldMousePressed
       eMailTxtField.setText("");
 
@@ -310,7 +310,7 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_backButtonActionPerformed
-
+//Closes this window and open the seelect movie frame.
     private void ccvTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ccvTextFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ccvTextFieldActionPerformed
@@ -370,4 +370,4 @@ public class Guest extends javax.swing.JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-}
+}//Class fully commented
