@@ -43,7 +43,7 @@ public class CheckOut extends javax.swing.JFrame implements ActionListener{
     
     initComponents();
     }
-
+//writes into the Frame all components; Set Local variables with information from last Frame and from Database.
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -194,7 +194,7 @@ public class CheckOut extends javax.swing.JFrame implements ActionListener{
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_goBackButtonActionPerformed
-
+//dispose actual frame and opens SelectMovie Frame.
     private void donateButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_donateButtonActionPerformed
             try {
                 if(cart.PriceDifferenceCalc(receipt)>0){
@@ -215,7 +215,7 @@ public class CheckOut extends javax.swing.JFrame implements ActionListener{
         
                 // TODO add your handling code here:
     }//GEN-LAST:event_donateButtonActionPerformed
-
+//Verifies if there's credit, If yes: writes it into variable donation, If zero: Inform there's no credit, if negative Asks for payment.
     private void FinishButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FinishButtonActionPerformed
         JOptionPane.showMessageDialog(this,
                 "Payment Successful!",
@@ -233,7 +233,7 @@ public class CheckOut extends javax.swing.JFrame implements ActionListener{
             }
             
     }//GEN-LAST:event_FinishButtonActionPerformed
-
+//message the user payment was successful, dispose the actual window and opens the ReturnInvoice class with information necessary for this receipt.
     /**
      * @param args the command line arguments
      */
@@ -287,3 +287,4 @@ public class CheckOut extends javax.swing.JFrame implements ActionListener{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
+//class fully commented.

@@ -47,7 +47,7 @@ public class Register extends javax.swing.JFrame implements ActionListener {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        infoLabel = new javax.swing.JLabel();
         nameTxtBox = new javax.swing.JTextField();
         eMailTxtBox = new javax.swing.JTextField();
         passwordTxtBox = new javax.swing.JTextField();
@@ -55,22 +55,22 @@ public class Register extends javax.swing.JFrame implements ActionListener {
         cPasswTxtBox = new javax.swing.JTextField();
         ExpDateTxtBox = new javax.swing.JTextField();
         cvvTxtBox = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
+        goBackButton = new javax.swing.JButton();
+        regNpayButton = new javax.swing.JButton();
+        fullNameLabel = new javax.swing.JLabel();
+        emailLabel = new javax.swing.JLabel();
+        passLabel = new javax.swing.JLabel();
+        confirmPassLabel = new javax.swing.JLabel();
+        cCardNumberLabel = new javax.swing.JLabel();
+        expDateLabel = new javax.swing.JLabel();
+        ccvLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
 
-        jLabel1.setText("Please fill all fields");
+        infoLabel.setText("Please fill all fields");
 
         nameTxtBox.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         nameTxtBox.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -126,33 +126,33 @@ public class Register extends javax.swing.JFrame implements ActionListener {
             }
         });
 
-        jButton1.setText("BACK");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        goBackButton.setText("BACK");
+        goBackButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                goBackButtonActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Register and Pay");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        regNpayButton.setText("Register and Pay");
+        regNpayButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                regNpayButtonActionPerformed(evt);
             }
         });
 
-        jLabel2.setText("Full Name");
+        fullNameLabel.setText("Full Name");
 
-        jLabel3.setText("E-mail");
+        emailLabel.setText("E-mail");
 
-        jLabel4.setText("Password");
+        passLabel.setText("Password");
 
-        jLabel5.setText("Confirm Password");
+        confirmPassLabel.setText("Confirm Password");
 
-        jLabel6.setText("Credit Card Number");
+        cCardNumberLabel.setText("Credit Card Number");
 
-        jLabel7.setText("Expiry Date");
+        expDateLabel.setText("Expiry Date");
 
-        jLabel8.setText("CVV");
+        ccvLabel.setText("CVV");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -162,9 +162,9 @@ public class Register extends javax.swing.JFrame implements ActionListener {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(48, 48, 48)
-                        .addComponent(jButton1)
+                        .addComponent(goBackButton)
                         .addGap(284, 284, 284)
-                        .addComponent(jButton2))
+                        .addComponent(regNpayButton))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -172,18 +172,18 @@ public class Register extends javax.swing.JFrame implements ActionListener {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel2)
-                                            .addComponent(jLabel4))
+                                            .addComponent(emailLabel)
+                                            .addComponent(fullNameLabel)
+                                            .addComponent(passLabel))
                                         .addGap(27, 27, 27))
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jLabel6)
-                                            .addComponent(jLabel5))
+                                            .addComponent(cCardNumberLabel)
+                                            .addComponent(confirmPassLabel))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel7)
+                                .addComponent(expDateLabel)
                                 .addGap(26, 26, 26)))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(cCardTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -194,54 +194,54 @@ public class Register extends javax.swing.JFrame implements ActionListener {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(ExpDateTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(42, 42, 42)
-                                .addComponent(jLabel8)
+                                .addComponent(ccvLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cvvTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(185, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(infoLabel)
                 .addGap(312, 312, 312))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addComponent(jLabel1)
+                .addComponent(infoLabel)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
+                    .addComponent(fullNameLabel))
                 .addGap(32, 32, 32)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eMailTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(emailLabel))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(passwordTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
+                    .addComponent(passLabel))
                 .addGap(44, 44, 44)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cPasswTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(confirmPassLabel))
                 .addGap(36, 36, 36)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cCardTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(cCardNumberLabel))
                 .addGap(39, 39, 39)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(ExpDateTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cvvTxtBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel8))
+                    .addComponent(expDateLabel)
+                    .addComponent(ccvLabel))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)
+                        .addComponent(goBackButton)
                         .addGap(42, 42, 42))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(jButton2)
+                        .addComponent(regNpayButton)
                         .addContainerGap(56, Short.MAX_VALUE))))
         );
 
@@ -259,7 +259,7 @@ public class Register extends javax.swing.JFrame implements ActionListener {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void regNpayButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_regNpayButtonActionPerformed
         
           String fullName = nameTxtBox.getText().trim();
           String email = eMailTxtBox.getText().trim();
@@ -267,7 +267,8 @@ public class Register extends javax.swing.JFrame implements ActionListener {
           String pass2 = cPasswTxtBox.getText().trim();
           String cCard = cCardTxtBox.getText().trim();
           String expDate = ExpDateTxtBox.getText().trim();
-          String ccv = cvvTxtBox.getText().trim();  
+          String ccv = cvvTxtBox.getText().trim(); 
+          
           boolean c1  = false;
           boolean c2  = false;
           boolean c3  = false;
@@ -334,11 +335,10 @@ public class Register extends javax.swing.JFrame implements ActionListener {
            }            
             
             
-        
-        
+              
     
-    }//GEN-LAST:event_jButton2ActionPerformed
-
+    }//GEN-LAST:event_regNpayButtonActionPerformed
+// validates all textFields, then verifies if the information is already in the database, If true: message informing user already registered; If False: Register them into the Database and a confirmation pop up.
     private void nameTxtBoxMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nameTxtBoxMousePressed
     nameTxtBox.setText("");
     }//GEN-LAST:event_nameTxtBoxMousePressed
@@ -373,17 +373,18 @@ public class Register extends javax.swing.JFrame implements ActionListener {
         cvvTxtBox.setText("");
     }//GEN-LAST:event_cvvTxtBoxMousePressed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void goBackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_goBackButtonActionPerformed
         this.dispose();
         Account sMovie = new Account(window);
       
         sMovie.setVisible(true);
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }//GEN-LAST:event_jButton1ActionPerformed
-
+    }//GEN-LAST:event_goBackButtonActionPerformed
+//dispose the actual frame and opens a new frame using the same object window to open the SelectMovie frame Class.
     private void passwordTxtBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordTxtBoxActionPerformed
         // TODO add your handling code here:
+        passwordTxtBox.setText("");
     }//GEN-LAST:event_passwordTxtBoxActionPerformed
 
     /**
@@ -423,27 +424,27 @@ public class Register extends javax.swing.JFrame implements ActionListener {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField ExpDateTxtBox;
+    private javax.swing.JLabel cCardNumberLabel;
     private javax.swing.JTextField cCardTxtBox;
     private javax.swing.JTextField cPasswTxtBox;
+    private javax.swing.JLabel ccvLabel;
+    private javax.swing.JLabel confirmPassLabel;
     private javax.swing.JTextField cvvTxtBox;
     private javax.swing.JTextField eMailTxtBox;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel emailLabel;
+    private javax.swing.JLabel expDateLabel;
+    private javax.swing.JLabel fullNameLabel;
+    private javax.swing.JButton goBackButton;
+    private javax.swing.JLabel infoLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField nameTxtBox;
+    private javax.swing.JLabel passLabel;
     private javax.swing.JTextField passwordTxtBox;
+    private javax.swing.JButton regNpayButton;
     // End of variables declaration//GEN-END:variables
 
     @Override
     public void actionPerformed(ActionEvent e) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-}
+}//Class Fully commented.

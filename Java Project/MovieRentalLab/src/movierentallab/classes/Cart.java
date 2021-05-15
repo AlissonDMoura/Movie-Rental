@@ -12,8 +12,6 @@ import java.sql.Statement;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.format.DateTimeFormatter;  
-import java.time.LocalDateTime;    
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,72 +25,60 @@ import java.util.logging.Logger;
 public class Cart {
     
     private long diff;
-    private float lab;
     
     private String specialQuery;
     private String cartState;
-    
-    private int receipt;
-    private int clientId;
-    private int Item1;
-    private int Item2;
-    private int Item3;
-    private int Item4;
-    
     private String mName1;
     private String mName2;
     private String mName3;
     private String mName4;
-    
-    private float price1;
-    private float price2;
-    private float price3;
-    private float price4;
-    
-    private float total1;
-    private float total2;
-    private float total3;
-    private float total4;
-    
-    private int checkOutReceipt;
-    
-    private int day1;
-    private int day2;
-    private int day3;
-    private int day4;
-    
     private String closestReturn;
     private String return1;
     private String return2;
     private String return3;
     private String return4;
-    
-    private int smaller;
-    
-    private int day;
-        
     private String Type1;
     private String Type2;
     private String Type3;
     private String Type4;
-    private String priceBuy = null;
-    private String priceRent = null;
+    private String title;
+    private String status;
+    private String userEmail;
+    private String priceBuy;
+    private String priceRent;
+    private String userName;
     
+    
+    private float price1;
+    private float price2;
+    private float price3;
+    private float price4;
+    private float total1;
+    private float total2;
+    private float total3;
+    private float total4;
+    private float pBuy;
+    private float pRent;
+    private float lab;
+    
+    
+    private int receipt;
+    private int Item1;
+    private int Item2;
+    private int Item3;
+    private int Item4;
+    private int checkOutReceipt;
+    private int day;
+    private int day1;
+    private int day2;
+    private int day3;
+    private int day4;
+    private int smaller;
+    private int movieId;
     
     private boolean cartFull;
     private boolean isNewUser;
     
-    private float pBuy;
-    private float pRent;
-    
-    private String title;
-    private String status;
-    
-    private String userName;
-    private String userEmail;
-    private String userCcard;
-    
-    private int movieId;
     Connector conn = new Connector();
     
     
@@ -472,7 +458,7 @@ public class Cart {
                     stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "' WHERE receipt ="+ MyCartNo()+";");
                     
                     
-
+        CartOrganizer(MyCartNo()); //Second time is for the cart to look good, otherwise the movie would be positioned down to the botton
                     stmt.close();
                     conn.conn.close();
     } //Organize the cart, add a movie into it, change movie state As Sold- TESTED
@@ -490,7 +476,7 @@ public class Cart {
                     stmt.execute("UPDATE movie SET status = '" + state +"' WHERE (idMovie = "+ movieId +");");
                     stmt.execute("UPDATE cart SET Item4 = "+ movieId +", Type4 = '" + state + "', Days4 = "+ dayN + " WHERE receipt = "+ MyCartNo()+";");
                     
-
+                    CartOrganizer(MyCartNo()); //Second time is for the cart to look good, otherwise the movie would be positioned down to the botton
                     stmt.close();
                     conn.conn.close();
     
@@ -1338,7 +1324,7 @@ public class Cart {
         ResultSet rs = stmt.executeQuery(query);
         
         if(rs.next()){
-        userName = rs.getString(1);
+            userName = rs.getString(1);
         isNewUser = false;}
         else{isNewUser = true;}
         rs.close();
@@ -1590,7 +1576,6 @@ public class Cart {
                      + "You have donated  $"+donation+" for needded IT Students, thank your for your support! \n"  
                      + " The total of this purchase was $" + totalOverall + ", Thank you for your Prefference! Come back Soon!";
     }// returns a receipt of a purchase for a cart number and a donation price. - TESTED
-    
  
     public String UserEmail(String CreditCard) throws SQLException{
         
@@ -1608,7 +1593,7 @@ public class Cart {
     }
     
     
-}
+}// Class fully commented.
     
     
     

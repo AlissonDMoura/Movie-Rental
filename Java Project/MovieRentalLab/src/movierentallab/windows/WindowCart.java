@@ -66,8 +66,9 @@ public class WindowCart extends javax.swing.JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
   
-        try {
-           
+        
+        
+        try {           
         this.mPanel1 = cart.PanelMovieName(1, cart.MyCartNo());        
         this.mType1 = cart.PanelType(1, cart.MyCartNo());
         this.fPrice1 = cart.PanelPrice(1, cart.MyCartNo());
@@ -125,7 +126,9 @@ public class WindowCart extends javax.swing.JFrame {
         }
         initComponents();
     }
-
+//Opens the window, Validate the prices for each movie with information from database and write the labelswith their respective information for different Types(Purchase or renting), 
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -405,7 +408,7 @@ public class WindowCart extends javax.swing.JFrame {
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_backButtonActionPerformed
-
+//Dispose the actual window and opens a new frame for selectMovie
     private void checkOutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkOutButtonActionPerformed
         this.dispose();
         Account sMovie = new Account(window);
@@ -414,7 +417,7 @@ public class WindowCart extends javax.swing.JFrame {
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_checkOutButtonActionPerformed
-
+// dispose the actual window and opens the CheckOut Frame.
     private void deletePanel4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePanel4ActionPerformed
         try {
             cart.RemoveFromCart(4);
@@ -426,7 +429,7 @@ public class WindowCart extends javax.swing.JFrame {
         wCart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wCart.setLocationRelativeTo(null);
     }//GEN-LAST:event_deletePanel4ActionPerformed
-
+// Delete information from Cart in Panel 4, dispose this window and open it again for information refresh.
     private void deletePanel3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePanel3ActionPerformed
         try {
             cart.RemoveFromCart(3);
@@ -438,7 +441,7 @@ public class WindowCart extends javax.swing.JFrame {
         wCart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wCart.setLocationRelativeTo(null);
     }//GEN-LAST:event_deletePanel3ActionPerformed
-
+// Delete information from Cart in Panel 3, dispose this window and open it again for information refresh.
     private void deletePanel2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePanel2ActionPerformed
         try {
             cart.RemoveFromCart(2);
@@ -450,7 +453,7 @@ public class WindowCart extends javax.swing.JFrame {
         wCart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wCart.setLocationRelativeTo(null);
     }//GEN-LAST:event_deletePanel2ActionPerformed
-
+// Delete information from Cart in Panel 2, dispose this window and open it again for information refresh.
     private void deletePanel1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deletePanel1ActionPerformed
         try {
             cart.RemoveFromCart(1);
@@ -462,7 +465,7 @@ public class WindowCart extends javax.swing.JFrame {
         wCart.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         wCart.setLocationRelativeTo(null);
     }//GEN-LAST:event_deletePanel1ActionPerformed
-
+// Delete information from Cart in Panel 1, dispose this window and open it again for information refresh.
     /**
      * @param args the command line arguments
      */
@@ -539,3 +542,4 @@ public class WindowCart extends javax.swing.JFrame {
     private javax.swing.JLabel messageLabel;
     // End of variables declaration//GEN-END:variables
 }
+//class fully commented

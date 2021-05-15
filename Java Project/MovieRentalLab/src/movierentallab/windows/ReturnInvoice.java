@@ -43,7 +43,7 @@ public class ReturnInvoice extends javax.swing.JFrame {
     invoice = cart.CheckOutReceipt(receipt, donation);
     initComponents();
     }
-
+//Fills the window with components, write local variables with Frame information and DB information.
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -187,7 +187,7 @@ public class ReturnInvoice extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_goBackButtonActionPerformed
-
+// dispose the actual window and opens CheckOutFrame with the same information this class got from it, so it can open the same information
     private void sendEmailButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sendEmailButtonActionPerformed
        
         try {
@@ -204,7 +204,7 @@ public class ReturnInvoice extends javax.swing.JFrame {
           jM.validEmail(eMail);
             }else {
              jM.setEmailTo(eMail);
-             jM.sendEmail(eMail);
+             jM.sendEmail(eMail, invoice);
              c1 = true;
                   JOptionPane.showMessageDialog(this,
                  "Incoice sent by E-mail!",
@@ -226,7 +226,7 @@ public class ReturnInvoice extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_sendEmailButtonActionPerformed
-
+//Collects the e-mail registered in Database and tries to send an e-mail with a receipt message to it, returns error if the e-mail isn't valid.
     /**
      * @param args the command line arguments
      */
@@ -273,3 +273,4 @@ public class ReturnInvoice extends javax.swing.JFrame {
     private javax.swing.JButton sendEmailButton;
     // End of variables declaration//GEN-END:variables
 }
+//class fully commented.

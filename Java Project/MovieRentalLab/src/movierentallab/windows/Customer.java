@@ -177,9 +177,8 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
        
         
     }//GEN-LAST:event_signNpayButtonActionPerformed
-    //Password Field below: set the field blank when the user click in the field and for security it hides the user password
+    //Collects the email and passwotd typed, validate fields for empty, If the user was located in the Database, writes the sale and send message of success; If user isn't located in the Database message inform the user isn't registered.
     private void passTxtFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_passTxtFieldMousePressed
-        // TODO add your handling code here:
         passTxtField.setText("");
     }//GEN-LAST:event_passTxtFieldMousePressed
     // Action Performed below: the button goes back to the last frame
@@ -191,7 +190,7 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }//GEN-LAST:event_backButtonActionPerformed
-
+//dispose the actual window and opens the selectMovie Frame.
     /**
      * @param args the command line arguments
      */
@@ -243,4 +242,4 @@ public class Customer extends javax.swing.JFrame implements ActionListener {
 
         
     }
-}
+}//class fully commented;

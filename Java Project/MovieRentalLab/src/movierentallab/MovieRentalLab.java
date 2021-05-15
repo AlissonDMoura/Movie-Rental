@@ -7,12 +7,7 @@ package movierentallab;
 
 
 import java.sql.SQLException;
-import java.text.ParseException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
-import movierentallab.classes.Cart;
-import movierentallab.classes.Connector;
 import movierentallab.windows.MainMenu;
 
 
@@ -29,7 +24,8 @@ public class MovieRentalLab extends JFrame {
      */
     public static void main(String[] args) throws SQLException {
         
-        
+        //Every class, method or Action is commented at the end of the method/class/Action to keep the code clean
+        //the blocks are divided by functions, these functions will be explained in order in the comment at the botton
             
         JFrame window = new JFrame("Xtra-Vision");
         window.setBounds(0, 0, 860, 550);
@@ -43,17 +39,10 @@ public class MovieRentalLab extends JFrame {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setVisible(true);
         
-        Cart lala = new Cart ();
-        System.out.println(lala.CheckOutReceipt(11, 0));
         
         
-        
-        
-        
-        
-              
-     }
+     }//Inform the lecturer about comment structure, opens a new frame ans set sizes. Create an stance of the Menu window Class and place it into the frame. validate and open the frame with exite closeOperation.
     
     
     
-}
+}// Class fully commented.

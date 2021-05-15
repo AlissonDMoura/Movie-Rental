@@ -22,7 +22,6 @@ import movierentallab.classes.Connector;
 public class ReturnMovie extends javax.swing.JFrame {
     private JFrame window;
     Connector conn = new Connector();
-    private String email;
     private String cCardDb= null;;
 
 
@@ -166,7 +165,7 @@ public class ReturnMovie extends javax.swing.JFrame {
         
         //BACK BUTTON//
     }//GEN-LAST:event_BacktoMmenuActionPerformed
-    // Mouse Pressed below: set the text blank when the user click in the text field
+   //dispose the actual window and open a new Frame and places PanelClass Menu into it.
     private void creditCardFieldMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_creditCardFieldMousePressed
 creditCardField.setText("");        // TODO add your handling code here:
     }//GEN-LAST:event_creditCardFieldMousePressed
@@ -212,16 +211,7 @@ creditCardField.setText("");        // TODO add your handling code here:
         
 
     }//GEN-LAST:event_nextRmovieActionPerformed
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    
+// Collect the typed cCard Information, validate, Search in the Database if this CreditCard has any active cart; not: message inform order not found; Yes: Opens new Frame with this CreditCard Information;
     
     /**
      * @param args the command line arguments
@@ -266,3 +256,4 @@ creditCardField.setText("");        // TODO add your handling code here:
     private javax.swing.JButton nextRmovie;
     // End of variables declaration//GEN-END:variables
 }
+//Class Fully commented.

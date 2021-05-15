@@ -22,8 +22,6 @@ public class MainMenu extends javax.swing.JPanel {
     public MainMenu(JFrame window) {
         this.window = window;
         initComponents();
-        
-        
       
     }
 
@@ -124,13 +122,9 @@ public class MainMenu extends javax.swing.JPanel {
         sMovie.setBounds(0, 0, 860, 550);
         sMovie.setLocationRelativeTo(null);
         sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //Dispose the actual window and open a new JFRAME for SelectMovies, Set the defoult close operation.
-        
-
-                
         
     }//GEN-LAST:event_rentMbuttonActionPerformed
-
+//Dispose the actual window and open a new JFRAME for SelectMovies, Set the defoult close operation.
     private void returnMbuttonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnMbuttonActionPerformed
         
         //RETURN MOVIE BUTTON
@@ -145,7 +139,6 @@ public class MainMenu extends javax.swing.JPanel {
         
     }//GEN-LAST:event_returnMbuttonActionPerformed
 //Close the actual window and open your cart
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
@@ -154,3 +147,4 @@ public class MainMenu extends javax.swing.JPanel {
     private javax.swing.JButton returnMbutton;
     // End of variables declaration//GEN-END:variables
 }
+//Class fully commented.
