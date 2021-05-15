@@ -6,7 +6,11 @@
 package movierentallab.windows;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import movierentallab.classes.Connector;
@@ -168,72 +172,40 @@ creditCardField.setText("");        // TODO add your handling code here:
     }//GEN-LAST:event_creditCardFieldMousePressed
     // Action Performed below: check if the credit card input is in the database and give some pop ups
     private void nextRmovieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextRmovieActionPerformed
-  try{
+  
 
           String cCard = creditCardField.getText().trim();
-          boolean c1 = false;
-          boolean c2 = false;
+          
           if(cCard.isEmpty() || cCard.length() != 16){
           JOptionPane.showMessageDialog(this, "Something is wrong, Please insert 16 digits of your Credit Card");    
           }else{
-              
-                    String query = "SELECT creditcard FROM cart WHERE creditcard =" + cCard +";";
-                    Statement selector = conn.getConnection().createStatement();
-                    
-                    ResultSet rs = selector.executeQuery(query);//Get days amount
-                    if(rs.next()){
-                    cCardDb = rs.getString(1);
-                    System.out.println("movie has " + cCardDb + " Days ");}
-
-                    
-                    if(cCard.equals(cCardDb)){
-                    JOptionPane.showMessageDialog(this, "We have found your Order");     
-                     c1 = true;  
-                     c2 = true;
-                    }else{
-                    JOptionPane.showMessageDialog(this, "I'm sorry, we could't find your order :( ");      
-                    }
-                    if(c2 == true){
-                    String query2 = "SELECT email FROM users WHERE cCard =" + cCard +";";
-                        try (Statement selector4 = conn.getConnection().createStatement()) {
-                            ResultSet rs2 = selector.executeQuery(query2);
-                            if(rs2.next()){
-                                email = rs2.getString(1);
-                                
-                                System.out.println("movie Name is " + email);}
-                            selector4.close();
-                            rs2.close();
-                        }}
+              try {
+                  cCardDb = cCard;
+                  
+                  String query = "SELECT creditcard FROM cart WHERE creditcard =" + cCardDb +" and `status` = 'Due' ;";
+                  Statement selector = conn.getConnection().createStatement();
+                  ResultSet rs = selector.executeQuery(query);//Get creditCard to verify
+                  if(rs.next()){
+                      System.out.println("CreditCard Found");
                       
-                    
-                    
-                    if(c1== true){
-                        this.dispose();
-                         CheckOut sMovie = new CheckOut(window,cCardDb);
-                         sMovie.setVisible(true);
-                         sMovie.setLocationRelativeTo(null);
-                          sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);   
-        
-                        
-                        
-                    }
+                      this.dispose();
+                      CheckOut sMovie = new CheckOut(window,cCardDb);
+                      sMovie.setVisible(true);
+                      sMovie.setLocationRelativeTo(null);
+                      sMovie.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);}
+                  
+                  
+                  else{JOptionPane.showMessageDialog(this, "I'm sorry, we could't find your order :( ");}
+              } catch (SQLException ex) {
+                  Logger.getLogger(ReturnMovie.class.getName()).log(Level.SEVERE, null, ex);
+              } catch (ParseException ex) {
+                  Logger.getLogger(ReturnMovie.class.getName()).log(Level.SEVERE, null, ex);
+              }
+ }
  
-                    selector.close();
-                    rs.close();
-                    conn.CloseConnection();       
-              
-              
-              
-              
-              
-               
-          } 
-          
-          
-          
-          
-      }catch(Exception e){
-        JOptionPane.showMessageDialog(this, "Something is wrong, error: " + e.getMessage());           }
+                   
+                
+      
        
         
         

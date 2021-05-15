@@ -26,6 +26,9 @@ import java.util.logging.Logger;
 
 public class Cart {
     
+    private long diff;
+    private float lab;
+    
     private String specialQuery;
     private String cartState;
     
@@ -58,6 +61,7 @@ public class Cart {
     private int day3;
     private int day4;
     
+    private String closestReturn;
     private String return1;
     private String return2;
     private String return3;
@@ -85,6 +89,7 @@ public class Cart {
     private String status;
     
     private String userName;
+    private String userEmail;
     private String userCcard;
     
     private int movieId;
@@ -1353,7 +1358,7 @@ public class Cart {
         conn.conn.close();    
 
         return isNewUser;
-    }// Check if is there user data in DB, if not returns true, If threre's it fetches the CCard from Db and Writes the Sale in the DB and returns false.
+    }// Check if is there user data in DB, if not returns true, If threre's it fetches the CCard from Db and Writes the Sale in the DB and returns false. - TESTED
     
     public boolean EnterAsGuest(String CreditCard, String Email, int CCV, String ExpDate) throws SQLException{
         
@@ -1411,15 +1416,113 @@ public class Cart {
                     conn.conn.close();
                 return isNewUser;
                         }
-    }//Verify if the card Still have any receipts open, If there False = Message to close last receipt,  If True Accept payment and write into database.
+    }//Verify if the card Still have any receipts open, If there False = Message to close last receipt,  If True Accept payment and write into database. - TESTED
 
-    
-    
-    
-    
-    
-    
-    
+    public float PriceDifferenceCalc(int receipt) throws SQLException, ParseException{
+            String today = Today();
+            this.return1 = null;
+            float late = 5;
+            diff = 0;
+            lab = 0;
+        
+            mName1 = PanelMovieName(1, receipt);
+            Type1 = PanelType(1, receipt);
+            day1 = PanelDays(1, receipt);
+            price1 = PanelPrice(1, receipt);
+            
+            if(day1 != 0){
+                  total1 = (day1 * price1);}
+            else{ total1 = price1;}
+            //information of movie positioned in position 1
+            
+            mName2 = PanelMovieName(2, receipt);
+            Type2 = PanelType(2, receipt);
+            day2 = PanelDays(2, receipt);
+            price2 = PanelPrice(2, receipt);
+            if(day2 != 0){
+                  total2 = (day2 * price2);}
+            else{ total2 = price2;}
+            //information of movie positioned in position 2
+            
+            mName3 = PanelMovieName(3, receipt);
+            Type3 = PanelType(3, receipt);
+            day3 = PanelDays(3, receipt);
+            price3 = PanelPrice(3, receipt);
+            if(day3 != 0){
+                  total3 = (day3 * price3);}
+            else{ total3 = price3;}
+            //information of movie positioned in position 3
+            
+            mName4 = PanelMovieName(4, receipt);
+            Type4 = PanelType(4, receipt);
+            day4 = PanelDays(4, receipt);
+            price4 = PanelPrice(4, receipt);
+            if(day4 != 0){
+                  total4 = (day4 * price4);}
+            else{ total4 = price4;}
+            
+            String query = "Select `return` from `cart` where `receipt` = "+receipt +" ;";
+            Statement stmt = conn.getConnection().createStatement();
+            ResultSet rs = stmt.executeQuery(query);
+            if(rs.next()){
+                this.closestReturn = rs.getString(1);}
+            rs.close();
+            stmt.close();
+            conn.conn.close();
+            
+            Date d1 = new SimpleDateFormat("dd/MM/yyyy").parse(closestReturn);
+            Date d2 = new Date();
+            
+            if(d2.after(d1)){
+                return (-5); }
+            
+            else if(day1 != 0){
+            diff = d2.getTime() - d1.getTime();// milliseconds
+            diff = (diff/1000); // Seconds
+            diff = (diff/60); // minutes
+            diff = (diff/60); // hours
+            diff = (diff/24); // days
+                        
+            if( lab < (diff - day1)){
+                lab = (diff - day1);}
+            return (lab *price1);}
+            
+            else if(day2 != 0){
+            diff = d2.getTime() - d1.getTime();// milliseconds
+            diff = (diff/1000); // Seconds
+            diff = (diff/60); // minutes
+            diff = (diff/60); // hours
+            diff = (diff/24); // days
+                        
+            if( lab < (diff - day2)){
+                lab = (diff - day2);}
+            return (lab *price2);}
+            
+            else if(day3 != 0){
+            diff = d2.getTime() - d1.getTime();// milliseconds
+            diff = (diff/1000); // Seconds
+            diff = (diff/60); // minutes
+            diff = (diff/60); // hours
+            diff = (diff/24); // days
+                        
+            if( lab < (diff - day3)){
+                lab = (diff - day3);}
+            return (lab *price3);}
+            
+            else if(day4 != 0){
+            diff = d2.getTime() - d1.getTime();// milliseconds
+            diff = (diff/1000); // Seconds
+            diff = (diff/60); // minutes
+            diff = (diff/60); // hours
+            diff = (diff/24); // days
+                        
+            if( lab < (diff - day4)){
+                lab = (diff - day4);}
+            return (lab *price4);}
+            
+            return 0;
+            }
+
     public int CheckOutCart(String cCardNumber) throws SQLException{
             
             checkOutReceipt = 0;
@@ -1433,12 +1536,12 @@ public class Cart {
             rs.close();
             stmt.close();
             conn.conn.close();
-            return checkOutReceipt;}  // Return the cart receipt for Checkout when its due and the cCard number match with it.
-    
+            return checkOutReceipt;}  // Return the cart receipt for Checkout when its due and the cCard number match with it. - TESTED
     
     public String CheckOutReceipt(int receipt, float donation) throws SQLException{
             
             float totalOverall;
+            
         
             mName1 = PanelMovieName(1, receipt);
             Type1 = PanelType(1, receipt);
@@ -1483,9 +1586,25 @@ public class Cart {
                 return "Position 1: Movie "+mName1+", was "+Type1+" and was due for "+day1+" days; Costs for this movie was "+total1+". \n"
                      + "Position 2: Movie "+mName2+", was "+Type2+" and was due for "+day2+" days; Costs for this movie was "+total2+". \n"
                      + "Position 3: Movie "+mName3+", was "+Type3+" and was due for "+day3+" days; Costs for this movie was "+total3+". \n"
-                     + "Position 4: Movie "+mName4+", was "+Type4+" and was due for "+day4+" days; Costs for this movie was "+total1+". \n"
+                     + "Position 4: Movie "+mName4+", was "+Type4+" and was due for "+day4+" days; Costs for this movie was "+total4+". \n"
                      + "You have donated  $"+donation+" for needded IT Students, thank your for your support! \n"  
-                     + " The total of this purchase was $" + totalOverall + "Thank you for your Prefference! Come back Soon!";
+                     + " The total of this purchase was $" + totalOverall + ", Thank you for your Prefference! Come back Soon!";
+    }// returns a receipt of a purchase for a cart number and a donation price. - TESTED
+    
+ 
+    public String UserEmail(int CreditCard) throws SQLException{
+        
+        userEmail = null;
+        
+        String query = "Select `e-mail` from `users` where `cCard` = '"+ CreditCard+"' ;";
+        Statement stmt = conn.getConnection().createStatement();
+        ResultSet rs = stmt.executeQuery(query);
+        
+        if(rs.next()){
+            userEmail = rs.getString(1);}
+        
+        
+        return userEmail;
     }
     
     
